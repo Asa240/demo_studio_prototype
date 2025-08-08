@@ -912,6 +912,441 @@
             line-height: 1.5;
         }
 
+        /* Optional Section Styles */
+        .optional-section {
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--border-radius);
+            background-color: var(--color-surface-variant);
+        }
+
+        .optional-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-lg);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .optional-section-header:hover {
+            background-color: var(--color-border-light);
+        }
+
+        .optional-section-title {
+            flex: 1;
+        }
+
+        .optional-section-subtitle {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-top: var(--spacing-xs);
+            font-style: italic;
+        }
+
+        .optional-section-toggle {
+            color: var(--color-text-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .optional-section-toggle i {
+            font-size: 1.25rem;
+        }
+
+        .optional-section-toggle i.rotated {
+            transform: rotate(180deg);
+        }
+
+        .optional-section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .optional-section-content.expanded {
+            max-height: 1000px;
+            padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+        }
+
+        /* Admin Portal Styles */
+        .admin-portal-status {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            position: relative;
+        }
+
+        .status-indicator.connected {
+            border-color: var(--color-success);
+            background: var(--color-surface);
+        }
+
+        .status-indicator i {
+            font-size: 1.5rem;
+            color: var(--color-success);
+        }
+
+        .status-indicator.connected::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            background: var(--color-success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-content h3 {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .status-content p {
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .admin-portal-controls {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .control-group {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+        }
+
+        .control-group-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .control-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .control-option {
+            padding: var(--spacing-md);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--border-radius);
+            background: var(--color-surface-variant);
+        }
+
+        .control-option-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .control-option-header h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .control-option-header p {
+            color: var(--color-text-secondary);
+            margin: 0;
+            font-size: 0.875rem;
+        }
+
+        .admin-portal-events {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+        }
+
+        .events-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .event-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--border-radius);
+            background: var(--color-surface-variant);
+        }
+
+        .event-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .event-icon i {
+            color: var(--color-surface);
+            font-size: 1.125rem;
+        }
+
+        .event-content h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .event-content p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.875rem;
+        }
+
+        .event-time {
+            color: var(--color-text-disabled);
+            font-size: 0.75rem;
+        }
+
+        /* Usage Reports Styles */
+        .usage-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .metric-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-xl);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .metric-icon i {
+            color: var(--color-surface);
+            font-size: 1.5rem;
+        }
+
+        .metric-content h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .metric-description {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .report-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+        }
+
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .report-header h3 {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+
+        .report-placeholder {
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-surface-variant);
+            border-radius: var(--border-radius);
+            color: var(--color-text-secondary);
+        }
+
+        .report-placeholder i {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-disabled);
+        }
+
+        /* Logs Styles */
+        .log-filters {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .log-entries {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .log-entry {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease;
+        }
+
+        .log-entry:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .log-timestamp {
+            font-size: 0.75rem;
+            color: var(--color-text-disabled);
+            min-width: 120px;
+            font-family: monospace;
+        }
+
+        .log-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .log-icon i {
+            color: var(--color-surface);
+            font-size: 0.875rem;
+        }
+
+        .log-content {
+            flex: 1;
+        }
+
+        .log-content h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .log-content p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.875rem;
+        }
+
+        .log-severity {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .log-severity.info {
+            background: var(--color-info);
+            color: var(--color-surface);
+        }
+
+        .log-severity.success {
+            background: var(--color-success);
+            color: var(--color-surface);
+        }
+
+        .log-severity.warning {
+            background: var(--color-warning);
+            color: var(--color-surface);
+        }
+
+        .log-severity.error {
+            background: var(--color-error);
+            color: var(--color-surface);
+        }
+
+        .log-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .pagination-info {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 960px) {
             .section-title {
@@ -1101,6 +1536,51 @@
                                     </div>
                                     <div class="v-list-item__content" data-no-activator="">
                                         <div class="v-list-item-title text-body-2">Personalization</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'admin-portal' }" 
+                                     tabindex="-2" 
+                                     @click="navigateToPage('admin-portal')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-antenna mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator="">
+                                        <div class="v-list-item-title text-body-2">Admin Portal</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'usage-reports' }" 
+                                     tabindex="-2" 
+                                     @click="navigateToPage('usage-reports')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-chart-line mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator="">
+                                        <div class="v-list-item-title text-body-2">Usage Reports</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'logs' }" 
+                                     tabindex="-2" 
+                                     @click="navigateToPage('logs')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-file-document mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator="">
+                                        <div class="v-list-item-title text-body-2">Logs</div>
                                     </div>
                                 </div>
                             </div>
@@ -1360,64 +1840,75 @@
                                 </p>
                             </div>
                             
-                            
+
                             
                             <!-- AI Systems Section -->
-                            <div class="form-section">
-                                <h2 class="form-section-title">AI Systems & LLMs</h2>
-                                <p class="form-section-description">
-                                    Connect to various AI language models to power Demo Studio's intelligent features.
-                                </p>
-                                
-                                <!-- OpenAI Connection -->
-                                <div class="auth-option">
-                                    <div class="auth-option-header">
-                                        <div>
-                                            <h3 class="auth-option-title">OpenAI</h3>
-                                            <p class="auth-option-description">Connect your OpenAI API key for GPT-4 and GPT-3.5 powered features</p>
-                                        </div>
-                                        <v-btn color="primary" variant="outlined" size="small">
-                                            Connect
-                                        </v-btn>
+                            <div class="form-section optional-section">
+                                <div class="optional-section-header" @click="toggleOptionalSection('aiSystems')">
+                                    <div class="optional-section-title">
+                                        <h2 class="form-section-title">AI Systems & LLMs</h2>
+                                        <p class="optional-section-subtitle">Optional: Replace default GPT-5 with alternative models</p>
+                                    </div>
+                                    <div class="optional-section-toggle">
+                                        <i class="mdi-chevron-down" :class="{ 'rotated': isOptionalSectionExpanded('aiSystems') }"></i>
                                     </div>
                                 </div>
                                 
-                                <!-- Anthropic Claude -->
-                                <div class="auth-option">
-                                    <div class="auth-option-header">
-                                        <div>
-                                            <h3 class="auth-option-title">Anthropic Claude</h3>
-                                            <p class="auth-option-description">Connect to Claude for advanced reasoning and analysis capabilities</p>
+                                <div class="optional-section-content" :class="{ 'expanded': isOptionalSectionExpanded('aiSystems') }">
+                                    <p class="form-section-description">
+                                        Demo Studio uses OpenAI's GPT-5 by default. Connect alternative AI models if you prefer different capabilities.
+                                    </p>
+                                    
+                                    <!-- OpenAI Connection -->
+                                    <div class="auth-option">
+                                        <div class="auth-option-header">
+                                            <div>
+                                                <h3 class="auth-option-title">OpenAI</h3>
+                                                <p class="auth-option-description">Connect your OpenAI API key for GPT-4 and GPT-3.5 powered features</p>
+                                            </div>
+                                            <v-btn color="primary" variant="outlined" size="small">
+                                                Connect
+                                            </v-btn>
                                         </div>
-                                        <v-btn color="primary" variant="outlined" size="small">
-                                            Connect
-                                        </v-btn>
                                     </div>
-                                </div>
-                                
-                                <!-- Google Gemini -->
-                                <div class="auth-option">
-                                    <div class="auth-option-header">
-                                        <div>
-                                            <h3 class="auth-option-title">Google Gemini</h3>
-                                            <p class="auth-option-description">Connect to Google's Gemini AI model for multimodal capabilities</p>
+                                    
+                                    <!-- Anthropic Claude -->
+                                    <div class="auth-option">
+                                        <div class="auth-option-header">
+                                            <div>
+                                                <h3 class="auth-option-title">Anthropic Claude</h3>
+                                                <p class="auth-option-description">Connect to Claude for advanced reasoning and analysis capabilities</p>
+                                            </div>
+                                            <v-btn color="primary" variant="outlined" size="small">
+                                                Connect
+                                            </v-btn>
                                         </div>
-                                        <v-btn color="primary" variant="outlined" size="small">
-                                            Connect
-                                        </v-btn>
                                     </div>
-                                </div>
-                                
-                                <!-- Azure OpenAI -->
-                                <div class="auth-option">
-                                    <div class="auth-option-header">
-                                        <div>
-                                            <h3 class="auth-option-title">Azure OpenAI</h3>
-                                            <p class="auth-option-description">Connect to Azure OpenAI services for enterprise-grade AI</p>
+                                    
+                                    <!-- Google Gemini -->
+                                    <div class="auth-option">
+                                        <div class="auth-option-header">
+                                            <div>
+                                                <h3 class="auth-option-title">Google Gemini</h3>
+                                                <p class="auth-option-description">Connect to Google's Gemini AI model for multimodal capabilities</p>
+                                            </div>
+                                            <v-btn color="primary" variant="outlined" size="small">
+                                                Connect
+                                            </v-btn>
                                         </div>
-                                        <v-btn color="primary" variant="outlined" size="small">
-                                            Connect
-                                        </v-btn>
+                                    </div>
+                                    
+                                    <!-- Azure OpenAI -->
+                                    <div class="auth-option">
+                                        <div class="auth-option-header">
+                                            <div>
+                                                <h3 class="auth-option-title">Azure OpenAI</h3>
+                                                <p class="auth-option-description">Connect to Azure OpenAI services for enterprise-grade AI</p>
+                                            </div>
+                                            <v-btn color="primary" variant="outlined" size="small">
+                                                Connect
+                                            </v-btn>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1834,6 +2325,377 @@
                             </div>
                         </div>
                         
+                        <!-- Admin Portal Page -->
+                        <div v-if="currentPage === 'admin-portal'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Demo Admin Portal</h1>
+                                <p class="section-description">
+                                    Manage your connection to the Demo Admin Portal for centralized management, updates, and early access features.
+                                </p>
+                            </div>
+                            
+                            <!-- Connection Status -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Connection Status</h2>
+                                <div class="admin-portal-status">
+                                    <div class="status-indicator connected">
+                                        <i class="mdi-antenna"></i>
+                                        <div class="status-content">
+                                            <h3>Connected to Demo Admin Portal</h3>
+                                            <p>This account is managed by the Demo Admin Portal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Admin Portal Controls -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Portal Controls</h2>
+                                <p class="form-section-description">
+                                    Configure what the Demo Admin Portal can manage in this account.
+                                </p>
+                                
+                                <div class="admin-portal-controls">
+                                    <div class="control-group">
+                                        <div class="control-options">
+                                            <div class="control-option">
+                                                <div class="control-option-header">
+                                                    <div>
+                                                        <h4>Fake Tickets</h4>
+                                                        <p>Receive demo tickets and scenarios from admin portal</p>
+                                                    </div>
+                                                    <v-switch v-model="adminPortal.fakeTickets" color="primary"></v-switch>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="control-option">
+                                                <div class="control-option-header">
+                                                    <div>
+                                                        <h4>Configuration Updates</h4>
+                                                        <p>Allow admin portal to push configuration changes</p>
+                                                    </div>
+                                                    <v-switch v-model="adminPortal.configUpdates" color="primary"></v-switch>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="control-option">
+                                                <div class="control-option-header">
+                                                    <div>
+                                                        <h4>EAP Subscriptions</h4>
+                                                        <p>Enable Early Access Programs for new features</p>
+                                                    </div>
+                                                    <v-switch v-model="adminPortal.eapSubscriptions" color="primary"></v-switch>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Events -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Recent Admin Portal Events</h2>
+                                <p class="form-section-description">
+                                    Track recent activities and updates from the Demo Admin Portal.
+                                </p>
+                                
+                                <div class="admin-portal-events">
+                                    <div class="events-list">
+                                        <div class="event-item">
+                                            <div class="event-icon">
+                                                <i class="mdi-ticket"></i>
+                                            </div>
+                                            <div class="event-content">
+                                                <h4>New Demo Ticket Created</h4>
+                                                <p>Customer inquiry about enterprise features</p>
+                                                <span class="event-time">2 hours ago</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="event-item">
+                                            <div class="event-icon">
+                                                <i class="mdi-cog-sync"></i>
+                                            </div>
+                                            <div class="event-content">
+                                                <h4>Configuration Updated</h4>
+                                                <p>New demo templates pushed from admin portal</p>
+                                                <span class="event-time">1 day ago</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="event-item">
+                                            <div class="event-icon">
+                                                <i class="mdi-flask"></i>
+                                            </div>
+                                            <div class="event-content">
+                                                <h4>EAP Feature Enabled</h4>
+                                                <p>Advanced AI Content Generator now available</p>
+                                                <span class="event-time">3 days ago</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Usage Reports Page -->
+                        <div v-if="currentPage === 'usage-reports'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Usage Reports</h1>
+                                <p class="section-description">
+                                    View detailed analytics and usage statistics for your Demo Studio account.
+                                </p>
+                            </div>
+                            
+                            <!-- Usage Overview -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Usage Overview</h2>
+                                <p class="form-section-description">
+                                    Key metrics and statistics for your Demo Studio usage.
+                                </p>
+                                
+                                <div class="usage-metrics-grid">
+                                    <div class="metric-card">
+                                        <div class="metric-icon">
+                                            <i class="mdi-hammer-wrench"></i>
+                                        </div>
+                                        <div class="metric-content">
+                                            <h3>Configurations Performed</h3>
+                                            <div class="metric-value">247</div>
+                                            <p class="metric-description">Total demo configurations created</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="metric-card">
+                                        <div class="metric-icon">
+                                            <i class="mdi-ticket"></i>
+                                        </div>
+                                        <div class="metric-content">
+                                            <h3>Tickets Generated</h3>
+                                            <div class="metric-value">1,234</div>
+                                            <p class="metric-description">Demo tickets and scenarios created</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="metric-card">
+                                        <div class="metric-icon">
+                                            <i class="mdi-robot"></i>
+                                        </div>
+                                        <div class="metric-content">
+                                            <h3>AI Usage Cost</h3>
+                                            <div class="metric-value">$156.78</div>
+                                            <p class="metric-description">Estimated cost of AI API calls</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="metric-card">
+                                        <div class="metric-icon">
+                                            <i class="mdi-clock"></i>
+                                        </div>
+                                        <div class="metric-content">
+                                            <h3>Active Time</h3>
+                                            <div class="metric-value">89.5 hrs</div>
+                                            <p class="metric-description">Total time spent in Demo Studio</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Detailed Reports -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Detailed Reports</h2>
+                                <p class="form-section-description">
+                                    In-depth analysis of your usage patterns and trends.
+                                </p>
+                                
+                                <div class="reports-grid">
+                                    <div class="report-card">
+                                        <div class="report-header">
+                                            <h3>Monthly Usage Trend</h3>
+                                            <v-btn color="primary" variant="outlined" size="small">
+                                                Export
+                                            </v-btn>
+                                        </div>
+                                        <div class="report-placeholder">
+                                            <i class="mdi-chart-line"></i>
+                                            <p>Usage trend chart will be displayed here</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="report-card">
+                                        <div class="report-header">
+                                            <h3>AI Cost Breakdown</h3>
+                                            <v-btn color="primary" variant="outlined" size="small">
+                                                Export
+                                            </v-btn>
+                                        </div>
+                                        <div class="report-placeholder">
+                                            <i class="mdi-pie-chart"></i>
+                                            <p>Cost breakdown chart will be displayed here</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="report-card">
+                                        <div class="report-header">
+                                            <h3>Feature Usage</h3>
+                                            <v-btn color="primary" variant="outlined" size="small">
+                                                Export
+                                            </v-btn>
+                                        </div>
+                                        <div class="report-placeholder">
+                                            <i class="mdi-chart-bar"></i>
+                                            <p>Feature usage chart will be displayed here</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Logs Page -->
+                        <div v-if="currentPage === 'logs'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Audit Logs</h1>
+                                <p class="section-description">
+                                    View detailed audit logs of all events and activities in your Demo Studio account.
+                                </p>
+                            </div>
+                            
+                            <!-- Log Filters -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Log Filters</h2>
+                                <p class="form-section-description">
+                                    Filter and search through audit logs by date, event type, and user.
+                                </p>
+                                
+                                <div class="log-filters">
+                                    <v-row>
+                                        <v-col cols="12" md="3">
+                                            <v-text-field
+                                                label="Search Logs"
+                                                variant="outlined"
+                                                prepend-icon="mdi-magnify"
+                                                placeholder="Search for specific events..."
+                                            ></v-text-field>
+                                        </v-col>
+                                        <v-col cols="12" md="3">
+                                            <v-select
+                                                label="Event Type"
+                                                variant="outlined"
+                                                :items="['All Events', 'Authentication', 'Configuration', 'AI Usage', 'Admin Portal']"
+                                            ></v-select>
+                                        </v-col>
+                                        <v-col cols="12" md="3">
+                                            <v-text-field
+                                                label="Date Range"
+                                                variant="outlined"
+                                                prepend-icon="mdi-calendar"
+                                                placeholder="Select date range..."
+                                            ></v-text-field>
+                                        </v-col>
+                                        <v-col cols="12" md="3">
+                                            <v-btn color="primary" size="large">
+                                                Apply Filters
+                                            </v-btn>
+                                        </v-col>
+                                    </v-row>
+                                </div>
+                            </div>
+                            
+                            <!-- Log Entries -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Recent Log Entries</h2>
+                                <p class="form-section-description">
+                                    Latest audit log entries showing account activity and events.
+                                </p>
+                                
+                                <div class="log-entries">
+                                    <div class="log-entry">
+                                        <div class="log-timestamp">2024-01-15 14:32:15</div>
+                                        <div class="log-icon">
+                                            <i class="mdi-account-login"></i>
+                                        </div>
+                                        <div class="log-content">
+                                            <h4>User Login</h4>
+                                            <p>User successfully logged in from IP 192.168.1.100</p>
+                                            <span class="log-severity info">INFO</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="log-entry">
+                                        <div class="log-timestamp">2024-01-15 14:30:22</div>
+                                        <div class="log-icon">
+                                            <i class="mdi-robot"></i>
+                                        </div>
+                                        <div class="log-content">
+                                            <h4>AI Content Generated</h4>
+                                            <p>Generated demo script using OpenAI GPT-5 (tokens: 1,247)</p>
+                                            <span class="log-severity info">INFO</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="log-entry">
+                                        <div class="log-timestamp">2024-01-15 14:28:45</div>
+                                        <div class="log-icon">
+                                            <i class="mdi-cog-sync"></i>
+                                        </div>
+                                        <div class="log-content">
+                                            <h4>Configuration Updated</h4>
+                                            <p>Demo template "Enterprise Sales" was modified</p>
+                                            <span class="log-severity warning">WARNING</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="log-entry">
+                                        <div class="log-timestamp">2024-01-15 14:25:10</div>
+                                        <div class="log-icon">
+                                            <i class="mdi-antenna"></i>
+                                        </div>
+                                        <div class="log-content">
+                                            <h4>Admin Portal Event</h4>
+                                            <p>New demo ticket received from admin portal</p>
+                                            <span class="log-severity info">INFO</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="log-entry">
+                                        <div class="log-timestamp">2024-01-15 14:20:33</div>
+                                        <div class="log-icon">
+                                            <i class="mdi-shield-check"></i>
+                                        </div>
+                                        <div class="log-content">
+                                            <h4>Authentication Success</h4>
+                                            <p>OpenAI API key validated successfully</p>
+                                            <span class="log-severity success">SUCCESS</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="log-entry">
+                                        <div class="log-timestamp">2024-01-15 14:15:18</div>
+                                        <div class="log-icon">
+                                            <i class="mdi-alert-circle"></i>
+                                        </div>
+                                        <div class="log-content">
+                                            <h4>Failed Login Attempt</h4>
+                                            <p>Invalid credentials from IP 203.45.67.89</p>
+                                            <span class="log-severity error">ERROR</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="log-pagination">
+                                    <v-btn variant="outlined" disabled>
+                                        <i class="mdi-chevron-left"></i>
+                                        Previous
+                                    </v-btn>
+                                    <span class="pagination-info">Page 1 of 15</span>
+                                    <v-btn variant="outlined">
+                                        Next
+                                        <i class="mdi-chevron-right"></i>
+                                    </v-btn>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </main>
                 
@@ -1948,15 +2810,22 @@
             data() {
                 return {
                     isDarkMode: false,
-                                         currentPage: 'welcome',
-                                         expandedGroups: [],
-                                         subdomain: 'z3n-demo.zendesk.com',
+                    currentPage: 'welcome',
+                    expandedGroups: [],
+                    expandedOptionalSections: [],
+                    subdomain: 'z3n-demo.zendesk.com',
                     
                     companyInfo: {
                         name: '',
                         description: '',
                         issues: '',
                         aiInstructions: ''
+                    },
+                    
+                    adminPortal: {
+                        fakeTickets: true,
+                        configUpdates: true,
+                        eapSubscriptions: false
                     }
                 }
             },
@@ -1975,7 +2844,10 @@
                          'discover': 'Discover',
                          'experiment': 'Experiment',
                          'authentication': 'Authentication',
-                         'personalization': 'Personalization'
+                         'personalization': 'Personalization',
+                         'admin-portal': 'Admin Portal',
+                         'usage-reports': 'Usage Reports',
+                         'logs': 'Logs'
                      }
                      return titles[this.currentPage] || 'Demo Studio'
                  }
@@ -2013,6 +2885,19 @@
 
                 isGroupExpanded(groupId) {
                     return this.expandedGroups.includes(groupId)
+                },
+
+                toggleOptionalSection(sectionId) {
+                    const index = this.expandedOptionalSections.indexOf(sectionId)
+                    if (index > -1) {
+                        this.expandedOptionalSections.splice(index, 1)
+                    } else {
+                        this.expandedOptionalSections.push(sectionId)
+                    }
+                },
+
+                isOptionalSectionExpanded(sectionId) {
+                    return this.expandedOptionalSections.includes(sectionId)
                 },
 
                 // GenAI helper functions
