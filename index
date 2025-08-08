@@ -224,12 +224,13 @@
          }
 
          .connection-indicator {
-             width: 20px;
+             min-width: 20px;
              height: 20px;
-             border-radius: 50%;
+             border-radius: 12px;
              display: flex;
              align-items: center;
              justify-content: center;
+             padding: 0 6px;
              opacity: 0.9;
              transition: all 0.3s ease;
              cursor: pointer;
@@ -257,6 +258,14 @@
          .connection-indicator i {
              font-size: 10px !important;
              color: var(--color-surface) !important;
+         }
+
+         .subdomain-text {
+             font-size: 8px !important;
+             color: var(--color-surface) !important;
+             font-weight: 500;
+             margin-right: 4px;
+             white-space: nowrap;
          }
 
          @keyframes pulse {
@@ -1378,13 +1387,13 @@
                             <h2 class="drawer-title">Demo Studio</h2>
                             <div class="connection-indicators">
                                 <div class="connection-indicator connected" title="Connected to z3n-demo.zendesk.com">
+                                    <span class="subdomain-text">z3n-demo.zendesk.com</span>
                                     <i class="mdi-wifi mdi v-icon notranslate v-theme--customLight" aria-hidden="true"></i>
                                 </div>
                                 <div class="connection-indicator portal" title="Demo Admin Portal">
                                     <i class="mdi-antenna mdi v-icon notranslate v-theme--customLight" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <p class="drawer-subtitle">Settings</p>
                         </div>
                         
                         <!-- Navigation List -->
@@ -1652,10 +1661,10 @@
                                     <div class="quick-start-item">
                                         <div class="step-number">2</div>
                                         <div class="step-content">
-                                            <h3>Generate Content</h3>
-                                            <p>Then, use AI to create compelling demo content</p>
-                                            <v-btn color="primary" variant="outlined" size="small" disabled>
-                                                Start Generating
+                                            <h3>Personalize Your Experience</h3>
+                                            <p>Then, configure your company information and AI prompts</p>
+                                            <v-btn color="primary" variant="outlined" size="small" @click="navigateToPage('personalization')">
+                                                Go to Personalization
                                             </v-btn>
                                         </div>
                                     </div>
@@ -1663,10 +1672,10 @@
                                     <div class="quick-start-item">
                                         <div class="step-number">3</div>
                                         <div class="step-content">
-                                            <h3>Build Demos</h3>
-                                            <p>Finally, install configurations from templates or GenAI</p>
+                                            <h3>Generate Content</h3>
+                                            <p>Finally, use AI to create compelling demo content</p>
                                             <v-btn color="primary" variant="outlined" size="small" disabled>
-                                                Build Demo
+                                                Start Generating
                                             </v-btn>
                                         </div>
                                     </div>
