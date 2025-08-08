@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Studio - Settings</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Material Design Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
+    
+    <!-- Vuetify CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@3.4.7/dist/vuetify.min.css" rel="stylesheet">
+    
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        :root {
+            /* Light theme colors */
+            --color-background: #fafafa;
+            --color-surface: #ffffff;
+            --color-text-primary: #1b263b;
+            --color-text-secondary: #415a77;
+            --color-text-disabled: #778da9;
+
+            /* Brand colors */
+            --color-primary: #1b263b;
+            --color-primary-variant: #0f1419;
+            --color-secondary: #415a77;
+            --color-secondary-variant: #334661;
+
+            /* Light theme feedback colors */
+            --color-success: #1b7f75;
+            --color-success-variant: #155e56;
+            --color-warning: #d67e3b;
+            --color-warning-variant: #b8692f;
+            --color-error: #c62d42;
+            --color-error-variant: #a8253a;
+            --color-info: #2856a3;
+            --color-info-variant: #1e4285;
+
+            /* Neutral colors */
+            --color-border: rgba(0, 0, 0, 0.12);
+            --color-border-light: rgba(0, 0, 0, 0.06);
+            --color-divider: rgba(0, 0, 0, 0.08);
+
+            /* Dark theme colors */
+            --dark-background: #121212;
+            --dark-surface: #1e1e1e;
+            --dark-surface-variant: #2d2d2d;
+            --dark-text-primary: #ffffff;
+            --dark-text-secondary: #e0e0e0;
+            --dark-text-disabled: #9e9e9e;
+            --dark-border: rgba(255, 255, 255, 0.12);
+            --dark-border-light: rgba(255, 255, 255, 0.06);
+            --dark-divider: rgba(255, 255, 255, 0.08);
+
+            /* Dark theme brand colors - lighter for readability */
+            --dark-primary: #60a5fa;
+            --dark-primary-variant: #3b82f6;
+            --dark-secondary: #a78bfa;
+            --dark-secondary-variant: #8b5cf6;
+
+            /* Dark theme feedback colors - improved contrast */
+            --dark-success: #4caf50;
+            --dark-success-variant: #388e3c;
+            --dark-warning: #ff9800;
+            --dark-warning-variant: #f57c00;
+            --dark-error: #f44336;
+            --dark-error-variant: #d32f2f;
+            --dark-info: #42a5f5;
+            --dark-info-variant: #1976d2;
+
+            /* Spacing system (8px grid) */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            --spacing-3xl: 64px;
+
+            /* Typography */
+            --font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-family-mono: 'Roboto Mono', 'Consolas', 'Monaco', monospace;
+
+            /* Border radius - minimal as requested */
+            --border-radius: 4px;
+            --border-radius-lg: 8px;
+
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-standard: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dark mode implementation */
+        [data-theme='dark'] {
+            --color-background: var(--dark-background);
+            --color-surface: var(--dark-surface);
+            --color-text-primary: var(--dark-text-primary);
+            --color-text-secondary: var(--dark-text-secondary);
+            --color-text-disabled: var(--dark-text-disabled);
+            --color-border: var(--dark-border);
+            --color-border-light: var(--dark-border-light);
+            --color-divider: var(--dark-divider);
+            --color-primary: var(--dark-primary);
+            --color-primary-variant: var(--dark-primary-variant);
+            --color-secondary: var(--dark-secondary);
+            --color-secondary-variant: var(--dark-secondary-variant);
+            --color-success: var(--dark-success);
+            --color-success-variant: var(--dark-success-variant);
+            --color-warning: var(--dark-warning);
+            --color-warning-variant: var(--dark-warning-variant);
+            --color-error: var(--dark-error);
+            --color-error-variant: var(--dark-error-variant);
+            --color-info: var(--dark-info);
+            --color-info-variant: var(--dark-info-variant);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme='light']) {
+                --color-background: var(--dark-background);
+                --color-surface: var(--dark-surface);
+                --color-text-primary: var(--dark-text-primary);
+                --color-text-secondary: var(--dark-text-secondary);
+                --color-text-disabled: var(--dark-text-disabled);
+                --color-border: var(--dark-border);
+                --color-border-light: var(--dark-border-light);
+                --color-divider: var(--dark-divider);
+                --color-primary: var(--dark-primary);
+                --color-primary-variant: var(--dark-primary-variant);
+                --color-secondary: var(--dark-secondary);
+                --color-secondary-variant: var(--dark-secondary-variant);
+                --color-success: var(--dark-success);
+                --color-success-variant: var(--dark-success-variant);
+                --color-warning: var(--dark-warning);
+                --color-warning-variant: var(--dark-warning-variant);
+                --color-error: var(--dark-error);
+                --color-error-variant: var(--dark-error-variant);
+                --color-info: var(--dark-info);
+                --color-info-variant: var(--dark-info-variant);
+            }
+        }
+
+        /* Base styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            margin: 0;
+            padding: 0;
+            transition: background-color var(--transition-standard), color var(--transition-standard);
+        }
+
+        /* Remove all elevations globally as requested */
+        .v-card,
+        .v-sheet,
+        .v-app-bar,
+        .v-navigation-drawer,
+        .v-btn,
+        .v-text-field,
+        .v-select,
+        .v-textarea,
+        .v-menu .v-overlay__content,
+        .v-dialog .v-overlay__content,
+        .v-snackbar .v-overlay__content,
+        .v-data-table {
+            box-shadow: none !important;
+        }
+
+        /* Minimal border radius as requested */
+        .v-card,
+        .v-btn,
+        .v-text-field .v-field__outline,
+        .v-select .v-field__outline,
+        .v-textarea .v-field__outline {
+            border-radius: var(--border-radius) !important;
+        }
+
+        /* Navigation Drawer Styles */
+        .navigation-drawer {
+            background-color: var(--color-surface) !important;
+            border-right: 1px solid var(--color-border) !important;
+        }
+
+                 .drawer-header {
+             padding: var(--spacing-lg);
+             background-color: var(--color-primary);
+             color: var(--color-surface);
+             border-bottom: 1px solid var(--color-border);
+             position: relative;
+         }
+
+         .drawer-title {
+             font-size: 1.25rem;
+             font-weight: 500;
+             margin: 0 0 var(--spacing-xs) 0;
+             line-height: 1.2;
+             color: var(--color-surface);
+         }
+
+         .drawer-subtitle {
+             font-size: 0.875rem;
+             opacity: 0.9;
+             margin: 0;
+             line-height: 1.2;
+             color: var(--color-surface);
+         }
+
+         .connection-indicators {
+             position: absolute;
+             top: var(--spacing-sm);
+             right: var(--spacing-sm);
+             display: flex;
+             gap: var(--spacing-xs);
+         }
+
+         .connection-indicator {
+             width: 20px;
+             height: 20px;
+             border-radius: 50%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             opacity: 0.9;
+             transition: all 0.3s ease;
+             cursor: pointer;
+             position: relative;
+             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+         }
+
+         .connection-indicator:hover {
+             opacity: 1;
+             transform: scale(1.15);
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+         }
+
+         .connection-indicator.connected {
+             background: linear-gradient(135deg, var(--color-success), #2E8B57);
+             border: 2px solid var(--color-success);
+             animation: pulse 2s infinite;
+         }
+
+         .connection-indicator.portal {
+             background: linear-gradient(135deg, var(--color-info), #4169E1);
+             border: 2px solid var(--color-info);
+         }
+
+         .connection-indicator i {
+             font-size: 10px !important;
+             color: var(--color-surface) !important;
+         }
+
+         @keyframes pulse {
+             0% {
+                 box-shadow: 0 0 0 0 rgba(27, 127, 117, 0.7);
+             }
+             70% {
+                 box-shadow: 0 0 0 6px rgba(27, 127, 117, 0);
+             }
+             100% {
+                 box-shadow: 0 0 0 0 rgba(27, 127, 117, 0);
+             }
+         }
+
+        /* Navigation Groups */
+        .nav-group-header {
+            padding: var(--spacing-md) var(--spacing-lg) var(--spacing-sm) var(--spacing-lg);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--color-text-disabled);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--color-divider);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .nav-group-parent {
+            margin: 0 var(--spacing-md) var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--border-radius);
+        }
+
+        .nav-group-parent .v-list-item {
+            padding: var(--spacing-sm) var(--spacing-md);
+            min-height: 40px;
+            color: var(--color-text-primary) !important;
+        }
+
+        .nav-group-parent .v-list-item .v-list-item-title {
+            color: var(--color-text-primary) !important;
+        }
+
+        .nav-group-parent .v-list-item .v-icon {
+            color: var(--color-text-secondary) !important;
+        }
+
+        .nav-group-parent:hover {
+            background-color: var(--color-border-light);
+        }
+
+        .nav-group-children {
+            overflow: hidden;
+            transition: max-height var(--transition-standard);
+        }
+
+        .nav-group-children.collapsed {
+            max-height: 0;
+        }
+
+        .nav-group-children.expanded {
+            max-height: 400px;
+        }
+
+        .nav-child-item {
+            margin: 0 var(--spacing-md) var(--spacing-xs) var(--spacing-lg);
+            border-radius: var(--border-radius);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-child-item .v-list-item {
+            color: var(--color-text-primary) !important;
+        }
+
+        .nav-child-item .v-list-item .v-list-item-title {
+            color: var(--color-text-primary) !important;
+        }
+
+        .nav-child-item .v-list-item .v-icon {
+            color: var(--color-text-secondary) !important;
+        }
+
+        .nav-child-item:hover {
+            background-color: var(--color-border-light);
+        }
+
+                 .nav-child-item.active {
+             background-color: var(--color-primary) !important;
+             margin: 0 !important;
+             border-radius: 0 !important;
+         }
+
+         .nav-child-item.active .v-list-item,
+         .nav-child-item.active .v-list-item-title,
+         .nav-child-item.active .v-icon {
+             color: var(--color-surface) !important;
+         }
+
+         .nav-child-item.active .v-list-item {
+             padding-left: var(--spacing-lg) !important;
+             padding-right: var(--spacing-lg) !important;
+         }
+
+         /* Settings Navigation Section */
+         .settings-nav-section {
+             position: absolute;
+             bottom: 0;
+             left: 0;
+             right: 0;
+             background-color: var(--color-surface);
+             border-top: 1px solid var(--color-border);
+         }
+
+         /* Add padding to main nav to account for settings at bottom */
+         .v-navigation-drawer__content {
+             padding-bottom: 200px;
+         }
+
+         /* Welcome Page Styles */
+         .welcome-container {
+             padding: var(--spacing-3xl) var(--spacing-lg);
+         }
+
+         .quick-start-list {
+             margin-top: var(--spacing-lg);
+             position: relative;
+         }
+
+         .quick-start-list::before {
+             content: '';
+             position: absolute;
+             left: 60px;
+             top: 60px;
+             bottom: 60px;
+             width: 2px;
+             background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+             z-index: 0;
+         }
+
+         .quick-start-item {
+             display: flex;
+             align-items: flex-start;
+             gap: var(--spacing-lg);
+             padding: var(--spacing-lg);
+             border-bottom: 1px solid var(--color-border-light);
+             transition: all var(--transition-fast);
+             position: relative;
+             z-index: 1;
+         }
+
+         .quick-start-item:hover {
+             background-color: var(--color-border-light);
+         }
+
+         .quick-start-item:last-child {
+             border-bottom: none;
+         }
+
+         .step-number {
+             width: 40px;
+             height: 40px;
+             border-radius: 50%;
+             background-color: var(--color-primary);
+             color: var(--color-surface);
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             font-weight: 600;
+             font-size: 1.125rem;
+             flex-shrink: 0;
+             border: 3px solid var(--color-surface);
+             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+         }
+
+         .quick-start-item.completed .step-number {
+             background-color: var(--color-success);
+         }
+
+         .quick-start-item.completed .step-number::after {
+             content: '✓';
+             position: absolute;
+             font-size: 0.875rem;
+             font-weight: bold;
+         }
+
+         .step-content h3 {
+             font-size: 1.25rem;
+             font-weight: 500;
+             color: var(--color-text-primary);
+             margin-bottom: var(--spacing-xs);
+         }
+
+         .step-content p {
+             color: var(--color-text-secondary);
+             margin-bottom: var(--spacing-md);
+             line-height: 1.5;
+         }
+
+         .training-hero {
+             display: flex;
+             align-items: center;
+             gap: var(--spacing-2xl);
+             background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+             color: var(--color-surface);
+             padding: var(--spacing-2xl);
+             border-radius: var(--border-radius-lg);
+             margin-top: var(--spacing-lg);
+         }
+
+         .training-hero-content {
+             flex: 1;
+         }
+
+         .training-hero-content h3 {
+             font-size: 1.75rem;
+             font-weight: 500;
+             margin-bottom: var(--spacing-md);
+         }
+
+         .training-hero-content p {
+             font-size: 1.125rem;
+             margin-bottom: var(--spacing-lg);
+             line-height: 1.5;
+             opacity: 0.9;
+         }
+
+         .training-hero-meta {
+             display: flex;
+             gap: var(--spacing-lg);
+             margin-bottom: var(--spacing-lg);
+             font-size: 0.875rem;
+             opacity: 0.8;
+         }
+
+         .training-hero-meta span {
+             display: flex;
+             align-items: center;
+             gap: var(--spacing-xs);
+         }
+
+         .training-hero-visual {
+             flex-shrink: 0;
+             width: 120px;
+             height: 120px;
+             background-color: rgba(255, 255, 255, 0.1);
+             border-radius: 50%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+
+         .training-hero-visual i {
+             font-size: 3rem;
+             color: var(--color-surface);
+         }
+
+         .training-sidebar {
+             margin-top: var(--spacing-lg);
+             display: flex;
+             gap: var(--spacing-lg);
+         }
+
+         .training-sidebar-item {
+             flex: 1;
+             display: flex;
+             align-items: center;
+             gap: var(--spacing-md);
+             padding: var(--spacing-lg);
+             background-color: var(--color-surface);
+             border: 1px solid var(--color-border);
+             border-radius: var(--border-radius);
+             transition: all var(--transition-fast);
+         }
+
+         .training-sidebar-item:hover {
+             border-color: var(--color-primary);
+         }
+
+         .training-sidebar-item i {
+             font-size: 1.5rem;
+             color: var(--color-primary);
+             flex-shrink: 0;
+         }
+
+         .training-sidebar-item h4 {
+             font-size: 1rem;
+             font-weight: 500;
+             color: var(--color-text-primary);
+             margin-bottom: var(--spacing-xs);
+         }
+
+         .training-sidebar-item p {
+             color: var(--color-text-secondary);
+             margin-bottom: var(--spacing-xs);
+             line-height: 1.4;
+         }
+
+         .training-sidebar-item span {
+             font-size: 0.875rem;
+             color: var(--color-text-disabled);
+         }
+
+         .video-timeline {
+             margin-top: var(--spacing-lg);
+             position: relative;
+         }
+
+         .video-timeline::before {
+             content: '';
+             position: absolute;
+             left: 20px;
+             top: 0;
+             bottom: 0;
+             width: 2px;
+             background-color: var(--color-border);
+         }
+
+         .video-timeline-item {
+             display: flex;
+             align-items: flex-start;
+             gap: var(--spacing-lg);
+             padding: var(--spacing-lg) 0;
+             position: relative;
+         }
+
+         .video-timeline-dot {
+             width: 12px;
+             height: 12px;
+             border-radius: 50%;
+             background-color: var(--color-primary);
+             border: 3px solid var(--color-surface);
+             flex-shrink: 0;
+             margin-top: 8px;
+         }
+
+         .video-timeline-content {
+             flex: 1;
+         }
+
+         .video-timeline-content h3 {
+             font-size: 1.125rem;
+             font-weight: 500;
+             color: var(--color-text-primary);
+             margin-bottom: var(--spacing-xs);
+         }
+
+         .video-timeline-content p {
+             color: var(--color-text-secondary);
+             margin-bottom: var(--spacing-sm);
+             line-height: 1.5;
+         }
+
+         .video-timeline-meta {
+             display: flex;
+             gap: var(--spacing-md);
+             font-size: 0.875rem;
+             color: var(--color-text-disabled);
+         }
+
+         .video-timeline-meta span {
+             display: flex;
+             align-items: center;
+             gap: var(--spacing-xs);
+         }
+
+         .features-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+             gap: var(--spacing-lg);
+             margin-top: var(--spacing-lg);
+         }
+
+         .feature-card-large {
+             background-color: var(--color-surface);
+             border: 1px solid var(--color-border);
+             border-radius: var(--border-radius);
+             padding: var(--spacing-xl);
+             text-align: center;
+             transition: all var(--transition-fast);
+         }
+
+         .feature-card-large:hover {
+             border-color: var(--color-primary);
+             transform: translateY(-2px);
+         }
+
+         .feature-icon-large {
+             font-size: 3rem;
+             color: var(--color-primary);
+             margin-bottom: var(--spacing-md);
+         }
+
+         .feature-card-large h3 {
+             font-size: 1.5rem;
+             font-weight: 500;
+             color: var(--color-text-primary);
+             margin-bottom: var(--spacing-sm);
+         }
+
+         .feature-card-large p {
+             color: var(--color-text-secondary);
+             margin-bottom: var(--spacing-lg);
+             line-height: 1.5;
+         }
+
+         /* Responsive adjustments for welcome page */
+         @media (max-width: 960px) {
+             .quick-start-grid,
+             .training-grid,
+             .video-grid,
+             .features-grid {
+                 grid-template-columns: 1fr;
+             }
+         }
+
+        /* App Bar */
+        .app-bar {
+            background-color: var(--color-surface) !important;
+            border-bottom: 1px solid var(--color-border) !important;
+            color: var(--color-text-primary) !important;
+        }
+
+        .app-bar-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            color: var(--color-text-secondary) !important;
+            transition: color var(--transition-fast);
+        }
+
+        .theme-toggle:hover {
+            color: var(--color-text-primary) !important;
+            background-color: var(--color-border-light) !important;
+        }
+
+        /* Main Content */
+        .main-content {
+            background-color: var(--color-background);
+            min-height: 100vh;
+            transition: background-color var(--transition-standard);
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--color-text-primary);
+            margin: 0 0 var(--spacing-sm) 0;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Cards - Enhanced for consistency */
+        .guideline-card {
+            background-color: var(--color-surface) !important;
+            border: 1px solid var(--color-border) !important;
+            transition: all var(--transition-fast);
+        }
+
+        .guideline-card:hover {
+            border-color: var(--color-border) !important;
+        }
+
+        .guideline-card .v-card-title {
+            padding: var(--spacing-lg) !important;
+            font-size: 1.125rem !important;
+            font-weight: 500 !important;
+            color: var(--color-text-primary) !important;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .guideline-card .v-card-text {
+            padding: var(--spacing-lg) !important;
+            color: var(--color-text-secondary) !important;
+            line-height: 1.6;
+        }
+
+        .guideline-card .v-card-actions {
+            padding: var(--spacing-md) var(--spacing-lg) !important;
+            border-top: 1px solid var(--color-border-light);
+            gap: var(--spacing-sm);
+        }
+
+        /* Settings specific styles */
+        .settings-container {
+            padding: var(--spacing-3xl) var(--spacing-lg);
+        }
+
+                 .connection-status {
+             display: flex;
+             align-items: center;
+             gap: var(--spacing-sm);
+             padding: var(--spacing-md) var(--spacing-lg);
+             background-color: var(--color-success);
+             color: var(--color-surface);
+             border-radius: var(--border-radius);
+             margin-bottom: var(--spacing-lg);
+         }
+
+         .connection-status .v-icon {
+             color: var(--color-surface) !important;
+         }
+
+         .connection-status-small {
+             display: flex;
+             align-items: center;
+             gap: var(--spacing-xs);
+             padding: var(--spacing-xs) var(--spacing-sm);
+             background-color: var(--color-border-light);
+             color: var(--color-text-primary);
+             border-radius: var(--border-radius);
+             font-size: 0.875rem;
+             border: 1px solid var(--color-border);
+         }
+
+         .connection-status-small .v-icon {
+             color: var(--color-text-secondary) !important;
+         }
+
+         .connection-status-small.connected {
+             background-color: var(--color-success);
+             color: var(--color-surface);
+             border-color: var(--color-success);
+         }
+
+         .connection-status-small.connected .v-icon {
+             color: var(--color-surface) !important;
+         }
+
+         .connection-status-small.portal {
+             background-color: var(--color-info);
+             color: var(--color-surface);
+             border-color: var(--color-info);
+         }
+
+         .connection-status-small.portal .v-icon {
+             color: var(--color-surface) !important;
+         }
+
+         .connection-status-small.portal a {
+             color: var(--color-surface) !important;
+         }
+
+        .auth-option {
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            transition: all var(--transition-fast);
+        }
+
+        .auth-option:hover {
+            border-color: var(--color-primary);
+            background-color: var(--color-border-light);
+        }
+
+        .auth-option-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .auth-option-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+        }
+
+        .auth-option-description {
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        .genai-button {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) !important;
+            color: var(--color-surface) !important;
+            border: none !important;
+        }
+
+        .genai-button:hover {
+            background: linear-gradient(135deg, var(--color-primary-variant), var(--color-secondary-variant)) !important;
+        }
+
+        .form-section {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .form-section-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-section-description {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.5;
+        }
+
+        .placeholder-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .placeholder-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-xl);
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .placeholder-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .placeholder-card i {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+            display: block;
+        }
+
+        .placeholder-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .placeholder-card p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 960px) {
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .drawer-header {
+                padding: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app" data-v-app="">
+        <div class="v-application v-theme--customLight v-layout v-layout--full-height v-locale--is-ltr">
+            <div class="v-application__wrap">
+                
+                <!-- Navigation Drawer -->
+                <nav class="v-navigation-drawer v-navigation-drawer--left v-navigation-drawer--active v-theme--customLight elevation-0 navigation-drawer" app="" style="left: 0px; z-index: 1006; transform: translateX(0%); position: fixed; height: calc(100% + 0px); top: 0px; bottom: 0px; width: 300px;">
+                    <div class="v-navigation-drawer__content">
+                        <!-- Drawer Header -->
+                        <div class="drawer-header">
+                            <h2 class="drawer-title">Demo Studio</h2>
+                            <div class="connection-indicators">
+                                <div class="connection-indicator connected" title="Connected to z3n-demo.zendesk.com">
+                                    <i class="mdi-wifi mdi v-icon notranslate v-theme--customLight" aria-hidden="true"></i>
+                                </div>
+                                <div class="connection-indicator portal" title="Demo Admin Portal">
+                                    <i class="mdi-antenna mdi v-icon notranslate v-theme--customLight" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <p class="drawer-subtitle">Settings</p>
+                        </div>
+                        
+                        <!-- Navigation List -->
+                        <div class="v-list v-list--nav v-theme--customLight bg-transparent v-list--density-default v-list--one-line pa-0" tabindex="0" role="listbox">
+                            <!-- Welcome -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1 mt-4" 
+                                 :class="{ active: currentPage === 'welcome' }" 
+                                 tabindex="-2" 
+                                 @click="navigateToPage('welcome')">
+                                <span class="v-list-item__overlay"></span>
+                                <span class="v-list-item__underlay"></span>
+                                <div class="v-list-item__prepend">
+                                    <i class="mdi-home mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                                <div class="v-list-item__content" data-no-activator="">
+                                    <div class="v-list-item-title text-body-2">Welcome</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Main Navigation -->
+                            <div class="nav-group-header">Demo Studio</div>
+                            
+                            <!-- Build -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1" 
+                                 :class="{ active: currentPage === 'build' }" 
+                                 tabindex="-2" 
+                                 @click="navigateToPage('build')">
+                                <span class="v-list-item__overlay"></span>
+                                <span class="v-list-item__underlay"></span>
+                                <div class="v-list-item__prepend">
+                                    <i class="mdi-hammer-wrench mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                                <div class="v-list-item__content" data-no-activator="">
+                                    <div class="v-list-item-title text-body-2">BUILD</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Generate -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1" 
+                                 :class="{ active: currentPage === 'generate' }" 
+                                 tabindex="-2" 
+                                 @click="navigateToPage('generate')">
+                                <span class="v-list-item__overlay"></span>
+                                <span class="v-list-item__underlay"></span>
+                                <div class="v-list-item__prepend">
+                                    <i class="mdi-robot mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                                <div class="v-list-item__content" data-no-activator="">
+                                    <div class="v-list-item-title text-body-2">GENERATE</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Manage -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1" 
+                                 :class="{ active: currentPage === 'manage' }" 
+                                 tabindex="-2" 
+                                 @click="navigateToPage('manage')">
+                                <span class="v-list-item__overlay"></span>
+                                <span class="v-list-item__underlay"></span>
+                                <div class="v-list-item__prepend">
+                                    <i class="mdi-folder-multiple mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                                <div class="v-list-item__content" data-no-activator="">
+                                    <div class="v-list-item-title text-body-2">MANAGE</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Discover -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1" 
+                                 :class="{ active: currentPage === 'discover' }" 
+                                 tabindex="-2" 
+                                 @click="navigateToPage('discover')">
+                                <span class="v-list-item__overlay"></span>
+                                <span class="v-list-item__underlay"></span>
+                                <div class="v-list-item__prepend">
+                                    <i class="mdi-magnify mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                                <div class="v-list-item__content" data-no-activator="">
+                                    <div class="v-list-item-title text-body-2">DISCOVER</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Experiment -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1" 
+                                 :class="{ active: currentPage === 'experiment' }" 
+                                 tabindex="-2" 
+                                 @click="navigateToPage('experiment')">
+                                <span class="v-list-item__overlay"></span>
+                                <span class="v-list-item__underlay"></span>
+                                <div class="v-list-item__prepend">
+                                    <i class="mdi-flask mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                                <div class="v-list-item__content" data-no-activator="">
+                                    <div class="v-list-item-title text-body-2">EXPERIMENT</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Settings Section at Bottom -->
+                        <div class="settings-nav-section">
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="toggleGroup('settings')">
+                                <span class="v-list-item__overlay"></span>
+                                <span class="v-list-item__underlay"></span>
+                                <div class="v-list-item__prepend">
+                                    <i class="mdi-cog mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                                <div class="v-list-item__content" data-no-activator="">
+                                    <div class="v-list-item-title text-body-2 font-weight-medium">Settings</div>
+                                </div>
+                                <div class="v-list-item__append">
+                                    <i class="mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('settings') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Settings Children -->
+                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('settings'), collapsed: !isGroupExpanded('settings') }">
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'authentication' }" 
+                                     tabindex="-2" 
+                                     @click="navigateToPage('authentication')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-shield-check mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator="">
+                                        <div class="v-list-item-title text-body-2">Authentication</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'personalization' }" 
+                                     tabindex="-2" 
+                                     @click="navigateToPage('personalization')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-account-cog mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator="">
+                                        <div class="v-list-item-title text-body-2">Personalization</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!-- App Bar -->
+                <header class="v-toolbar v-toolbar--density-default elevation-0 v-theme--customLight v-locale--is-ltr v-app-bar app-bar" app="" style="top: 0px; z-index: 1004; transform: translateY(0%); position: fixed; left: 300px; width: calc(100% - 300px);">
+                    <div class="v-toolbar__content" style="height: 64px;">
+                        <div class="v-toolbar-title app-bar-title v-app-bar-title">
+                            <div class="v-toolbar-title__placeholder">
+                                {{ currentPageTitle }}
+                            </div>
+                        </div>
+                        <div class="v-spacer"></div>
+                        
+                                                 
+                        
+                        <!-- Theme Toggle -->
+                        <button type="button" class="v-btn v-btn--icon v-theme--customLight v-btn--density-default v-btn--size-small v-btn--variant-text theme-toggle me-2" style="text-transform: none; font-weight: 500;" @click="toggleTheme">
+                            <span class="v-btn__overlay"></span>
+                            <span class="v-btn__underlay"></span>
+                            <span class="v-btn__content" data-no-activator="">
+                                <i class="mdi-weather-night mdi v-icon notranslate v-theme--customLight v-icon--size-default" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                        
+                        <!-- Version Chip -->
+                        <span class="v-chip v-theme--customLight bg-primary v-chip--density-default v-chip--size-small v-chip--variant-flat text-caption" draggable="false">
+                            <span class="v-chip__underlay"></span>
+                            <div class="v-chip__content">v1.0.0</div>
+                        </span>
+                    </div>
+                </header>
+
+                <!-- Main Content -->
+                <main class="v-main main-content" style="--v-layout-left: 300px; --v-layout-right: 0px; --v-layout-top: 64px; --v-layout-bottom: 0px;">
+                    <div class="v-container v-container--fluid v-locale--is-ltr pa-8">
+                        
+                        <!-- Welcome Page -->
+                        <div v-if="currentPage === 'welcome'" class="welcome-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Welcome to Demo Studio</h1>
+                                <p class="section-description">
+                                    Your comprehensive platform for creating, managing, and delivering powerful product demonstrations. Get started with our guided tour and resources.
+                                </p>
+                            </div>
+                            
+                            <!-- Quick Start Section -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Quick Start Guide</h2>
+                                <p class="form-section-description">
+                                    New to Demo Studio? Follow these steps to get up and running quickly.
+                                </p>
+                                
+                                <div class="quick-start-list">
+                                    <div class="quick-start-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">
+                                            <h3>Account Settings</h3>
+                                            <p>First, set up authentication and personalize your experience</p>
+                                            <v-btn color="primary" variant="outlined" size="small" @click="navigateToPage('authentication')">
+                                                Go to Settings
+                                            </v-btn>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="quick-start-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">
+                                            <h3>Generate Content</h3>
+                                            <p>Then, use AI to create compelling demo content</p>
+                                            <v-btn color="primary" variant="outlined" size="small" disabled>
+                                                Start Generating
+                                            </v-btn>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="quick-start-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">
+                                            <h3>Build Demos</h3>
+                                            <p>Finally, install configurations from templates or GenAI</p>
+                                            <v-btn color="primary" variant="outlined" size="small" disabled>
+                                                Build Demo
+                                            </v-btn>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sample Training Section -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Sample Training</h2>
+                                <p class="form-section-description">
+                                    Learn from real-world examples and best practices.
+                                </p>
+                                
+                                <div class="training-hero">
+                                    <div class="training-hero-content">
+                                        <h3>Product Demo Basics</h3>
+                                        <p>Learn the fundamentals of creating effective product demonstrations. Perfect for beginners looking to understand the core concepts.</p>
+                                        <div class="training-hero-meta">
+                                            <span><i class="mdi-clock"></i> 15 min</span>
+                                            <span><i class="mdi-account"></i> Beginner</span>
+                                            <span><i class="mdi-play-circle"></i> Video Course</span>
+                                        </div>
+                                        <v-btn color="primary" size="large" prepend-icon="mdi-play">
+                                            Start Learning
+                                        </v-btn>
+                                    </div>
+                                    <div class="training-hero-visual">
+                                        <i class="mdi-play-circle"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="training-sidebar">
+                                    <div class="training-sidebar-item">
+                                        <i class="mdi-play-circle"></i>
+                                        <div>
+                                            <h4>AI-Powered Content</h4>
+                                            <p>Master AI tools for compelling content</p>
+                                            <span>20 min • Intermediate</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="training-sidebar-item">
+                                        <i class="mdi-play-circle"></i>
+                                        <div>
+                                            <h4>Advanced Techniques</h4>
+                                            <p>Explore advanced features</p>
+                                            <span>25 min • Advanced</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Video Resources Section -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Video Resources</h2>
+                                <p class="form-section-description">
+                                    Watch tutorials and learn from our video library.
+                                </p>
+                                
+                                <div class="video-timeline">
+                                    <div class="video-timeline-item">
+                                        <div class="video-timeline-dot"></div>
+                                        <div class="video-timeline-content">
+                                            <h3>Getting Started with Demo Studio</h3>
+                                            <p>Complete walkthrough of the platform</p>
+                                            <div class="video-timeline-meta">
+                                                <span><i class="mdi-clock"></i> 8:45</span>
+                                                <span><i class="mdi-eye"></i> 1.2k views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="video-timeline-item">
+                                        <div class="video-timeline-dot"></div>
+                                        <div class="video-timeline-content">
+                                            <h3>AI Content Generation</h3>
+                                            <p>How to use AI tools effectively</p>
+                                            <div class="video-timeline-meta">
+                                                <span><i class="mdi-clock"></i> 12:30</span>
+                                                <span><i class="mdi-eye"></i> 856 views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="video-timeline-item">
+                                        <div class="video-timeline-dot"></div>
+                                        <div class="video-timeline-content">
+                                            <h3>Customization & Branding</h3>
+                                            <p>Personalize your demo experience</p>
+                                            <div class="video-timeline-meta">
+                                                <span><i class="mdi-clock"></i> 10:15</span>
+                                                <span><i class="mdi-eye"></i> 642 views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Main Features Section -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Main Features</h2>
+                                <p class="form-section-description">
+                                    Explore all the powerful tools available in Demo Studio.
+                                </p>
+                                
+                                <div class="features-grid">
+                                    <div class="feature-card-large">
+                                        <div class="feature-icon-large">
+                                            <i class="mdi-hammer-wrench"></i>
+                                        </div>
+                                        <h3>BUILD</h3>
+                                        <p>Create interactive product demonstrations with our intuitive builder</p>
+                                        <v-btn color="primary" size="large">
+                                            Start Building
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="feature-card-large">
+                                        <div class="feature-icon-large">
+                                            <i class="mdi-robot"></i>
+                                        </div>
+                                        <h3>GENERATE</h3>
+                                        <p>Use AI to create compelling content and scripts for your demos</p>
+                                        <v-btn color="primary" size="large">
+                                            Generate Content
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="feature-card-large">
+                                        <div class="feature-icon-large">
+                                            <i class="mdi-folder-multiple"></i>
+                                        </div>
+                                        <h3>MANAGE</h3>
+                                        <p>Organize and manage your demo library and assets</p>
+                                        <v-btn color="primary" size="large">
+                                            Manage Demos
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="feature-card-large">
+                                        <div class="feature-icon-large">
+                                            <i class="mdi-magnify"></i>
+                                        </div>
+                                        <h3>DISCOVER</h3>
+                                        <p>Find templates, examples, and inspiration for your demos</p>
+                                        <v-btn color="primary" size="large">
+                                            Explore
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="feature-card-large">
+                                        <div class="feature-icon-large">
+                                            <i class="mdi-flask"></i>
+                                        </div>
+                                        <h3>EXPERIMENT</h3>
+                                        <p>Test new features and try different approaches</p>
+                                        <v-btn color="primary" size="large">
+                                            Experiment
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Authentication Page -->
+                        <div v-if="currentPage === 'authentication'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Authentication</h1>
+                                <p class="section-description">
+                                    Manage your authentication connections and API integrations for Demo Studio.
+                                </p>
+                            </div>
+                            
+                            
+                            
+                            <!-- AI Systems Section -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">AI Systems & LLMs</h2>
+                                <p class="form-section-description">
+                                    Connect to various AI language models to power Demo Studio's intelligent features.
+                                </p>
+                                
+                                <!-- OpenAI Connection -->
+                                <div class="auth-option">
+                                    <div class="auth-option-header">
+                                        <div>
+                                            <h3 class="auth-option-title">OpenAI</h3>
+                                            <p class="auth-option-description">Connect your OpenAI API key for GPT-4 and GPT-3.5 powered features</p>
+                                        </div>
+                                        <v-btn color="primary" variant="outlined" size="small">
+                                            Connect
+                                        </v-btn>
+                                    </div>
+                                </div>
+                                
+                                <!-- Anthropic Claude -->
+                                <div class="auth-option">
+                                    <div class="auth-option-header">
+                                        <div>
+                                            <h3 class="auth-option-title">Anthropic Claude</h3>
+                                            <p class="auth-option-description">Connect to Claude for advanced reasoning and analysis capabilities</p>
+                                        </div>
+                                        <v-btn color="primary" variant="outlined" size="small">
+                                            Connect
+                                        </v-btn>
+                                    </div>
+                                </div>
+                                
+                                <!-- Google Gemini -->
+                                <div class="auth-option">
+                                    <div class="auth-option-header">
+                                        <div>
+                                            <h3 class="auth-option-title">Google Gemini</h3>
+                                            <p class="auth-option-description">Connect to Google's Gemini AI model for multimodal capabilities</p>
+                                        </div>
+                                        <v-btn color="primary" variant="outlined" size="small">
+                                            Connect
+                                        </v-btn>
+                                    </div>
+                                </div>
+                                
+                                <!-- Azure OpenAI -->
+                                <div class="auth-option">
+                                    <div class="auth-option-header">
+                                        <div>
+                                            <h3 class="auth-option-title">Azure OpenAI</h3>
+                                            <p class="auth-option-description">Connect to Azure OpenAI services for enterprise-grade AI</p>
+                                        </div>
+                                        <v-btn color="primary" variant="outlined" size="small">
+                                            Connect
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Other Integrations Section -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Other Integrations</h2>
+                                <p class="form-section-description">
+                                    Connect additional services and platforms to enhance Demo Studio functionality.
+                                </p>
+                                
+                                <!-- CRM Integration -->
+                                <div class="auth-option">
+                                    <div class="auth-option-header">
+                                        <div>
+                                            <h3 class="auth-option-title">CRM Integration</h3>
+                                            <p class="auth-option-description">Connect to Salesforce, HubSpot, or other CRM systems</p>
+                                        </div>
+                                        <v-btn color="primary" variant="outlined" size="small">
+                                            Connect
+                                        </v-btn>
+                                    </div>
+                                </div>
+                                
+                                <!-- Analytics Platform -->
+                                <div class="auth-option">
+                                    <div class="auth-option-header">
+                                        <div>
+                                            <h3 class="auth-option-title">Analytics Platform</h3>
+                                            <p class="auth-option-description">Connect to Google Analytics, Mixpanel, or other analytics tools</p>
+                                        </div>
+                                        <v-btn color="primary" variant="outlined" size="small">
+                                            Connect
+                                        </v-btn>
+                                    </div>
+                                </div>
+                                
+                                <!-- Communication Tools -->
+                                <div class="auth-option">
+                                    <div class="auth-option-header">
+                                        <div>
+                                            <h3 class="auth-option-title">Communication Tools</h3>
+                                            <p class="auth-option-description">Connect to Slack, Microsoft Teams, or other communication platforms</p>
+                                        </div>
+                                        <v-btn color="primary" variant="outlined" size="small">
+                                            Connect
+                                        </v-btn>
+                                    </div>
+                                </div>
+                                
+                                <!-- Video Conferencing -->
+                                <div class="auth-option">
+                                    <div class="auth-option-header">
+                                        <div>
+                                            <h3 class="auth-option-title">Video Conferencing</h3>
+                                            <p class="auth-option-description">Connect to Zoom, Google Meet, or other video platforms</p>
+                                        </div>
+                                        <v-btn color="primary" variant="outlined" size="small">
+                                            Connect
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Personalization Page -->
+                        <div v-if="currentPage === 'personalization'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Personalization</h1>
+                                <p class="section-description">
+                                    Configure your company information and AI prompts to customize Demo Studio for your business needs. This context will be used in the GenAI tools used in Demo Studio (AI Content Generator, VibeConfig, Auto Clicker, etc).
+                                </p>
+                            </div>
+                            
+                            <!-- Company Information -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Company Information</h2>
+                                <p class="form-section-description">
+                                    Provide basic information about your company to personalize the AI responses.
+                                </p>
+                                
+                                                                <v-row>
+                                    <v-col cols="12" md="6">
+                                        <v-text-field
+                                            v-model="companyInfo.name"
+                                            label="Company Name"
+                                            variant="outlined"
+                                            prepend-icon="mdi-domain"
+                                            placeholder="Enter your company name"
+                                        ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" md="6">
+                                        <v-btn 
+                                            class="genai-button" 
+                                            prepend-icon="mdi-robot"
+                                            @click="generateCompanyName"
+                                        >
+                                            Enhance with AI
+                                        </v-btn>
+                                    </v-col>
+                                </v-row>
+                                
+                                <div class="mb-6"></div>
+                                
+                                <v-textarea
+                                    v-model="companyInfo.description"
+                                    label="Business Description"
+                                    variant="outlined"
+                                    prepend-icon="mdi-text"
+                                    placeholder="Describe your business, industry, and key services..."
+                                    rows="4"
+                                ></v-textarea>
+                                
+                                <div class="d-flex justify-end mb-4">
+                                                                         <v-btn 
+                                         class="genai-button" 
+                                         prepend-icon="mdi-robot"
+                                         @click="generateBusinessDescription"
+                                     >
+                                         Enhance with AI
+                                     </v-btn>
+                                </div>
+                            </div>
+                            
+                            <!-- Business Context -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">Business Context</h2>
+                                <p class="form-section-description">
+                                    Define the types of issues and scenarios your team typically handles.
+                                </p>
+                                
+                                <v-textarea
+                                    v-model="companyInfo.issues"
+                                    label="Types of Issues"
+                                    variant="outlined"
+                                    prepend-icon="mdi-alert-circle"
+                                    placeholder="Describe common issues, challenges, or scenarios your team faces..."
+                                    rows="4"
+                                ></v-textarea>
+                                
+                                <div class="d-flex justify-end mb-4">
+                                                                         <v-btn 
+                                         class="genai-button" 
+                                         prepend-icon="mdi-robot"
+                                         @click="generateIssues"
+                                     >
+                                         Enhance with AI
+                                     </v-btn>
+                                </div>
+                            </div>
+                            
+                            <!-- AI Instructions -->
+                            <div class="form-section">
+                                <h2 class="form-section-title">AI Instructions</h2>
+                                <p class="form-section-description">
+                                    Customize how the AI should respond and what tone to use in demos.
+                                </p>
+                                
+                                <v-textarea
+                                    v-model="companyInfo.aiInstructions"
+                                    label="AI Response Instructions"
+                                    variant="outlined"
+                                    prepend-icon="mdi-robot"
+                                    placeholder="Provide specific instructions for how the AI should respond during demos..."
+                                    rows="4"
+                                ></v-textarea>
+                                
+                                <div class="d-flex justify-end mb-4">
+                                                                         <v-btn 
+                                         class="genai-button" 
+                                         prepend-icon="mdi-robot"
+                                         @click="generateAIInstructions"
+                                     >
+                                         Enhance with AI
+                                     </v-btn>
+                                </div>
+                            </div>
+                            
+                            <!-- Save Button -->
+                            <div class="d-flex justify-end">
+                                <v-btn color="success" size="large" prepend-icon="mdi-content-save">
+                                    Save Settings
+                                </v-btn>
+                            </div>
+                        </div>
+                        
+                        <!-- Build Page -->
+                        <div v-if="currentPage === 'build'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Build</h1>
+                                <p class="section-description">
+                                    Create and configure demo environments, templates, and configurations for your product demonstrations.
+                                </p>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h2 class="form-section-title">Demo Templates</h2>
+                                <p class="form-section-description">
+                                    Choose from pre-built templates or create custom configurations for your demos.
+                                </p>
+                                
+                                <div class="placeholder-content">
+                                    <div class="placeholder-card">
+                                        <i class="mdi-hammer-wrench"></i>
+                                        <h3>Template Library</h3>
+                                        <p>Browse and select from our collection of pre-built demo templates</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="placeholder-card">
+                                        <i class="mdi-plus-circle"></i>
+                                        <h3>Custom Configuration</h3>
+                                        <p>Create your own demo configurations from scratch</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="placeholder-card">
+                                        <i class="mdi-import"></i>
+                                        <h3>Import Settings</h3>
+                                        <p>Import existing configurations from other projects</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Generate Page -->
+                        <div v-if="currentPage === 'generate'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Generate</h1>
+                                <p class="section-description">
+                                    Use AI-powered tools to create compelling content, scripts, and demo materials automatically.
+                                </p>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h2 class="form-section-title">AI Content Tools</h2>
+                                <p class="form-section-description">
+                                    Leverage artificial intelligence to generate demo content, scripts, and presentations.
+                                </p>
+                                
+                                <div class="placeholder-content">
+                                    <div class="placeholder-card">
+                                        <i class="mdi-robot"></i>
+                                        <h3>Content Generator</h3>
+                                        <p>Generate demo scripts and presentation content using AI</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="placeholder-card">
+                                        <i class="mdi-format-text"></i>
+                                        <h3>Script Writer</h3>
+                                        <p>Create engaging demo scripts tailored to your audience</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="placeholder-card">
+                                        <i class="mdi-presentation"></i>
+                                        <h3>Slide Creator</h3>
+                                        <p>Generate presentation slides with AI assistance</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Manage Page -->
+                        <div v-if="currentPage === 'manage'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Manage</h1>
+                                <p class="section-description">
+                                    Organize, track, and maintain your demo projects, configurations, and content library.
+                                </p>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h2 class="form-section-title">Project Management</h2>
+                                <p class="form-section-description">
+                                    Keep track of all your demo projects and configurations in one place.
+                                </p>
+                                
+                                <div class="placeholder-content">
+                                    <div class="placeholder-card">
+                                        <i class="mdi-folder-multiple"></i>
+                                        <h3>Project Library</h3>
+                                        <p>View and organize all your demo projects and configurations</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="placeholder-card">
+                                        <i class="mdi-account-group"></i>
+                                        <h3>Team Collaboration</h3>
+                                        <p>Share and collaborate on demo projects with your team</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="placeholder-card">
+                                        <i class="mdi-chart-line"></i>
+                                        <h3>Analytics & Reports</h3>
+                                        <p>Track demo performance and generate insights</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Discover Page -->
+                        <div v-if="currentPage === 'discover'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Discover</h1>
+                                <p class="section-description">
+                                    Explore new templates, features, and best practices to enhance your demo capabilities.
+                                </p>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h2 class="form-section-title">Learning Resources</h2>
+                                <p class="form-section-description">
+                                    Find tutorials, templates, and inspiration to improve your demo skills.
+                                </p>
+                                
+                                <div class="placeholder-content">
+                                    <div class="placeholder-card">
+                                        <i class="mdi-magnify"></i>
+                                        <h3>Template Gallery</h3>
+                                        <p>Discover new demo templates and configurations</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="placeholder-card">
+                                        <i class="mdi-school"></i>
+                                        <h3>Learning Center</h3>
+                                        <p>Access tutorials and best practices for demo creation</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="placeholder-card">
+                                        <i class="mdi-lightbulb"></i>
+                                        <h3>Inspiration Hub</h3>
+                                        <p>Get inspired by successful demo examples and case studies</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Experiment Page -->
+                        <div v-if="currentPage === 'experiment'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Experiment</h1>
+                                <p class="section-description">
+                                    Test new features, configurations, and AI capabilities in a safe environment.
+                                </p>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h2 class="form-section-title">Beta Features</h2>
+                                <p class="form-section-description">
+                                    Try out experimental features and provide feedback to help improve Demo Studio.
+                                </p>
+                                
+                                <div class="placeholder-content">
+                                    <div class="placeholder-card">
+                                        <i class="mdi-flask"></i>
+                                        <h3>AI Experiments</h3>
+                                        <p>Test new AI-powered features and capabilities</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="placeholder-card">
+                                        <i class="mdi-cog-sync"></i>
+                                        <h3>Advanced Configurations</h3>
+                                        <p>Experiment with advanced demo configurations and settings</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                    
+                                    <div class="placeholder-card">
+                                        <i class="mdi-test-tube"></i>
+                                        <h3>Feature Testing</h3>
+                                        <p>Try out new features before they're officially released</p>
+                                        <v-btn color="primary" variant="outlined" disabled>
+                                            Coming Soon
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </main>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <!-- Vuetify -->
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.4.7/dist/vuetify.min.js"></script>
+    
+    <script>
+        const { createApp } = Vue
+        const { createVuetify } = Vuetify
+
+        // Create Vuetify instance with custom theme
+        const vuetify = createVuetify({
+            theme: {
+                defaultTheme: 'customLight',
+                themes: {
+                    customLight: {
+                        dark: false,
+                        colors: {
+                            primary: '#1B263B',
+                            'primary-darken-1': '#0F1419',
+                            secondary: '#415A77',
+                            'secondary-darken-1': '#334661',
+                            accent: '#778DA9',
+                            success: '#1B7F75',
+                            'success-darken-1': '#155E56',
+                            warning: '#D67E3B',
+                            'warning-darken-1': '#B8692F',
+                            error: '#C62D42',
+                            'error-darken-1': '#A8253A',
+                            info: '#2856A3',
+                            'info-darken-1': '#1E4285',
+                            background: '#FAFAFA',
+                            surface: '#FFFFFF',
+                            'surface-variant': '#F5F5F5',
+                            'on-primary': '#FFFFFF',
+                            'on-secondary': '#FFFFFF',
+                            'on-success': '#FFFFFF',
+                            'on-warning': '#FFFFFF',
+                            'on-error': '#FFFFFF',
+                            'on-info': '#FFFFFF',
+                            'on-background': '#1B263B',
+                            'on-surface': '#1B263B'
+                        }
+                    },
+                    customDark: {
+                        dark: true,
+                        colors: {
+                            primary: '#60A5FA',
+                            'primary-darken-1': '#3B82F6',
+                            secondary: '#A78BFA',
+                            'secondary-darken-1': '#8B5CF6',
+                            accent: '#94A3B8',
+                            success: '#4CAF50',
+                            'success-darken-1': '#388E3C',
+                            warning: '#FF9800',
+                            'warning-darken-1': '#F57C00',
+                            error: '#F44336',
+                            'error-darken-1': '#D32F2F',
+                            info: '#42A5F5',
+                            'info-darken-1': '#1976D2',
+                            background: '#121212',
+                            surface: '#1E1E1E',
+                            'surface-variant': '#2D2D2D',
+                            'on-primary': '#000000',
+                            'on-secondary': '#000000',
+                            'on-success': '#000000',
+                            'on-warning': '#000000',
+                            'on-error': '#FFFFFF',
+                            'on-info': '#000000',
+                            'on-background': '#FFFFFF',
+                            'on-surface': '#FFFFFF'
+                        }
+                    }
+                }
+            },
+            defaults: {
+                VBtn: {
+                    style: 'text-transform: none; font-weight: 500;',
+                    variant: 'flat'
+                },
+                VCard: {
+                    elevation: 0,
+                    class: 'guideline-card'
+                },
+                VSheet: {
+                    elevation: 0
+                },
+                VAppBar: {
+                    elevation: 0,
+                    class: 'app-bar'
+                },
+                VTextField: {
+                    variant: 'outlined',
+                    hideDetails: 'auto'
+                },
+                VTextarea: {
+                    variant: 'outlined',
+                    hideDetails: 'auto'
+                }
+            }
+        })
+
+        // Create Vue app
+        const app = createApp({
+            data() {
+                return {
+                    isDarkMode: false,
+                                         currentPage: 'welcome',
+                                         expandedGroups: [],
+                                         subdomain: 'z3n-demo.zendesk.com',
+                    
+                    companyInfo: {
+                        name: '',
+                        description: '',
+                        issues: '',
+                        aiInstructions: ''
+                    }
+                }
+            },
+
+            computed: {
+                currentTheme() {
+                    return this.isDarkMode ? 'customDark' : 'customLight'
+                },
+                
+                                 currentPageTitle() {
+                     const titles = {
+                         'welcome': 'Welcome',
+                         'build': 'Build',
+                         'generate': 'Generate',
+                         'manage': 'Manage',
+                         'discover': 'Discover',
+                         'experiment': 'Experiment',
+                         'authentication': 'Authentication',
+                         'personalization': 'Personalization'
+                     }
+                     return titles[this.currentPage] || 'Demo Studio'
+                 }
+            },
+
+            methods: {
+                toggleTheme() {
+                    this.isDarkMode = !this.isDarkMode
+                    this.$vuetify.theme.global.name = this.currentTheme
+                    document.documentElement.setAttribute('data-theme', this.isDarkMode ? 'dark' : 'light')
+                    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light')
+                },
+
+                initializeTheme() {
+                    const savedTheme = localStorage.getItem('theme')
+                    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+                    
+                    this.isDarkMode = savedTheme ? savedTheme === 'dark' : systemPrefersDark
+                    this.$vuetify.theme.global.name = this.currentTheme
+                    document.documentElement.setAttribute('data-theme', this.isDarkMode ? 'dark' : 'light')
+                },
+
+                navigateToPage(page) {
+                    this.currentPage = page
+                },
+
+                toggleGroup(groupId) {
+                    const index = this.expandedGroups.indexOf(groupId)
+                    if (index > -1) {
+                        this.expandedGroups.splice(index, 1)
+                    } else {
+                        this.expandedGroups.push(groupId)
+                    }
+                },
+
+                isGroupExpanded(groupId) {
+                    return this.expandedGroups.includes(groupId)
+                },
+
+                // GenAI helper functions
+                generateCompanyName() {
+                    this.companyInfo.name = 'TechCorp Solutions Inc.'
+                },
+
+                generateBusinessDescription() {
+                    this.companyInfo.description = 'TechCorp Solutions is a leading software development company specializing in enterprise solutions, cloud infrastructure, and digital transformation services. We help organizations modernize their technology stack and improve operational efficiency through innovative software solutions.'
+                },
+
+                generateIssues() {
+                    this.companyInfo.issues = 'Common issues include legacy system integration challenges, data migration complexities, user adoption resistance, performance optimization needs, and security compliance requirements. Teams often struggle with technical debt, scalability issues, and cross-platform compatibility.'
+                },
+
+                generateAIInstructions() {
+                    this.companyInfo.aiInstructions = 'The AI should maintain a professional yet approachable tone during demos. Focus on business value and ROI rather than technical details. Use industry-specific examples and relate features to common pain points. Always ask clarifying questions to better understand the prospect\'s specific needs.'
+                }
+            },
+
+            mounted() {
+                this.initializeTheme()
+                
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                    if (!localStorage.getItem('theme')) {
+                        this.isDarkMode = e.matches
+                        this.$vuetify.theme.global.name = this.currentTheme
+                        document.documentElement.setAttribute('data-theme', this.isDarkMode ? 'dark' : 'light')
+                    }
+                })
+            }
+        })
+
+        // Use Vuetify and mount the app
+        app.use(vuetify).mount('#app')
+    </script>
+</body>
+</html>
