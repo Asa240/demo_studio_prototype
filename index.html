@@ -1536,6 +1536,26 @@
                                     <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Ticket Generator</div></div>
                                 </div>
                                 <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'generate-bot-generator' }" tabindex="-2" @click="navigateToPage('generate-bot-generator')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-robot-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Bot Generator</div></div>
+                                </div>
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'generate-wfm-generator' }" tabindex="-2" @click="navigateToPage('generate-wfm-generator')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-calendar-clock-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">WFM Generator</div></div>
+                                </div>
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
                                      :class="{ active: currentPage === 'generate-placeholder' }" tabindex="-2" @click="navigateToPage('generate-placeholder')">
                                     <span class="v-list-item__overlay"></span>
                                     <span class="v-list-item__underlay"></span>
@@ -2343,7 +2363,7 @@
                                     <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('build-account-configs')">
                                         <div class="v-card-text color-info">
                                             <h3 class="color-name">Configuration Cloning</h3>
-                                            <p class="color-usage">Clone account settings for demos</p>
+                                            <p class="color-usage">Spin up demo-ready accounts using templates or AI-driven setups</p>
                                         </div>
                                     </div>
                                 </div>
@@ -2351,7 +2371,7 @@
                                     <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('build-help-center-clone')">
                                         <div class="v-card-text color-info">
                                             <h3 class="color-name">Help Center Cloning</h3>
-                                            <p class="color-usage">Clone and sync Help Center content</p>
+                                            <p class="color-usage">Bootstrap categories, sections, and articles for your Help Center</p>
                                         </div>
                                     </div>
                                 </div>
@@ -2359,7 +2379,7 @@
                                     <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('build-auto-clicker')">
                                         <div class="v-card-text color-info">
                                             <h3 class="color-name">Auto Clicker</h3>
-                                            <p class="color-usage">Automate demo interactions</p>
+                                            <p class="color-usage">Use safe browser automation where APIs don’t cover configuration</p>
                                         </div>
                                     </div>
                                 </div>
@@ -2367,7 +2387,7 @@
                                     <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('build-prompt-builder')">
                                         <div class="v-card-text color-info">
                                             <h3 class="color-name">Prompt / Procedure Builder</h3>
-                                            <p class="color-usage">Create prompts and procedures</p>
+                                            <p class="color-usage">Draft procedures and prompts using best practices for AI tools</p>
                                         </div>
                                     </div>
                                 </div>
@@ -2375,9 +2395,89 @@
                                     <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('build-help-center-ai-designer')">
                                         <div class="v-card-text color-info">
                                             <h3 class="color-name">Help Center AI Designer</h3>
-                                            <p class="color-usage">Design AI-assisted experiences</p>
+                                            <p class="color-usage">Design custom Help Center themes with AI assistance</p>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Build: Configuration Cloning -->
+                        <div v-if="currentPage === 'build-account-configs'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Configuration Cloning</h1>
+                                <p class="section-description">Quickly prepare demo accounts using curated templates or AI‑assembled configurations tailored to your scenario.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-cog-outline"></i>
+                                    <h3>Configuration Cloning</h3>
+                                    <p>Copy proven setups or generate new ones to accelerate environment prep.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Build: Help Center Cloning -->
+                        <div v-if="currentPage === 'build-help-center-clone'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Help Center Cloning</h1>
+                                <p class="section-description">Stand up a knowledge base fast—generate categories, sections, and articles for realistic demos.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-content-copy"></i>
+                                    <h3>Help Center Cloning</h3>
+                                    <p>Seed helpful content structures and example articles in minutes.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Build: Auto Clicker -->
+                        <div v-if="currentPage === 'build-auto-clicker'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Auto Clicker</h1>
+                                <p class="section-description">Use light browser automation to handle setup steps where no API exists.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-cursor-default-click"></i>
+                                    <h3>Auto Clicker</h3>
+                                    <p>Automate repetitive UI actions to complete demo configurations.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Build: Prompt Builder -->
+                        <div v-if="currentPage === 'build-prompt-builder'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Prompt Builder</h1>
+                                <p class="section-description">Author clear procedures and prompts aligned to best practices for AI tools.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-text-box-edit-outline"></i>
+                                    <h3>Prompt Builder</h3>
+                                    <p>Compose, iterate, and organize prompts for Auto Assist, AI Agent, and app builder.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Build: Help Center AI Designer -->
+                        <div v-if="currentPage === 'build-help-center-ai-designer'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Help Center AI Designer</h1>
+                                <p class="section-description">Design and generate custom Help Center themes with AI guidance.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-palette-outline"></i>
+                                    <h3>AI Designer</h3>
+                                    <p>Create branded themes and layouts to elevate your knowledge base.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
                                 </div>
                             </div>
                         </div>
@@ -2393,7 +2493,7 @@
                                     <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('generate-ticket-generator')">
                                         <div class="v-card-text color-info">
                                             <h3 class="color-name">Ticket Generator</h3>
-                                            <p class="color-usage">Create realistic sample tickets</p>
+                                            <p class="color-usage">Schedule AI‑generated tickets to keep data fresh for demos</p>
                                         </div>
                                     </div>
                                 </div>
@@ -2407,21 +2507,161 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Generate: Bot Generator -->
+                        <div v-if="currentPage === 'generate-bot-generator'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Bot Generator</h1>
+                                <p class="section-description">Create and import conversational flows in bulk to populate AI agents for demos.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-robot-outline"></i>
+                                    <h3>Bot Generator</h3>
+                                    <p>Create conversational bots tailored for demo scenarios.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Generate: WFM Generator -->
+                        <div v-if="currentPage === 'generate-wfm-generator'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">WFM Generator</h1>
+                                <p class="section-description">Produce realistic schedules and events tied to tickets for Workforce Management demos.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-calendar-clock-outline"></i>
+                                    <h3>WFM Generator</h3>
+                                    <p>Generate schedules and planning data for demo purposes.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
                         
                         <!-- Manage Page -->
                         <div v-if="currentPage === 'manage'" class="settings-container">
                             <div class="section-header">
                                 <h1 class="section-title">Manage</h1>
-                                <p class="section-description">
-                                    Organize, track, and maintain your demo projects, configurations, and content library.
-                                </p>
+                                <p class="section-description">Choose a management tool.</p>
                             </div>
                             
                             <div class="form-section">
-                                <h2 class="form-section-title">This page has moved</h2>
-                                <p class="form-section-description">
-                                    Manage tools now live under the specific subpages in the left navigation.
-                                </p>
+                                <div class="v-row">
+                                    <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                        <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('manage-account-cleanup')">
+                                            <div class="v-card-text color-info">
+                                                <h3 class="color-name">Account Cleanup</h3>
+                                                <p class="color-usage">Bulk-remove demo objects and reset configurations</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                        <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('manage-translate')">
+                                            <div class="v-card-text color-info">
+                                                <h3 class="color-name">Translate</h3>
+                                                <p class="color-usage">Localize demo content across languages</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Manage: Account Cleanup -->
+                        <div v-if="currentPage === 'manage-account-cleanup'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Account Cleanup</h1>
+                                <p class="section-description">Safely bulk-delete demo artifacts and reset settings when you need a clean slate.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-broom"></i>
+                                    <h3>Account Cleanup</h3>
+                                    <p>One place to remove sample data and undo previous configurations.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Manage: Translate -->
+                        <div v-if="currentPage === 'manage-translate'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Translate</h1>
+                                <p class="section-description">Localize demo content and UI strings to showcase multilingual experiences.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-translate"></i>
+                                    <h3>Translate</h3>
+                                    <p>Manage language packs and quick translations for assets.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Discover: Demo Resources Catalog -->
+                        <div v-if="currentPage === 'discover-resources-catalog'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Demo Resources Catalog</h1>
+                                <p class="section-description">Browse shared, reusable demo assets like apps, prompts, procedures, and themes.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-library-shelves"></i>
+                                    <h3>Resources Catalog</h3>
+                                    <p>Find and reuse assets from Demo Engineering and the field.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Discover: Learn / Training -->
+                        <div v-if="currentPage === 'discover-learn-training'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Learn / Training</h1>
+                                <p class="section-description">Access setup guides, best practices, and videos to level up your demos.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-school-outline"></i>
+                                    <h3>Learn / Training</h3>
+                                    <p>Step-by-step tutorials and reference materials.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Experiment: Prototypes / EAPs -->
+                        <div v-if="currentPage === 'experiment-prototypes-eaps'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Prototypes / EAPs</h1>
+                                <p class="section-description">Explore early, unsupported tools from Demo Engineering and field contributors.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-flask-outline"></i>
+                                    <h3>Prototypes / EAPs</h3>
+                                    <p>Preview concepts and MVPs before they’re production-ready.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Experiment: Placeholder -->
+                        <div v-if="currentPage === 'experiment-placeholder'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Experiment</h1>
+                                <p class="section-description">Reserved for additional experimental areas.</p>
+                            </div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-card">
+                                    <i class="mdi-dots-horizontal"></i>
+                                    <h3>Placeholder</h3>
+                                    <p>Future experiments will appear here.</p>
+                                    <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
+                                </div>
                             </div>
                         </div>
                         
@@ -2462,7 +2702,7 @@
                                     <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('experiment-prototypes-eaps')">
                                         <div class="v-card-text color-info">
                                             <h3 class="color-name">Prototypes / EAPs</h3>
-                                            <p class="color-usage">Try early access features</p>
+                                            <p class="color-usage">Preview MVPs and unsupported experiments from Demo Engineering</p>
                                         </div>
                                     </div>
                                 </div>
@@ -3017,14 +3257,22 @@
                                  currentPageTitle() {
                      const titles = {
                          'welcome': 'Welcome',
+                         // Landing pages
+                         'build': 'Build',
+                         'generate': 'Generate',
+                         'manage': 'Manage',
+                         'discover': 'Discover',
+                         'experiment': 'Experiment',
                          // Build
                          'build-account-configs': 'Account Configurations',
                          'build-help-center-clone': 'Help Center Cloning',
                          'build-auto-clicker': 'Auto Clicker',
-                         'build-prompt-builder': 'Prompt / Procedure Builder',
+                         'build-prompt-builder': 'Prompt Builder',
                          'build-help-center-ai-designer': 'Help Center AI Designer',
                          // Generate
                          'generate-ticket-generator': 'Ticket Generator',
+                         'generate-bot-generator': 'Bot Generator',
+                         'generate-wfm-generator': 'WFM Generator',
                          'generate-placeholder': 'Placeholder',
                          // Manage
                          'manage-account-cleanup': 'Account Cleanup',
