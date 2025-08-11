@@ -1423,7 +1423,7 @@
                             <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1 mt-4" 
                                  :class="{ active: currentPage === 'welcome' }" 
                                  tabindex="-2" 
-                                 @click="navigateToPage('welcome')">
+                                 @click="goWelcome()">
                                 <span class="v-list-item__overlay"></span>
                                 <span class="v-list-item__underlay"></span>
                                 <div class="v-list-item__prepend">
@@ -1501,7 +1501,7 @@
                                     <span class="v-list-item__overlay"></span>
                                     <span class="v-list-item__underlay"></span>
                                     <div class="v-list-item__prepend">
-                                        <i class="mdi-robot-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <i class="mdi-palette-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
                                         <div class="v-list-item__spacer"></div>
                                     </div>
                                     <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Help Center AI Designer</div></div>
@@ -3046,6 +3046,11 @@
             },
 
             methods: {
+                goWelcome() {
+                    // Collapse all groups and navigate to welcome
+                    this.expandedGroups = []
+                    this.navigateToPage('welcome')
+                },
                 openGroup(groupId, landingPage) {
                     // Toggle collapse if the same group is clicked
                     if (this.isGroupExpanded(groupId)) {
