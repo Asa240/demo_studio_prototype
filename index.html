@@ -46,6 +46,7 @@
             /* Neutral colors */
             --color-border: rgba(0, 0, 0, 0.12);
             --color-border-light: rgba(0, 0, 0, 0.06);
+            --color-border-xlight: rgba(0, 0, 0, 0.03);
             --color-divider: rgba(0, 0, 0, 0.08);
 
             /* Dark theme colors */
@@ -107,6 +108,7 @@
             --color-border: var(--dark-border);
             --color-border-light: var(--dark-border-light);
             --color-divider: var(--dark-divider);
+            --color-border-xlight: rgba(255, 255, 255, 0.04);
             --color-primary: var(--dark-primary);
             --color-primary-variant: var(--dark-primary-variant);
             --color-secondary: var(--dark-secondary);
@@ -131,6 +133,7 @@
                 --color-border: var(--dark-border);
                 --color-border-light: var(--dark-border-light);
                 --color-divider: var(--dark-divider);
+                --color-border-xlight: rgba(255, 255, 255, 0.04);
                 --color-primary: var(--dark-primary);
                 --color-primary-variant: var(--dark-primary-variant);
                 --color-secondary: var(--dark-secondary);
@@ -326,6 +329,11 @@
 
         .nav-group-children.expanded {
             max-height: 400px;
+            background-color: var(--color-border-xlight);
+            border-left: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius);
+            margin: 0 var(--spacing-md) var(--spacing-sm) var(--spacing-md);
+            padding: var(--spacing-xs) 0;
         }
 
         .nav-child-item {
@@ -336,10 +344,12 @@
 
         .nav-child-item .v-list-item {
             color: var(--color-text-primary) !important;
+            min-height: 36px !important;
         }
 
         .nav-child-item .v-list-item .v-list-item-title {
             color: var(--color-text-primary) !important;
+            font-size: 0.85rem !important;
         }
 
         .nav-child-item .v-list-item .v-icon {
@@ -348,6 +358,11 @@
 
         .nav-child-item:hover {
             background-color: var(--color-border-light);
+        }
+
+        /* Subtle shaded container for open groups */
+        .nav-group-parent.open {
+            background-color: var(--color-divider);
         }
 
                  .nav-child-item.active {
@@ -1417,11 +1432,8 @@
                             <!-- Main Navigation -->
                             <div class="nav-group-header">Demo Studio</div>
                             
-                            <!-- Build -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1" 
-                                 :class="{ active: currentPage === 'build' }" 
-                                 tabindex="-2" 
-                                 @click="navigateToPage('build')">
+                            <!-- Build (Group) -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('build','build')" :class="{ open: isGroupExpanded('build') }">
                                 <span class="v-list-item__overlay"></span>
                                 <span class="v-list-item__underlay"></span>
                                 <div class="v-list-item__prepend">
@@ -1429,15 +1441,69 @@
                                     <div class="v-list-item__spacer"></div>
                                 </div>
                                 <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2">BUILD</div>
+                                    <div class="v-list-item-title text-body-2 font-weight-medium">BUILD</div>
+                                </div>
+                                <div class="v-list-item__append">
+                                    <i class="mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('build') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                            </div>
+                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('build'), collapsed: !isGroupExpanded('build') }">
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'build-account-configs' }" tabindex="-2" @click="navigateToPage('build-account-configs')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-cog-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title 
+                                        text-body-2">Configuration Cloning</div></div>
+                                </div>
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'build-help-center-clone' }" tabindex="-2" @click="navigateToPage('build-help-center-clone')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-content-copy mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Help Center Cloning</div></div>
+                                </div>
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'build-auto-clicker' }" tabindex="-2" @click="navigateToPage('build-auto-clicker')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-cursor-default-click mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Auto Clicker (new)</div></div>
+                                </div>
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'build-prompt-builder' }" tabindex="-2" @click="navigateToPage('build-prompt-builder')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-text-box-edit-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Prompt / Procedure Builder</div></div>
+                                </div>
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'build-help-center-ai-designer' }" tabindex="-2" @click="navigateToPage('build-help-center-ai-designer')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-robot-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Help Center AI Designer</div></div>
                                 </div>
                             </div>
                             
-                            <!-- Generate -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1" 
-                                 :class="{ active: currentPage === 'generate' }" 
-                                 tabindex="-2" 
-                                 @click="navigateToPage('generate')">
+                            <!-- Generate (Group) -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('generate','generate')" :class="{ open: isGroupExpanded('generate') }">
                                 <span class="v-list-item__overlay"></span>
                                 <span class="v-list-item__underlay"></span>
                                 <div class="v-list-item__prepend">
@@ -1445,15 +1511,38 @@
                                     <div class="v-list-item__spacer"></div>
                                 </div>
                                 <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2">GENERATE</div>
+                                    <div class="v-list-item-title text-body-2 font-weight-medium">GENERATE</div>
+                                </div>
+                                <div class="v-list-item__append">
+                                    <i class="mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('generate') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                            </div>
+                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('generate'), collapsed: !isGroupExpanded('generate') }">
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'generate-ticket-generator' }" tabindex="-2" @click="navigateToPage('generate-ticket-generator')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-ticket-confirmation-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Ticket Generator</div></div>
+                                </div>
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'generate-placeholder' }" tabindex="-2" @click="navigateToPage('generate-placeholder')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-dots-horizontal mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Placeholder</div></div>
                                 </div>
                             </div>
                             
-                            <!-- Manage -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1" 
-                                 :class="{ active: currentPage === 'manage' }" 
-                                 tabindex="-2" 
-                                 @click="navigateToPage('manage')">
+                            <!-- Manage (Group) -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('manage','manage')" :class="{ open: isGroupExpanded('manage') }">
                                 <span class="v-list-item__overlay"></span>
                                 <span class="v-list-item__underlay"></span>
                                 <div class="v-list-item__prepend">
@@ -1461,15 +1550,38 @@
                                     <div class="v-list-item__spacer"></div>
                                 </div>
                                 <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2">MANAGE</div>
+                                    <div class="v-list-item-title text-body-2 font-weight-medium">MANAGE</div>
+                                </div>
+                                <div class="v-list-item__append">
+                                    <i class="mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('manage') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                            </div>
+                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('manage'), collapsed: !isGroupExpanded('manage') }">
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'manage-account-cleanup' }" tabindex="-2" @click="navigateToPage('manage-account-cleanup')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-broom mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Account Cleanup</div></div>
+                                </div>
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'manage-translate' }" tabindex="-2" @click="navigateToPage('manage-translate')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-translate mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Translate</div></div>
                                 </div>
                             </div>
                             
-                            <!-- Discover -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1" 
-                                 :class="{ active: currentPage === 'discover' }" 
-                                 tabindex="-2" 
-                                 @click="navigateToPage('discover')">
+                            <!-- Discover (Group) -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('discover','discover')" :class="{ open: isGroupExpanded('discover') }">
                                 <span class="v-list-item__overlay"></span>
                                 <span class="v-list-item__underlay"></span>
                                 <div class="v-list-item__prepend">
@@ -1477,15 +1589,38 @@
                                     <div class="v-list-item__spacer"></div>
                                 </div>
                                 <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2">DISCOVER</div>
+                                    <div class="v-list-item-title text-body-2 font-weight-medium">DISCOVER</div>
+                                </div>
+                                <div class="v-list-item__append">
+                                    <i class="mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('discover') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                            </div>
+                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('discover'), collapsed: !isGroupExpanded('discover') }">
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'discover-resources-catalog' }" tabindex="-2" @click="navigateToPage('discover-resources-catalog')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-library-shelves mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Demo Resources Catalog</div></div>
+                                </div>
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'discover-learn-training' }" tabindex="-2" @click="navigateToPage('discover-learn-training')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-school-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Learn / Training</div></div>
                                 </div>
                             </div>
                             
-                            <!-- Experiment -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1" 
-                                 :class="{ active: currentPage === 'experiment' }" 
-                                 tabindex="-2" 
-                                 @click="navigateToPage('experiment')">
+                            <!-- Experiment (Group) -->
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('experiment','experiment')" :class="{ open: isGroupExpanded('experiment') }">
                                 <span class="v-list-item__overlay"></span>
                                 <span class="v-list-item__underlay"></span>
                                 <div class="v-list-item__prepend">
@@ -1493,7 +1628,33 @@
                                     <div class="v-list-item__spacer"></div>
                                 </div>
                                 <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2">EXPERIMENT</div>
+                                    <div class="v-list-item-title text-body-2 font-weight-medium">EXPERIMENT</div>
+                                </div>
+                                <div class="v-list-item__append">
+                                    <i class="mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('experiment') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
+                                    <div class="v-list-item__spacer"></div>
+                                </div>
+                            </div>
+                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('experiment'), collapsed: !isGroupExpanded('experiment') }">
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'experiment-prototypes-eaps' }" tabindex="-2" @click="navigateToPage('experiment-prototypes-eaps')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-flask-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Prototypes / EAPs</div></div>
+                                </div>
+                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
+                                     :class="{ active: currentPage === 'experiment-placeholder' }" tabindex="-2" @click="navigateToPage('experiment-placeholder')">
+                                    <span class="v-list-item__overlay"></span>
+                                    <span class="v-list-item__underlay"></span>
+                                    <div class="v-list-item__prepend">
+                                        <i class="mdi-dots-horizontal mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <div class="v-list-item__spacer"></div>
+                                    </div>
+                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Placeholder</div></div>
                                 </div>
                             </div>
                         </div>
@@ -1990,10 +2151,70 @@
                                 <p class="section-description">
                                     Configure your company information and AI prompts to customize Demo Studio for your business needs. This context will be used in the GenAI tools used in Demo Studio (AI Content Generator, VibeConfig, Auto Clicker, etc).
                                 </p>
+                                <p class="section-description">
+                                    <strong>Pick an existing brand or create a new brand personalization.</strong> All settings below apply only to the currently selected brand.
+                                </p>
                             </div>
                             
-                            <!-- Company Information -->
+                            <!-- Brand Selector & Management -->
                             <div class="form-section">
+                                <h2 class="form-section-title">Brand Personalization</h2>
+                                <p class="form-section-description">
+                                    Manage personalization per brand within your account. Click a brand to edit its details.
+                                </p>
+                                <v-row>
+                                    <v-col cols="12" md="8">
+                                        <v-card>
+                                            <v-list lines="two">
+                                                <v-list-item
+                                                    v-for="brand in brands"
+                                                    :key="brand"
+                                                    class="action-list-item"
+                                                    @click="openBrand(brand)"
+                                                >
+                                                    <template #prepend>
+                                                        <i class="mdi-tag-multiple mdi"></i>
+                                                    </template>
+                                                    <v-list-item-title>{{ brand }}</v-list-item-title>
+                                                    <v-list-item-subtitle>
+                                                        {{ (brandSettings[brand]?.description && brandSettings[brand].description.slice(0, 100)) || 'No description yet' }}
+                                                    </v-list-item-subtitle>
+                                                    <template #append>
+                                                        <v-btn size="small" variant="text" @click.stop="openBrand(brand)">Edit</v-btn>
+                                                        <v-btn size="small" variant="text" color="error" :disabled="brands.length <= 1" @click.stop="removeBrand(brand)">Delete</v-btn>
+                                                    </template>
+                                                </v-list-item>
+                                            </v-list>
+                                        </v-card>
+                                    </v-col>
+                                    <v-col cols="12" md="4">
+                                        <v-text-field
+                                            v-model="newBrandName"
+                                            label="New Brand Name"
+                                            variant="outlined"
+                                            prepend-icon="mdi-plus"
+                                        ></v-text-field>
+                                        <v-btn color="primary" class="me-2 mt-2" @click="addBrand">
+                                            <i class="mdi-plus-circle me-1"></i>
+                                            Add Brand
+                                        </v-btn>
+                                    </v-col>
+                                </v-row>
+                                <v-alert v-if="editingBrand" type="info" variant="tonal" class="mt-2">
+                                    Editing personalization for <strong>{{ editingBrand }}</strong>. Changes you make in the sections below apply only to this brand.
+                                </v-alert>
+                            </div>
+                            
+                            <div v-if="editingBrand">
+                                <div class="d-flex justify-space-between align-center mb-2">
+                                    <h2 class="form-section-title m-0">Editing: {{ editingBrand }}</h2>
+                                    <div>
+                                        <v-btn variant="text" prepend-icon="mdi-arrow-left" @click="closeBrand">Back to brands</v-btn>
+                                    </div>
+                                </div>
+
+                                <!-- Company Information -->
+                                <div class="form-section">
                                 <h2 class="form-section-title">Company Information</h2>
                                 <p class="form-section-description">
                                     Provide basic information about your company to personalize the AI responses.
@@ -2002,7 +2223,7 @@
                                                                 <v-row>
                                     <v-col cols="12" md="6">
                                         <v-text-field
-                                            v-model="companyInfo.name"
+                                            v-model="brandSettings[editingBrand].name"
                                             label="Company Name"
                                             variant="outlined"
                                             prepend-icon="mdi-domain"
@@ -2023,7 +2244,7 @@
                                 <div class="mb-6"></div>
                                 
                                 <v-textarea
-                                    v-model="companyInfo.description"
+                                    v-model="brandSettings[editingBrand].description"
                                     label="Business Description"
                                     variant="outlined"
                                     prepend-icon="mdi-text"
@@ -2040,17 +2261,17 @@
                                          Enhance with AI
                                      </v-btn>
                                 </div>
-                            </div>
-                            
-                            <!-- Business Context -->
-                            <div class="form-section">
+                                </div>
+                                
+                                <!-- Business Context -->
+                                <div class="form-section">
                                 <h2 class="form-section-title">Business Context</h2>
                                 <p class="form-section-description">
                                     Define the types of issues and scenarios your team typically handles.
                                 </p>
                                 
                                 <v-textarea
-                                    v-model="companyInfo.issues"
+                                    v-model="brandSettings[editingBrand].issues"
                                     label="Types of Issues"
                                     variant="outlined"
                                     prepend-icon="mdi-alert-circle"
@@ -2067,17 +2288,17 @@
                                          Enhance with AI
                                      </v-btn>
                                 </div>
-                            </div>
-                            
-                            <!-- AI Instructions -->
-                            <div class="form-section">
+                                </div>
+                                
+                                <!-- AI Instructions -->
+                                <div class="form-section">
                                 <h2 class="form-section-title">AI Instructions</h2>
                                 <p class="form-section-description">
                                     Customize how the AI should respond and what tone to use in demos.
                                 </p>
                                 
                                 <v-textarea
-                                    v-model="companyInfo.aiInstructions"
+                                    v-model="brandSettings[editingBrand].aiInstructions"
                                     label="AI Response Instructions"
                                     variant="outlined"
                                     prepend-icon="mdi-robot"
@@ -2094,103 +2315,88 @@
                                          Enhance with AI
                                      </v-btn>
                                 </div>
-                            </div>
-                            
-                            <!-- Save Button -->
-                            <div class="d-flex justify-end">
-                                <v-btn color="success" size="large" prepend-icon="mdi-content-save">
-                                    Save Settings
-                                </v-btn>
+                                </div>
+                                
+                                <!-- Save Button -->
+                                <div class="d-flex justify-end">
+                                    <v-btn color="success" size="large" prepend-icon="mdi-content-save" @click="savePersonalization">
+                                        Save {{ editingBrand }} Settings
+                                    </v-btn>
+                                </div>
                             </div>
                         </div>
                         
-                        <!-- Build Page -->
+                        <!-- Build Landing -->
                         <div v-if="currentPage === 'build'" class="settings-container">
                             <div class="section-header">
                                 <h1 class="section-title">Build</h1>
-                                <p class="section-description">
-                                    Create and configure demo environments, templates, and configurations for your product demonstrations.
-                                </p>
+                                <p class="section-description">Pick a tool to configure your demo environment.</p>
                             </div>
-                            
-                            <div class="form-section">
-                                <h2 class="form-section-title">Demo Templates</h2>
-                                <p class="form-section-description">
-                                    Choose from pre-built templates or create custom configurations for your demos.
-                                </p>
-                                
-                                <div class="placeholder-content">
-                                    <div class="placeholder-card">
-                                        <i class="mdi-hammer-wrench"></i>
-                                        <h3>Template Library</h3>
-                                        <p>Browse and select from our collection of pre-built demo templates</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
+                            <div class="v-row">
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('build-account-configs')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Configuration Cloning</h3>
+                                            <p class="color-usage">Clone account settings for demos</p>
+                                        </div>
                                     </div>
-                                    
-                                    <div class="placeholder-card">
-                                        <i class="mdi-plus-circle"></i>
-                                        <h3>Custom Configuration</h3>
-                                        <p>Create your own demo configurations from scratch</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
+                                </div>
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('build-help-center-clone')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Help Center Cloning</h3>
+                                            <p class="color-usage">Clone and sync Help Center content</p>
+                                        </div>
                                     </div>
-                                    
-                                    <div class="placeholder-card">
-                                        <i class="mdi-import"></i>
-                                        <h3>Import Settings</h3>
-                                        <p>Import existing configurations from other projects</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
+                                </div>
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('build-auto-clicker')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Auto Clicker</h3>
+                                            <p class="color-usage">Automate demo interactions</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('build-prompt-builder')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Prompt / Procedure Builder</h3>
+                                            <p class="color-usage">Create prompts and procedures</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('build-help-center-ai-designer')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Help Center AI Designer</h3>
+                                            <p class="color-usage">Design AI-assisted experiences</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Generate Page -->
+                        <!-- Generate Landing -->
                         <div v-if="currentPage === 'generate'" class="settings-container">
                             <div class="section-header">
                                 <h1 class="section-title">Generate</h1>
-                                <p class="section-description">
-                                    Use AI-powered tools to create compelling content, scripts, and demo materials automatically.
-                                </p>
+                                <p class="section-description">Pick a generator tool.</p>
                             </div>
-                            
-                            <div class="form-section">
-                                <h2 class="form-section-title">AI Content Tools</h2>
-                                <p class="form-section-description">
-                                    Leverage artificial intelligence to generate demo content, scripts, and presentations.
-                                </p>
-                                
-                                <div class="placeholder-content">
-                                    <div class="placeholder-card">
-                                        <i class="mdi-robot"></i>
-                                        <h3>Content Generator</h3>
-                                        <p>Generate demo scripts and presentation content using AI</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
+                            <div class="v-row">
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('generate-ticket-generator')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Ticket Generator</h3>
+                                            <p class="color-usage">Create realistic sample tickets</p>
+                                        </div>
                                     </div>
-                                    
-                                    <div class="placeholder-card">
-                                        <i class="mdi-format-text"></i>
-                                        <h3>Script Writer</h3>
-                                        <p>Create engaging demo scripts tailored to your audience</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
-                                    </div>
-                                    
-                                    <div class="placeholder-card">
-                                        <i class="mdi-presentation"></i>
-                                        <h3>Slide Creator</h3>
-                                        <p>Generate presentation slides with AI assistance</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
+                                </div>
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('generate-placeholder')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Placeholder</h3>
+                                            <p class="color-usage">Reserved for another generator</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2206,129 +2412,60 @@
                             </div>
                             
                             <div class="form-section">
-                                <h2 class="form-section-title">Project Management</h2>
+                                <h2 class="form-section-title">This page has moved</h2>
                                 <p class="form-section-description">
-                                    Keep track of all your demo projects and configurations in one place.
+                                    Manage tools now live under the specific subpages in the left navigation.
                                 </p>
-                                
-                                <div class="placeholder-content">
-                                    <div class="placeholder-card">
-                                        <i class="mdi-folder-multiple"></i>
-                                        <h3>Project Library</h3>
-                                        <p>View and organize all your demo projects and configurations</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
-                                    </div>
-                                    
-                                    <div class="placeholder-card">
-                                        <i class="mdi-account-group"></i>
-                                        <h3>Team Collaboration</h3>
-                                        <p>Share and collaborate on demo projects with your team</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
-                                    </div>
-                                    
-                                    <div class="placeholder-card">
-                                        <i class="mdi-chart-line"></i>
-                                        <h3>Analytics & Reports</h3>
-                                        <p>Track demo performance and generate insights</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         
-                        <!-- Discover Page -->
+                        <!-- Discover Landing -->
                         <div v-if="currentPage === 'discover'" class="settings-container">
                             <div class="section-header">
                                 <h1 class="section-title">Discover</h1>
-                                <p class="section-description">
-                                    Explore new templates, features, and best practices to enhance your demo capabilities.
-                                </p>
+                                <p class="section-description">Find resources and training.</p>
                             </div>
-                            
-                            <div class="form-section">
-                                <h2 class="form-section-title">Learning Resources</h2>
-                                <p class="form-section-description">
-                                    Find tutorials, templates, and inspiration to improve your demo skills.
-                                </p>
-                                
-                                <div class="placeholder-content">
-                                    <div class="placeholder-card">
-                                        <i class="mdi-magnify"></i>
-                                        <h3>Template Gallery</h3>
-                                        <p>Discover new demo templates and configurations</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
+                            <div class="v-row">
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('discover-resources-catalog')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Demo Resources Catalog</h3>
+                                            <p class="color-usage">Browse curated assets</p>
+                                        </div>
                                     </div>
-                                    
-                                    <div class="placeholder-card">
-                                        <i class="mdi-school"></i>
-                                        <h3>Learning Center</h3>
-                                        <p>Access tutorials and best practices for demo creation</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
-                                    </div>
-                                    
-                                    <div class="placeholder-card">
-                                        <i class="mdi-lightbulb"></i>
-                                        <h3>Inspiration Hub</h3>
-                                        <p>Get inspired by successful demo examples and case studies</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
+                                </div>
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('discover-learn-training')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Learn / Training</h3>
+                                            <p class="color-usage">Training content and tutorials</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Experiment Page -->
+                        <!-- Experiment Landing -->
                         <div v-if="currentPage === 'experiment'" class="settings-container">
                             <div class="section-header">
                                 <h1 class="section-title">Experiment</h1>
-                                <p class="section-description">
-                                    Test new features, configurations, and AI capabilities in a safe environment.
-                                </p>
+                                <p class="section-description">Explore experimental tools.</p>
                             </div>
-                            
-                            <div class="form-section">
-                                <h2 class="form-section-title">Beta Features</h2>
-                                <p class="form-section-description">
-                                    Try out experimental features and provide feedback to help improve Demo Studio.
-                                </p>
-                                
-                                <div class="placeholder-content">
-                                    <div class="placeholder-card">
-                                        <i class="mdi-flask"></i>
-                                        <h3>AI Experiments</h3>
-                                        <p>Test new AI-powered features and capabilities</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
+                            <div class="v-row">
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('experiment-prototypes-eaps')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Prototypes / EAPs</h3>
+                                            <p class="color-usage">Try early access features</p>
+                                        </div>
                                     </div>
-                                    
-                                    <div class="placeholder-card">
-                                        <i class="mdi-cog-sync"></i>
-                                        <h3>Advanced Configurations</h3>
-                                        <p>Experiment with advanced demo configurations and settings</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
-                                    </div>
-                                    
-                                    <div class="placeholder-card">
-                                        <i class="mdi-test-tube"></i>
-                                        <h3>Feature Testing</h3>
-                                        <p>Try out new features before they're officially released</p>
-                                        <v-btn color="primary" variant="outlined" disabled>
-                                            Coming Soon
-                                        </v-btn>
+                                </div>
+                                <div class="v-col-sm-6 v-col-md-4 v-col-12">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('experiment-placeholder')">
+                                        <div class="v-card-text color-info">
+                                            <h3 class="color-name">Placeholder</h3>
+                                            <p class="color-usage">Reserved for future tools</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2823,14 +2960,41 @@
                     expandedGroups: [],
                     expandedOptionalSections: [],
                     subdomain: 'z3n-demo.zendesk.com',
-                    
+
+                    // Brand-specific personalization state
+                    brands: ['Acme Support', 'ZenTickets', 'Contoso Retail'],
+                    selectedBrand: '',
+                    editingBrand: '',
+                    newBrandName: '',
+                    brandSettings: {
+                        'Acme Support': {
+                            name: 'Acme Support',
+                            description: 'Acme Support provides enterprise-grade help desk solutions for SaaS companies with a focus on fast onboarding and low TCO.',
+                            issues: 'High ticket volume during product launches; multi-brand support workflows; SLA breaches during peak hours; agent onboarding and ramp time.',
+                            aiInstructions: 'Respond concisely with a professional tone. Emphasize reduced handle times, SLA adherence, and improved CSAT. Use examples from SaaS support scenarios.'
+                        },
+                        'ZenTickets': {
+                            name: 'ZenTickets',
+                            description: 'ZenTickets offers a cloud ticketing platform for SMBs in E-commerce with strong integrations to storefronts.',
+                            issues: 'Order-related inquiries, shipping delays, returns processing, and omni-channel message consolidation.',
+                            aiInstructions: 'Friendly and helpful tone. Focus on E-commerce use-cases, quick macros, and order lookup automations.'
+                        },
+                        'Contoso Retail': {
+                            name: 'Contoso Retail',
+                            description: 'Contoso operates 200+ retail locations with a blended in-store and online experience.',
+                            issues: 'Inventory mismatches, BOPIS exceptions, loyalty program escalations, and seasonal staffing challenges.',
+                            aiInstructions: 'Authoritative tone for enterprise retail. Highlight workforce management, knowledge deflection, and real-time inventory integrations.'
+                        }
+                    },
+
+                    // Kept for backward compatibility elsewhere if referenced
                     companyInfo: {
                         name: '',
                         description: '',
                         issues: '',
                         aiInstructions: ''
                     },
-                    
+
                     adminPortal: {
                         fakeTickets: true,
                         configUpdates: true,
@@ -2847,11 +3011,24 @@
                                  currentPageTitle() {
                      const titles = {
                          'welcome': 'Welcome',
-                         'build': 'Build',
-                         'generate': 'Generate',
-                         'manage': 'Manage',
-                         'discover': 'Discover',
-                         'experiment': 'Experiment',
+                         // Build
+                         'build-account-configs': 'Account Configurations',
+                         'build-help-center-clone': 'Help Center Cloning',
+                         'build-auto-clicker': 'Auto Clicker',
+                         'build-prompt-builder': 'Prompt / Procedure Builder',
+                         'build-help-center-ai-designer': 'Help Center AI Designer',
+                         // Generate
+                         'generate-ticket-generator': 'Ticket Generator',
+                         'generate-placeholder': 'Placeholder',
+                         // Manage
+                         'manage-account-cleanup': 'Account Cleanup',
+                         'manage-translate': 'Translate',
+                         // Discover
+                         'discover-resources-catalog': 'Demo Resources Catalog',
+                         'discover-learn-training': 'Learn / Training',
+                         // Experiment
+                         'experiment-prototypes-eaps': 'Prototypes / EAPs',
+                         'experiment-placeholder': 'Placeholder',
                          'authentication': 'Authentication',
                          'personalization': 'Personalization',
                          'admin-portal': 'Admin Portal',
@@ -2863,6 +3040,17 @@
             },
 
             methods: {
+                openGroup(groupId, landingPage) {
+                    // Toggle collapse if the same group is clicked
+                    if (this.isGroupExpanded(groupId)) {
+                        const index = this.expandedGroups.indexOf(groupId)
+                        if (index > -1) this.expandedGroups.splice(index, 1)
+                        return
+                    }
+                    // Accordion behavior: close others and open only this group
+                    this.expandedGroups = [groupId]
+                    this.navigateToPage(landingPage)
+                },
                 toggleTheme() {
                     this.isDarkMode = !this.isDarkMode
                     this.$vuetify.theme.global.name = this.currentTheme
@@ -2909,26 +3097,134 @@
                     return this.expandedOptionalSections.includes(sectionId)
                 },
 
+                // Brand management
+                addBrand() {
+                    const name = (this.newBrandName || '').trim()
+                    if (!name) return
+                    if (!this.brands.includes(name)) {
+                        this.brands.push(name)
+                        this.$set?.(this.brandSettings, name, {
+                            name: '',
+                            description: '',
+                            issues: '',
+                            aiInstructions: ''
+                        })
+                        // Vue 3 reactivity for new key
+                        if (!this.brandSettings[name]) {
+                            this.brandSettings = {
+                                ...this.brandSettings,
+                                [name]: { name: '', description: '', issues: '', aiInstructions: '' }
+                            }
+                        }
+                    }
+                    this.selectedBrand = name
+                    this.editingBrand = name
+                    this.newBrandName = ''
+                    this.savePersonalization()
+                },
+
+                removeBrand(brandToRemove) {
+                    const brand = brandToRemove || this.selectedBrand
+                    if (this.brands.length <= 1) return
+                    const idx = this.brands.indexOf(brand)
+                    if (idx === -1) return
+                    this.brands.splice(idx, 1)
+                    const {[brand]: _, ...rest} = this.brandSettings
+                    this.brandSettings = rest
+                    this.selectedBrand = this.brands[Math.max(0, idx - 1)] || ''
+                    if (this.editingBrand === brand) {
+                        this.editingBrand = ''
+                    }
+                    this.savePersonalization()
+                },
+
+                ensureBrandExists(name) {
+                    if (!this.brands.includes(name)) this.brands.push(name)
+                    if (!this.brandSettings[name]) {
+                        this.brandSettings = {
+                            ...this.brandSettings,
+                            [name]: { name: '', description: '', issues: '', aiInstructions: '' }
+                        }
+                    }
+                },
+
+                openBrand(name) {
+                    this.ensureBrandExists(name)
+                    this.selectedBrand = name
+                    this.editingBrand = name
+                },
+
+                closeBrand() {
+                    this.editingBrand = ''
+                },
+
+                // Persistence
+                savePersonalization() {
+                    const payload = {
+                        brands: this.brands,
+                        selectedBrand: this.selectedBrand,
+                        brandSettings: this.brandSettings
+                    }
+                    localStorage.setItem('ds_personalization', JSON.stringify(payload))
+                },
+
+                loadPersonalization() {
+                    try {
+                        const raw = localStorage.getItem('ds_personalization')
+                        if (!raw) return
+                        const parsed = JSON.parse(raw)
+                        if (Array.isArray(parsed.brands) && parsed.brands.length > 0) {
+                            this.brands = parsed.brands
+                        }
+                        if (parsed.brandSettings && typeof parsed.brandSettings === 'object') {
+                            this.brandSettings = parsed.brandSettings
+                        }
+                        if (parsed.selectedBrand && this.brands.includes(parsed.selectedBrand)) {
+                            this.selectedBrand = parsed.selectedBrand
+                        } else {
+                            this.selectedBrand = this.brands[0]
+                        }
+                    } catch (e) {
+                        // ignore corrupt storage
+                    }
+                },
+
                 // GenAI helper functions
                 generateCompanyName() {
-                    this.companyInfo.name = 'TechCorp Solutions Inc.'
+                    const key = this.editingBrand || this.selectedBrand || this.brands[0]
+                    if (!key) return
+                    this.brandSettings[key].name = 'TechCorp Solutions Inc.'
+                    this.savePersonalization()
                 },
 
                 generateBusinessDescription() {
-                    this.companyInfo.description = 'TechCorp Solutions is a leading software development company specializing in enterprise solutions, cloud infrastructure, and digital transformation services. We help organizations modernize their technology stack and improve operational efficiency through innovative software solutions.'
+                    const key = this.editingBrand || this.selectedBrand || this.brands[0]
+                    if (!key) return
+                    this.brandSettings[key].description = 'TechCorp Solutions is a leading software development company specializing in enterprise solutions, cloud infrastructure, and digital transformation services. We help organizations modernize their technology stack and improve operational efficiency through innovative software solutions.'
+                    this.savePersonalization()
                 },
 
                 generateIssues() {
-                    this.companyInfo.issues = 'Common issues include legacy system integration challenges, data migration complexities, user adoption resistance, performance optimization needs, and security compliance requirements. Teams often struggle with technical debt, scalability issues, and cross-platform compatibility.'
+                    const key = this.editingBrand || this.selectedBrand || this.brands[0]
+                    if (!key) return
+                    this.brandSettings[key].issues = 'Common issues include legacy system integration challenges, data migration complexities, user adoption resistance, performance optimization needs, and security compliance requirements. Teams often struggle with technical debt, scalability issues, and cross-platform compatibility.'
+                    this.savePersonalization()
                 },
 
                 generateAIInstructions() {
-                    this.companyInfo.aiInstructions = 'The AI should maintain a professional yet approachable tone during demos. Focus on business value and ROI rather than technical details. Use industry-specific examples and relate features to common pain points. Always ask clarifying questions to better understand the prospect\'s specific needs.'
+                    const key = this.editingBrand || this.selectedBrand || this.brands[0]
+                    if (!key) return
+                    this.brandSettings[key].aiInstructions = 'The AI should maintain a professional yet approachable tone during demos. Focus on business value and ROI rather than technical details. Use industry-specific examples and relate features to common pain points. Always ask clarifying questions to better understand the prospect\'s specific needs.'
+                    this.savePersonalization()
                 }
             },
 
             mounted() {
                 this.initializeTheme()
+                this.loadPersonalization()
+                // Ensure default brand exists
+                if (!this.selectedBrand) this.selectedBrand = this.brands[0] || ''
+                if (this.selectedBrand) this.ensureBrandExists(this.selectedBrand)
                 
                 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
                     if (!localStorage.getItem('theme')) {
