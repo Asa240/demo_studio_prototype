@@ -2539,6 +2539,108 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Generate: Ticket Generator -->
+                        <div v-if="currentPage === 'generate-ticket-generator'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Ticket Generator</h1>
+                                <p class="section-description">Create and manage recurring schedules of AI‑generated tickets for realistic demo data.</p>
+                            </div>
+
+                            <v-tabs v-model="ticketGenActiveTab" class="mb-4">
+                                <v-tab value="create">Create Schedule</v-tab>
+                                <v-tab value="schedules">Schedules</v-tab>
+                                <v-tab value="logs">Logs</v-tab>
+                                <v-tab value="templates">Shared Templates</v-tab>
+                                <v-tab value="ai">AI Instructions</v-tab>
+                            </v-tabs>
+
+                            <v-window v-model="ticketGenActiveTab">
+                                <!-- Create Schedule -->
+                                <v-window-item value="create">
+                                    <div class="form-section">
+                                        <h2 class="form-section-title">Set up recurring ticket generation</h2>
+                                        <v-row>
+                                            <v-col cols="12" md="4">
+                                                <v-text-field type="number" min="1" v-model.number="scheduleForm.numTickets" label="Number of tickets" prepend-icon="mdi-pound" />
+                                            </v-col>
+                                            <v-col cols="12" md="4">
+                                                <v-select :items="languagesOptions" v-model="scheduleForm.languages" label="Languages" multiple chips prepend-icon="mdi-translate" />
+                                            </v-col>
+                                            <v-col cols="12" md="4">
+                                                <v-select :items="frequencyOptions" v-model="scheduleForm.frequency" label="Frequency" prepend-icon="mdi-calendar-repeat" />
+                                            </v-col>
+                                            <v-col cols="12" md="4" v-if="scheduleForm.frequency === 'Interval'">
+                                                <v-text-field type="number" min="1" v-model.number="scheduleForm.intervalMinutes" label="Interval (minutes)" prepend-icon="mdi-timer-outline" />
+                                            </v-col>
+                                            <v-col cols="12" md="4">
+                                                <v-select :items="brands" v-model="scheduleForm.brand" label="Brand" prepend-icon="mdi-tag-multiple" />
+                                            </v-col>
+                                            <v-col cols="12">
+                                                <v-textarea v-model="scheduleForm.issueTypes" label="Sample customer issue types" rows="3" prepend-icon="mdi-alert-circle-outline" placeholder="e.g., shipping delays, password reset, billing questions" />
+                                            </v-col>
+                                        </v-row>
+                                        <div class="d-flex justify-end">
+                                            <v-btn color="primary" prepend-icon="mdi-plus-circle" @click="createSchedule">Create Schedule</v-btn>
+                                        </div>
+                                    </div>
+                                </v-window-item>
+
+                                <!-- Schedules -->
+                                <v-window-item value="schedules">
+                                    <div class="form-section">
+                                        <h2 class="form-section-title">Existing Schedules</h2>
+                                        <v-data-table :headers="schedulesHeaders" :items="schedules" density="compact" items-per-page="5" class="data-table"></v-data-table>
+                                    </div>
+                                </v-window-item>
+
+                                <!-- Logs -->
+                                <v-window-item value="logs">
+                                    <div class="form-section">
+                                        <h2 class="form-section-title">Job Logs</h2>
+                                        <v-data-table :headers="logsHeaders" :items="logs" density="compact" items-per-page="5" class="data-table"></v-data-table>
+                                    </div>
+                                </v-window-item>
+
+                                <!-- Shared Templates -->
+                                <v-window-item value="templates">
+                                    <div class="form-section">
+                                        <h2 class="form-section-title">Shared Templates</h2>
+                                        <p class="form-section-description">Start from industry‑ready presets.</p>
+                                        <div class="v-row">
+                                            <div class="v-col-sm-6 v-col-md-4 v-col-12" v-for="tpl in ticketTemplates" :key="tpl.id">
+                                                <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card">
+                                                    <div class="v-card-text color-info">
+                                                        <h3 class="color-name">{{ tpl.name }}</h3>
+                                                        <p class="color-usage">{{ tpl.description }}</p>
+                                                        <v-btn size="small" variant="outlined" color="primary" @click="applyTemplate(tpl)">Use template</v-btn>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </v-window-item>
+
+                                <!-- AI Instructions -->
+                                <v-window-item value="ai">
+                                    <div class="form-section">
+                                        <h2 class="form-section-title">AI Instructions</h2>
+                                        <p class="form-section-description">Control tone and guidance for generated tickets. Saved per brand.</p>
+                                        <v-row>
+                                            <v-col cols="12" md="4">
+                                                <v-select :items="brands" v-model="aiInstructionsBrand" label="Brand" prepend-icon="mdi-tag-outline" />
+                                            </v-col>
+                                            <v-col cols="12">
+                                                <v-textarea v-model="brandSettings[aiInstructionsBrand].aiInstructions" label="AI Response Instructions" rows="4" prepend-icon="mdi-robot-outline" />
+                                            </v-col>
+                                        </v-row>
+                                        <div class="d-flex justify-end">
+                                            <v-btn color="success" prepend-icon="mdi-content-save" @click="saveAiInstructions">Save Instructions</v-btn>
+                                        </div>
+                                    </div>
+                                </v-window-item>
+                            </v-window>
+                        </div>
                         
                         <!-- Manage Page -->
                         <div v-if="currentPage === 'manage'" class="settings-container">
@@ -3245,7 +3347,47 @@
                         fakeTickets: true,
                         configUpdates: true,
                         eapSubscriptions: false
-                    }
+                    },
+                    // Ticket Generator state
+                    ticketGenActiveTab: 'create',
+                    languagesOptions: ['English', 'Spanish', 'French', 'German', 'Japanese'],
+                    frequencyOptions: ['Hourly', 'Daily', 'Weekly', 'Interval'],
+                    scheduleForm: {
+                        numTickets: 25,
+                        languages: ['English'],
+                        frequency: 'Daily',
+                        intervalMinutes: 30,
+                        brand: '',
+                        issueTypes: ''
+                    },
+                    schedulesHeaders: [
+                        { title: 'Name', key: 'name' },
+                        { title: 'Brand', key: 'brand' },
+                        { title: 'Frequency', key: 'frequency' },
+                        { title: 'Tickets/Run', key: 'tickets' },
+                        { title: 'Languages', key: 'languages' },
+                        { title: 'Next Run', key: 'nextRun' }
+                    ],
+                    schedules: [
+                        { name: 'Daily Retail Tickets', brand: 'Contoso Retail', frequency: 'Daily', tickets: 50, languages: 'EN, ES', nextRun: 'Tomorrow 9:00 AM' },
+                        { name: 'Weekly SaaS Support', brand: 'Acme Support', frequency: 'Weekly', tickets: 100, languages: 'EN', nextRun: 'Mon 10:00 AM' }
+                    ],
+                    logsHeaders: [
+                        { title: 'Time', key: 'time' },
+                        { title: 'Schedule', key: 'schedule' },
+                        { title: 'Status', key: 'status' },
+                        { title: 'Tickets', key: 'tickets' }
+                    ],
+                    logs: [
+                        { time: 'Today 08:00', schedule: 'Daily Retail Tickets', status: 'Completed', tickets: 50 },
+                        { time: 'Yesterday 10:00', schedule: 'Weekly SaaS Support', status: 'Completed', tickets: 100 }
+                    ],
+                    ticketTemplates: [
+                        { id: 1, name: 'Retail — Order Issues', description: 'Shipping delays, returns, inventory, loyalty questions' },
+                        { id: 2, name: 'SaaS — Account & Billing', description: 'Login, subscription changes, invoice disputes' },
+                        { id: 3, name: 'E‑commerce — Checkout', description: 'Cart errors, payment failures, promo codes' }
+                    ],
+                    aiInstructionsBrand: ''
                 }
             },
 
@@ -3294,6 +3436,36 @@
             },
 
             methods: {
+                createSchedule() {
+                    // Mock add to schedules list
+                    const name = `Custom Schedule (${new Date().toLocaleTimeString()})`
+                    const languages = (this.scheduleForm.languages || []).join(', ')
+                    this.schedules.unshift({
+                        name,
+                        brand: this.scheduleForm.brand || '-',
+                        frequency: this.scheduleForm.frequency,
+                        tickets: this.scheduleForm.numTickets,
+                        languages,
+                        nextRun: 'Pending'
+                    })
+                    this.ticketGenActiveTab = 'schedules'
+                },
+                applyTemplate(tpl) {
+                    // Prefill form from template (simple demo behavior)
+                    if (tpl.name.includes('Retail')) {
+                        this.scheduleForm.issueTypes = 'Shipping delays, returns, inventory, loyalty questions'
+                    } else if (tpl.name.includes('SaaS')) {
+                        this.scheduleForm.issueTypes = 'Login issues, billing changes, invoice disputes'
+                    } else {
+                        this.scheduleForm.issueTypes = 'Cart errors, payment failures, promo code issues'
+                    }
+                    this.ticketGenActiveTab = 'create'
+                },
+                saveAiInstructions() {
+                    if (!this.aiInstructionsBrand) return
+                    // Persist via existing personalization save
+                    this.savePersonalization()
+                },
                 goWelcome() {
                     // Collapse all groups and navigate to welcome
                     this.expandedGroups = []
