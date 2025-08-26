@@ -4490,7 +4490,7 @@
                                                 size="small" 
                                                 variant="flat"
                                             >
-                                                <i :class="'mdi ' + (item.status === 'enabled' ? 'mdi-check-circle' : item.status === 'available' ? 'mdi-clock-outline' : 'mdi-rocket')" class="me-1"></i>
+                                                <i :class="getStatusIcon(item)" class="me-1"></i>
                                                 {{ item.status === 'enabled' ? 'Enabled' : item.status === 'available' ? 'Available' : 'Coming Soon' }}
                                             </v-chip>
                                         </template>
@@ -6602,6 +6602,16 @@
                         item.status = 'enabled'
                     }
                     // Note: 'coming-soon' features cannot be toggled
+                },
+
+                getStatusIcon(item) {
+                    if (item.status === 'enabled') {
+                        return 'mdi mdi-check-circle'
+                    } else if (item.status === 'available') {
+                        return 'mdi mdi-clock-outline'
+                    } else {
+                        return 'mdi mdi-rocket'
+                    }
                 },
 
                 toggleGroup(groupId) {
