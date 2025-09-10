@@ -96,6 +96,17 @@
             /* Transitions */
             --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
             --transition-standard: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+            /* Translucent / panel system (light defaults) */
+            --panel-bg: linear-gradient(165deg, rgba(255,255,255,0.85), rgba(255,255,255,0.75));
+            --panel-bg-alt: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.04));
+            --panel-soft-border: rgba(0,0,0,0.06);
+            --quick-start-step-bg: rgba(255,255,255,0.55);
+            --quick-start-step-bg-hover: rgba(255,255,255,0.75);
+            --quick-start-panel-bg: linear-gradient(135deg, rgba(0,130,210,0.06), rgba(0,130,210,0.02));
+            --cta-glow: radial-gradient(circle at center, rgba(255,255,255,0.55), rgba(255,255,255,0));
+            --gif-box-bg: linear-gradient(135deg, rgba(0,0,0,0.035), rgba(0,0,0,0.09));
+            --gif-box-text: rgba(0,0,0,0.55);
         }
 
         /* Dark mode implementation */
@@ -121,7 +132,210 @@
             --color-error-variant: var(--dark-error-variant);
             --color-info: var(--dark-info);
             --color-info-variant: var(--dark-info-variant);
+
+            /* Translucent / panel overrides (dark) */
+            --panel-bg: linear-gradient(165deg, rgba(40,40,40,0.90), rgba(32,32,32,0.82));
+            --panel-bg-alt: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+            --panel-soft-border: rgba(255,255,255,0.08);
+            --quick-start-step-bg: rgba(255,255,255,0.06);
+            --quick-start-step-bg-hover: rgba(255,255,255,0.10);
+            --quick-start-panel-bg: linear-gradient(135deg, rgba(0,130,210,0.18), rgba(0,130,210,0.10));
+            --cta-glow: radial-gradient(circle at center, rgba(255,255,255,0.18), rgba(255,255,255,0));
+            --gif-box-bg: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.08));
+            --gif-box-text: rgba(255,255,255,0.65);
         }
+
+        /* Support Vuetify's built-in dark theme class even if data-theme attribute isn't toggled */
+        .v-theme--dark {
+            --color-background: var(--dark-background);
+            --color-surface: var(--dark-surface);
+            --color-text-primary: var(--dark-text-primary);
+            --color-text-secondary: var(--dark-text-secondary);
+            --color-text-disabled: var(--dark-text-disabled);
+            --color-border: var(--dark-border);
+            --color-border-light: var(--dark-border-light);
+            --color-divider: var(--dark-divider);
+            --color-border-xlight: rgba(255, 255, 255, 0.04);
+            --color-primary: var(--dark-primary);
+            --color-primary-variant: var(--dark-primary-variant);
+            --color-secondary: var(--dark-secondary);
+            --color-secondary-variant: var(--dark-secondary-variant);
+            --color-success: var(--dark-success);
+            --color-success-variant: var(--dark-success-variant);
+            --color-warning: var(--dark-warning);
+            --color-warning-variant: var(--dark-warning-variant);
+            --color-error: var(--dark-error);
+            --color-error-variant: var(--dark-error-variant);
+            --color-info: var(--dark-info);
+            --color-info-variant: var(--dark-info-variant);
+            --panel-bg: linear-gradient(165deg, rgba(40,40,40,0.90), rgba(32,32,32,0.82));
+            --panel-bg-alt: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+            --panel-soft-border: rgba(255,255,255,0.08);
+            --quick-start-step-bg: rgba(255,255,255,0.06);
+            --quick-start-step-bg-hover: rgba(255,255,255,0.10);
+            --quick-start-panel-bg: linear-gradient(135deg, rgba(0,130,210,0.18), rgba(0,130,210,0.10));
+            --cta-glow: radial-gradient(circle at center, rgba(255,255,255,0.18), rgba(255,255,255,0));
+            --gif-box-bg: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.08));
+            --gif-box-text: rgba(255,255,255,0.65);
+        }
+
+        /* Support a custom Vuetify dark theme class name (v-theme--customDark) */
+        .v-theme--customDark {
+            --color-background: var(--dark-background);
+            --color-surface: var(--dark-surface);
+            --color-text-primary: var(--dark-text-primary);
+            --color-text-secondary: var(--dark-text-secondary);
+            --color-text-disabled: var(--dark-text-disabled);
+            --color-border: var(--dark-border);
+            --color-border-light: var(--dark-border-light);
+            --color-divider: var(--dark-divider);
+            --color-border-xlight: rgba(255,255,255,0.04);
+            --color-primary: var(--dark-primary);
+            --color-primary-variant: var(--dark-primary-variant);
+            --color-secondary: var(--dark-secondary);
+            --color-secondary-variant: var(--dark-secondary-variant);
+            --color-success: var(--dark-success);
+            --color-success-variant: var(--dark-success-variant);
+            --color-warning: var(--dark-warning);
+            --color-warning-variant: var(--dark-warning-variant);
+            --color-error: var(--dark-error);
+            --color-error-variant: var(--dark-error-variant);
+            --color-info: var(--dark-info);
+            --color-info-variant: var(--dark-info-variant);
+            --panel-bg: linear-gradient(165deg, rgba(40,40,40,0.90), rgba(32,32,32,0.82));
+            --panel-bg-alt: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+            --panel-soft-border: rgba(255,255,255,0.08);
+            --quick-start-step-bg: rgba(255,255,255,0.06);
+            --quick-start-step-bg-hover: rgba(255,255,255,0.10);
+            --quick-start-panel-bg: linear-gradient(135deg, rgba(0,130,210,0.18), rgba(0,130,210,0.10));
+            --cta-glow: radial-gradient(circle at center, rgba(255,255,255,0.18), rgba(255,255,255,0));
+            --gif-box-bg: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.08));
+            --gif-box-text: rgba(255,255,255,0.65);
+        }
+
+        /* Unified dark search / input overrides (default, .v-theme--dark, and customDark) */
+        .v-theme--dark .v-text-field .v-field__input,
+        .v-theme--dark .v-select .v-field__input,
+        .v-theme--customDark .v-text-field .v-field__input,
+        .v-theme--customDark .v-select .v-field__input,
+        [data-theme='dark'] .v-text-field .v-field__input,
+        [data-theme='dark'] .v-select .v-field__input { color: var(--dark-text-primary) !important; }
+
+        .v-theme--dark .v-text-field .v-field__input::placeholder,
+        .v-theme--customDark .v-text-field .v-field__input::placeholder,
+        [data-theme='dark'] .v-text-field .v-field__input::placeholder { color: var(--dark-text-disabled) !important; opacity:1; }
+
+        .v-theme--dark .v-label,
+        .v-theme--customDark .v-label,
+        [data-theme='dark'] .v-label { color: var(--dark-text-secondary) !important; }
+
+        .v-theme--dark .v-field--variant-outlined .v-field__outline__start,
+        .v-theme--dark .v-field--variant-outlined .v-field__outline__end,
+        .v-theme--dark .v-field--variant-outlined .v-field__outline__notch,
+        .v-theme--customDark .v-field--variant-outlined .v-field__outline__start,
+        .v-theme--customDark .v-field--variant-outlined .v-field__outline__end,
+        .v-theme--customDark .v-field--variant-outlined .v-field__outline__notch,
+        [data-theme='dark'] .v-field--variant-outlined .v-field__outline__start,
+        [data-theme='dark'] .v-field--variant-outlined .v-field__outline__end,
+        [data-theme='dark'] .v-field--variant-outlined .v-field__outline__notch { border-color: var(--dark-border-light) !important; }
+
+        .v-theme--dark .v-field--variant-outlined.v-field--focused .v-field__outline__start,
+        .v-theme--dark .v-field--variant-outlined.v-field--focused .v-field__outline__end,
+        .v-theme--dark .v-field--variant-outlined.v-field--focused .v-field__outline__notch,
+        .v-theme--customDark .v-field--variant-outlined.v-field--focused .v-field__outline__start,
+        .v-theme--customDark .v-field--variant-outlined.v-field--focused .v-field__outline__end,
+        .v-theme--customDark .v-field--variant-outlined.v-field--focused .v-field__outline__notch,
+        [data-theme='dark'] .v-field--variant-outlined.v-field--focused .v-field__outline__start,
+        [data-theme='dark'] .v-field--variant-outlined.v-field--focused .v-field__outline__end,
+        [data-theme='dark'] .v-field--variant-outlined.v-field--focused .v-field__outline__notch { border-color: var(--color-primary) !important; }
+
+        .v-theme--dark .v-input .v-icon,
+        .v-theme--customDark .v-input .v-icon,
+        [data-theme='dark'] .v-input .v-icon { color: var(--dark-text-secondary) !important; }
+
+        /* Ensure overlay/affix doesn't dim text */
+        .v-theme--dark .v-field__overlay,
+        .v-theme--customDark .v-field__overlay,
+        [data-theme='dark'] .v-field__overlay { background: rgba(255,255,255,0.03) !important; }
+
+        /* Navigation specific dark-mode adjustments */
+        .v-theme--dark .navigation-drawer { background-color: var(--color-surface) !important; }
+        .v-theme--dark .drawer-header { background-color: var(--color-primary); color: var(--dark-text-primary); }
+        .v-theme--dark .drawer-title, .v-theme--dark .drawer-subtitle { color: var(--dark-text-primary); }
+        .v-theme--dark .nav-group-header { color: var(--color-text-disabled); border-bottom-color: var(--color-divider); }
+        .v-theme--dark .nav-group-parent .v-list-item, 
+        .v-theme--dark .nav-group-parent .v-list-item-title, 
+        .v-theme--dark .nav-child-item .v-list-item-title,
+    .v-theme--dark .nav-child-item .v-list-item { color: var(--dark-text-primary) !important; }
+    /* Force light text in case root variables not swapped */
+    .v-theme--dark .nav-group-parent .v-list-item,
+    .v-theme--dark .nav-group-parent .v-list-item-title,
+    .v-theme--dark .nav-child-item .v-list-item-title,
+    .v-theme--dark .nav-child-item .v-list-item { color: var(--dark-text-primary) !important; }
+        .v-theme--dark .nav-group-parent .v-icon, 
+    .v-theme--dark .nav-child-item .v-icon { color: var(--dark-text-secondary) !important; }
+        .v-theme--dark .nav-group-parent:hover, 
+        .v-theme--dark .child-group-parent:hover, 
+        .v-theme--dark .nav-child-item:hover, 
+        .v-theme--dark .child-leaf-item:hover { background-color: rgba(255,255,255,0.05); }
+        .v-theme--dark .nav-group-children.expanded, 
+        .v-theme--dark .child-group-children.expanded { background-color: rgba(255,255,255,0.04); border-left-color: rgba(255,255,255,0.08); }
+        .v-theme--dark .nav-child-item.active, 
+        .v-theme--dark .child-leaf-item.active { background-color: var(--color-primary) !important; }
+        .v-theme--dark .nav-child-item.active .v-list-item-title, 
+        .v-theme--dark .nav-child-item.active .v-icon, 
+        .v-theme--dark .child-leaf-item.active .v-list-item-title, 
+        .v-theme--dark .child-leaf-item.active .v-icon { color: var(--dark-text-primary) !important; }
+    /* Overview (gs-intro) dark text enforcement */
+    .v-theme--dark .gs-intro, 
+    .v-theme--dark .gs-intro-primary, 
+    .v-theme--dark .gs-intro-long { color: var(--dark-text-primary); }
+    .v-theme--dark .gs-intro-long { opacity:.92; }
+
+    /* Fallback / higher-specificity dark mode text enforcement (in case root still marked light) */
+    [data-theme='dark'] .navigation-drawer .v-list-item-title,
+    [data-theme='dark'] .navigation-drawer .v-list-item,
+    [data-theme='dark'] .navigation-drawer .nav-group-header,
+    [data-theme='dark'] .navigation-drawer .child-leaf-item .v-list-item-title,
+    [data-theme='dark'] .navigation-drawer .nav-child-item .v-list-item-title { color: var(--dark-text-primary) !important; }
+    [data-theme='dark'] .navigation-drawer .v-icon { color: var(--dark-text-secondary) !important; }
+    [data-theme='dark'] .navigation-drawer .nav-group-header { opacity:.85; }
+    [data-theme='dark'] .nav-group-parent:hover,
+    [data-theme='dark'] .child-group-parent:hover,
+    [data-theme='dark'] .nav-child-item:hover,
+    [data-theme='dark'] .child-leaf-item:hover { background-color: rgba(255,255,255,0.05); }
+    [data-theme='dark'] .nav-group-children.expanded,
+    [data-theme='dark'] .child-group-children.expanded { background-color: rgba(255,255,255,0.04); }
+    [data-theme='dark'] .nav-child-item.active .v-list-item-title,
+    [data-theme='dark'] .child-leaf-item.active .v-list-item-title { color: var(--dark-text-primary) !important; }
+    /* Overview section text force */
+    [data-theme='dark'] .gs-intro,
+    [data-theme='dark'] .gs-intro-primary,
+    [data-theme='dark'] .gs-intro-long { color: var(--dark-text-primary) !important; }
+    [data-theme='dark'] .gs-intro-long { opacity:.92; }
+
+    /* Additional dark mode text fixes */
+    [data-theme='dark'] .qs-step-text { color: var(--dark-text-primary) !important; }
+    [data-theme='dark'] .quick-start-steps li { color: var(--dark-text-primary); }
+    [data-theme='dark'] .gs-cta h3 { color: var(--dark-text-primary) !important; }
+    [data-theme='dark'] .gs-cta p { color: var(--dark-text-secondary) !important; }
+    [data-theme='dark'] .filters-row .v-input, 
+    [data-theme='dark'] .filters-row .v-field__input, 
+    [data-theme='dark'] .filters-row .v-label { color: var(--dark-text-primary) !important; }
+    [data-theme='dark'] .filters-row .v-field__input::placeholder { color: var(--dark-text-disabled) !important; }
+    [data-theme='dark'] .filters-row .v-field__outline, [data-theme='dark'] .filters-row .v-field { color: var(--dark-text-primary); }
+    [data-theme='dark'] .filters-row .v-select__selection-text { color: var(--dark-text-primary) !important; }
+    [data-theme='dark'] .filters-row .v-field__input input { color: var(--dark-text-primary) !important; }
+    [data-theme='dark'] .filters-row .v-icon { color: var(--dark-text-secondary) !important; }
+    [data-theme='dark'] .v-text-field input, [data-theme='dark'] .v-select input { color: var(--dark-text-primary) !important; }
+    .v-theme--dark .qs-step-text { color: var(--dark-text-primary) !important; }
+    .v-theme--dark .gs-cta h3 { color: var(--dark-text-primary) !important; }
+    .v-theme--dark .gs-cta p { color: var(--dark-text-secondary) !important; }
+    .v-theme--dark .filters-row .v-input, 
+    .v-theme--dark .filters-row .v-field__input, 
+    .v-theme--dark .filters-row .v-label { color: var(--dark-text-primary) !important; }
+    .v-theme--dark .filters-row .v-field__input::placeholder { color: var(--dark-text-disabled) !important; }
+    .v-theme--dark .filters-row .v-icon { color: var(--dark-text-secondary) !important; }
 
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme='light']) {
@@ -193,6 +407,17 @@
             background-color: var(--color-surface) !important;
             border-right: 1px solid var(--color-border) !important;
         }
+
+        /* Legacy group styling */
+        .legacy-group {
+            border: 1px dashed var(--color-border);
+            border-radius: 6px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.02), rgba(0,0,0,0));
+            margin-top: 4px;
+        }
+        .legacy-group .v-list-item-title { opacity: 0.75; font-weight: 500; }
+    .legacy-group .v-list-item-title { white-space: normal; text-overflow: unset; overflow: visible; line-height:1.1; }
+        .legacy-group.open { background-color: rgba(0,0,0,0.03); }
 
                  .drawer-header {
              padding: var(--spacing-lg);
@@ -357,6 +582,8 @@
         }
         .nav-child-item .v-list-item__prepend { margin-right: 4px !important; }
         .nav-child-item .v-list-item__spacer { width: 4px !important; }
+    /* Third-level (leaf) items: tighten icon-to-label gap */
+    .child-leaf-item .v-list-item__spacer { width: 8px !important; }
 
         .nav-child-item .v-list-item .v-icon {
             color: var(--color-text-secondary) !important;
@@ -388,6 +615,39 @@
              padding-right: var(--spacing-lg) !important;
          }
 
+        /* Badges */
+        .nav-badge {
+            display: inline-block;
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: .5px;
+            padding: 2px 6px;
+            line-height: 1;
+            border-radius: 10px;
+            border: 1px solid currentColor;
+            margin-left: 6px;
+            vertical-align: middle;
+            user-select: none;
+        }
+        .nav-badge.new { color: var(--color-success); }
+        .nav-badge.experimental { color: var(--color-warning); }
+        .nav-badge.soon { color: var(--color-text-disabled); }
+        .nav-badge.microapp { color: var(--color-info); font-weight:500; }
+
+        /* Second-level (child group) */
+        .child-group-parent { cursor: pointer; }
+        .child-group-parent:hover { background-color: var(--color-border-light); }
+        .child-group-children { transition: max-height var(--transition-standard); overflow: hidden; }
+        .child-group-children.collapsed { max-height:0; }
+        .child-group-children.expanded { max-height:500px; background-color: var(--color-border-xlight); border-left: 2px solid var(--color-border-light); border-radius: var(--border-radius); margin: 0 var(--spacing-md) var(--spacing-sm) var(--spacing-md); padding: var(--spacing-xs) 0; }
+    .child-leaf-item { margin: 0 var(--spacing-md) var(--spacing-2xs) calc(var(--spacing-lg) + 20px); border-radius: var(--border-radius); }
+    .child-leaf-item .v-icon { font-size:14px !important; height:14px !important; width:14px !important; }
+    /* Custom third-level bullet */
+    /* (Reverted) custom bullet removed: using mdi-circle-small icon again */
+        .child-leaf-item:hover { background-color: var(--color-border-light); }
+        .child-leaf-item.active { background-color: var(--color-primary); }
+        .child-leaf-item.active .v-list-item-title, .child-leaf-item.active .v-icon { color: var(--color-surface) !important; }
+
          /* Settings Navigation Section */
          .settings-nav-section {
              position: absolute;
@@ -401,7 +661,109 @@
          /* Add padding to main nav to account for settings at bottom */
          .v-navigation-drawer__content {
              padding-bottom: 200px;
+             overflow-y: auto;
+             scrollbar-width: none; /* Firefox */
          }
+         .v-navigation-drawer__content::-webkit-scrollbar { width:0; height:0; }
+         .v-navigation-drawer__content::-webkit-scrollbar-track { background: transparent; }
+         .v-navigation-drawer__content::-webkit-scrollbar-thumb { background: transparent; }
+         .v-navigation-drawer__content { -ms-overflow-style: none; }
+         .navigation-drawer { overscroll-behavior: contain; }
+
+    /* Getting Started carousel */
+    .getting-started-carousel { background: var(--color-surface); border: 1px solid var(--color-border-light); border-radius: 8px; padding: 4px 8px 8px; }
+    .getting-started-carousel .v-window-item { display:flex; align-items:center; justify-content:center; }
+    .screenshot-main { max-width: 100%; width:100%; display:flex; justify-content:center; }
+    .screenshot-image { max-height: 520px; width: auto; max-width:100%; object-fit:contain; cursor: zoom-in; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.08); border:1px solid var(--color-border-light); background: var(--color-background); }
+    .screenshot-thumb-bar { display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding:6px 4px; margin-top:6px; }
+    .screenshot-thumb { flex:0 0 auto; width:72px; height:48px; border:1px solid var(--color-border-light); border-radius:4px; display:flex; align-items:center; justify-content:center; background:var(--color-surface-alt); cursor:pointer; position:relative; }
+    .screenshot-thumb img { max-width:100%; max-height:100%; object-fit:cover; }
+    .screenshot-thumb.active { outline:2px solid var(--color-primary); outline-offset:0; }
+    .screenshot-lightbox-img { max-width:90vw; max-height:80vh; object-fit:contain; }
+    .lightbox-nav-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,.45); color:#fff; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+    .lightbox-nav-btn:hover { background:rgba(0,0,0,.65); }
+    .lightbox-nav-prev { left:12px; }
+    .lightbox-nav-next { right:12px; }
+    .screenshot-slide { position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:8px; }
+    /* Removed duplicate smaller screenshot-image rule (merged above) */
+    .screenshot-caption { position:absolute; left:12px; bottom:12px; background:rgba(0,0,0,0.55); color:#fff; padding:6px 10px; border-radius:4px; display:flex; flex-direction:column; font-size:11px; line-height:1.2; max-width:60%; }
+    .screenshot-caption strong { font-size:12px; margin-bottom:2px; }
+
+    /* Getting Started Intro block */
+    .gs-intro { background: var(--panel-bg-alt); border:1px solid var(--color-border-light); border-left:5px solid var(--color-primary); padding:20px 22px 18px; border-radius:8px; position:relative; }
+    .gs-intro:before { content:""; position:absolute; inset:0; backdrop-filter:saturate(115%); pointer-events:none; border-radius:8px; }
+    .gs-intro p { margin:0 0 10px; }
+    .gs-intro p:last-child { margin-bottom:0; }
+    .gs-intro-primary { font-weight:600; font-size:18.5px; line-height:1.55; letter-spacing:.2px; }
+    .gs-intro-long { font-size:15.5px; opacity:.9; line-height:1.6; }
+
+    /* Custom Lightbox overlay within page (excludes nav) */
+    .gs-lightbox-portal { position:fixed; inset:0 0 0 var(--nav-width,260px); z-index:1400; display:flex; align-items:center; justify-content:center; }
+    .gs-lightbox-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.55); backdrop-filter:saturate(120%) blur(2px); }
+    .gs-lightbox-shell { position:relative; max-width: min(1200px, 90%); max-height:90%; width:100%; padding:24px 32px; box-sizing:border-box; display:flex; align-items:center; justify-content:center; }
+    .gs-lightbox-inner { position:relative; background:var(--color-surface); border:1px solid var(--color-border-light); border-radius:10px; padding:16px 20px 24px; display:flex; flex-direction:column; align-items:center; box-shadow:0 4px 18px rgba(0,0,0,0.18),0 2px 6px rgba(0,0,0,0.12); }
+    .gs-lightbox-inner .screenshot-lightbox-img { max-width: calc(100vw - 420px); max-height:70vh; }
+    .lightbox-meta { margin-top:10px; text-align:center; max-width:760px; }
+    .lightbox-meta strong { font-size:14px; }
+    .lightbox-sub { font-size:11px; opacity:.7; margin-top:2px; }
+    .lightbox-close-btn { position:absolute; top:4px; right:4px; }
+    @media (max-width: 1100px) {
+        .gs-lightbox-portal { inset:0 0 0 var(--nav-width-collapsed,72px); }
+        .gs-lightbox-inner .screenshot-lightbox-img { max-width: calc(100vw - 280px); }
+    }
+
+    /* Narrow width for Getting Started pages */
+    .getting-started-narrow { max-width: 1200px; margin:0 auto; position:relative; }
+    @media (min-width: 1800px) { .getting-started-narrow { max-width: 1340px; } }
+    @media (max-width: 1260px) { .getting-started-narrow { max-width: 100%; } }
+
+    /* Page comfort styling */
+    .getting-started-narrow:before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 140% -10%, rgba(0,120,255,0.10), transparent 60%), radial-gradient(circle at -5% 110%, rgba(0,180,160,0.12), transparent 65%); opacity:.55; pointer-events:none; }
+    .settings-container.getting-started-narrow { padding-top:32px; }
+
+    /* Section titles refinement */
+    .form-section-title { position:relative; font-weight:600; letter-spacing:.3px; }
+    .gs-tool-name { font-weight:700; background:linear-gradient(90deg,var(--color-primary),var(--color-secondary)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    /* Dark mode inherits same gradient for .gs-tool-name */
+    .form-section { animation: fadeSlideIn .45s cubic-bezier(.32,.72,.23,.99); }
+    @media (prefers-reduced-motion: reduce) { .form-section { animation:none; } }
+    @keyframes fadeSlideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+    /* Softer panels */
+    .gs-intro { box-shadow:0 3px 10px -4px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08); border:1px solid var(--panel-soft-border); background:var(--panel-bg); backdrop-filter:blur(2px) saturate(130%); }
+    .quick-start-panel { box-shadow:0 4px 14px -5px rgba(0,0,0,0.15), 0 1px 4px rgba(0,0,0,0.08); border:1px solid rgba(0,130,210,0.28); }
+    .quick-start-steps li { background:var(--quick-start-step-bg); }
+    .quick-start-steps li:hover { background:var(--quick-start-step-bg-hover); }
+
+    /* Carousel tweaks */
+    .getting-started-carousel { border:1px solid rgba(0,0,0,0.08); box-shadow:0 2px 10px -4px rgba(0,0,0,0.15); }
+    .screenshot-caption { background:rgba(20,26,35,0.55); backdrop-filter:blur(2px); }
+
+    /* Encouragement CTA */
+    .gs-cta { margin-top:42px; background:linear-gradient(100deg, rgba(0,140,255,0.12), rgba(0,200,175,0.10)); border:1px solid rgba(0,140,255,0.25); border-left:5px solid var(--color-primary); padding:28px 30px 24px; border-radius:14px; position:relative; overflow:hidden; }
+    .gs-cta:before { content:""; position:absolute; top:-30px; right:-30px; width:200px; height:200px; background:var(--cta-glow); opacity:.4; }
+    .gs-cta h3 { margin:0 0 10px; font-weight:600; letter-spacing:.4px; font-size:20px; }
+    .gs-cta p { margin:0 0 14px; font-size:14.5px; max-width:760px; line-height:1.55; }
+    .gs-cta-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .gs-cta-actions .v-btn { text-transform:none; font-weight:500; letter-spacing:.2px; }
+
+    /* Quick Start Panel */
+    .quick-start-panel { background:var(--quick-start-panel-bg); border:1px solid rgba(0,130,210,0.25); border-left:5px solid var(--color-primary); padding:20px 22px 18px; border-radius:10px; position:relative; overflow:hidden; }
+    .quick-start-panel:after { content:""; position:absolute; top:-40px; right:-40px; width:160px; height:160px; background:radial-gradient(circle at center, rgba(0,130,210,0.18), transparent 70%); opacity:.35; pointer-events:none; }
+    .quick-start-steps { list-style:none; margin:0; padding:0; counter-reset:qs; display:flex; flex-direction:column; gap:10px; }
+    .quick-start-steps li { display:flex; align-items:flex-start; gap:12px; background:var(--quick-start-step-bg); backdrop-filter:saturate(140%) blur(2px); border:1px solid var(--color-border-light); padding:10px 12px 10px 14px; border-radius:8px; position:relative; }
+    .quick-start-steps li:hover { background:var(--quick-start-step-bg-hover); }
+    .qs-step-index { flex:0 0 auto; width:26px; height:26px; border-radius:50%; background:var(--color-primary); color:var(--color-surface); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; box-shadow:0 2px 4px rgba(0,0,0,0.15), 0 0 0 2px var(--color-surface); }
+    .qs-step-text { font-size:14px; line-height:1.45; }
+    @media (max-width: 900px) { .qs-step-text { font-size:13.5px; } }
+
+    .quick-start-flex { display:flex; align-items:flex-start; }
+    .quick-start-col { flex:1 1 auto; min-width:0; padding-right:40px; }
+    .quick-start-gif { flex:0 0 360px; display:flex; align-items:flex-start; justify-content:flex-end; position:relative; }
+    .quick-start-gif .gif-box { width:360px; height:360px; border:2px dashed var(--color-border); border-radius:16px; background:var(--gif-box-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--gif-box-text); font-size:13px; text-align:center; padding:18px; }
+    .quick-start-gif .gif-box i { font-size:42px; opacity:.55; margin-bottom:6px; }
+    .quick-start-gif .walkthrough-gif { width:100%; height:100%; object-fit:cover; border-radius:14px; display:block; }
+    @media (max-width: 1200px) { .quick-start-gif { display:none; } }
 
          /* Welcome Page Styles */
          .welcome-container {
@@ -2545,321 +2907,109 @@
                             </div>
                         </div>
                         
-                        <!-- Navigation List -->
+                        <!-- Navigation List (Dynamic) -->
                         <div class="v-list v-list--nav v-theme--customLight bg-transparent v-list--density-default v-list--one-line pa-0" tabindex="0" role="listbox">
                             <!-- Welcome -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1 mt-4" 
-                                 :class="{ active: currentPage === 'welcome' }" 
-                                 tabindex="-2" 
+                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-3 mb-1 mt-4"
+                                 :class="{ active: currentPage === 'welcome' }"
+                                 tabindex="-1"
                                  @click="goWelcome()">
                                 <span class="v-list-item__overlay"></span>
                                 <span class="v-list-item__underlay"></span>
                                 <div class="v-list-item__prepend">
-                                    <i class="mdi mdi-home mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
+                                    <i class="mdi mdi-home mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size:20px;height:20px;width:20px;"></i>
                                     <div class="v-list-item__spacer"></div>
                                 </div>
                                 <div class="v-list-item__content" data-no-activator="">
                                     <div class="v-list-item-title text-body-2">Welcome</div>
                                 </div>
                             </div>
-                            
-                            <!-- Main Navigation -->
+
                             <div class="nav-group-header">Demo Studio</div>
-                            
-                            <!-- Build (Group) -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('build','build')" :class="{ open: isGroupExpanded('build') }">
-                                <span class="v-list-item__overlay"></span>
-                                <span class="v-list-item__underlay"></span>
-                                <div class="v-list-item__prepend">
-                                    <i class="mdi mdi-hammer-wrench mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                                <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2 font-weight-medium">BUILD</div>
-                                </div>
-                                <div class="v-list-item__append">
-                                    <i class="mdi mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('build') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                            </div>
-                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('build'), collapsed: !isGroupExpanded('build') }">
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'build-account-configs' }" tabindex="-2" @click="navigateToPage('build-account-configs')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-cog-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title 
-                                        text-body-2">Configuration Cloning</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'build-help-center-clone' }" tabindex="-2" @click="navigateToPage('build-help-center-clone')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-content-copy mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Help Center Cloning</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'build-auto-clicker' }" tabindex="-2" @click="navigateToPage('build-auto-clicker')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-cursor-default-click mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Auto Clicker</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'build-prompt-builder' }" tabindex="-2" @click="navigateToPage('build-prompt-builder')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-text-box-edit-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Prompt Builder</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'build-help-center-ai-designer' }" tabindex="-2" @click="navigateToPage('build-help-center-ai-designer')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-palette-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Help Center AI Designer</div></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Generate (Group) -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('generate','generate')" :class="{ open: isGroupExpanded('generate') }">
-                                <span class="v-list-item__overlay"></span>
-                                <span class="v-list-item__underlay"></span>
-                                <div class="v-list-item__prepend">
-                                    <i class="mdi mdi-robot mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                                <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2 font-weight-medium">GENERATE</div>
-                                </div>
-                                <div class="v-list-item__append">
-                                    <i class="mdi mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('generate') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                            </div>
-                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('generate'), collapsed: !isGroupExpanded('generate') }">
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'generate-ticket-generator' }" tabindex="-2" @click="navigateToPage('generate-ticket-generator')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-ticket-confirmation-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Ticket Generator</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'generate-bot-generator' }" tabindex="-2" @click="navigateToPage('generate-bot-generator')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-robot-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Bot Generator</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'generate-wfm-generator' }" tabindex="-2" @click="navigateToPage('generate-wfm-generator')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-calendar-clock-outline mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">WFM Generator</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'generate-placeholder' }" tabindex="-2" @click="navigateToPage('generate-placeholder')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-dots-horizontal mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Placeholder</div></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Manage (Group) -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('manage','manage')" :class="{ open: isGroupExpanded('manage') }">
-                                <span class="v-list-item__overlay"></span>
-                                <span class="v-list-item__underlay"></span>
-                                <div class="v-list-item__prepend">
-                                    <i class="mdi mdi-folder-multiple mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                                <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2 font-weight-medium">MANAGE</div>
-                                </div>
-                                <div class="v-list-item__append">
-                                    <i class="mdi mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('manage') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                            </div>
-                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('manage'), collapsed: !isGroupExpanded('manage') }">
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'manage-account-cleanup' }" tabindex="-2" @click="navigateToPage('manage-account-cleanup')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-broom mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Account Cleanup</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'manage-translate' }" tabindex="-2" @click="navigateToPage('manage-translate')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-translate mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Translate</div></div>
-                                </div>
-                            </div>
-                            
-                            <!-- DISCOVER (new group) -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('discover','discover')" :class="{ open: isGroupExpanded('discover') }">
-                                <span class="v-list-item__overlay"></span>
-                                <span class="v-list-item__underlay"></span>
-                                <div class="v-list-item__prepend">
-                                    <i class="mdi mdi-magnify mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                                <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2 font-weight-medium">DISCOVER</div>
-                                </div>
-                                <div class="v-list-item__append">
-                                    <i class="mdi mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('discover') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                            </div>
-                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('discover'), collapsed: !isGroupExpanded('discover') }">
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'discover-resources-catalog' }" tabindex="-2" @click="navigateToPage('discover-resources-catalog')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-library-shelves mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Demo Resource Catalog</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'discover-sme-directory' }" tabindex="-2" @click="navigateToPage('discover-sme-directory')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-account-group mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">SME Directory</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'discover-eap-tracker' }" tabindex="-2" @click="navigateToPage('discover-eap-tracker')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-beta mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">EAP / Beta Tracker</div></div>
-                                </div>
-                            </div>
 
-                            <!-- LEARN (was EXPERIMENT) -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('learn','learn')" :class="{ open: isGroupExpanded('learn') }">
-                                <span class="v-list-item__overlay"></span>
-                                <span class="v-list-item__underlay"></span>
-                                <div class="v-list-item__prepend">
-                                    <i class="mdi mdi-school mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                                <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2 font-weight-medium">LEARN</div>
-                                </div>
-                                <div class="v-list-item__append">
-                                    <i class="mdi mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('learn') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                            </div>
-                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('learn'), collapsed: !isGroupExpanded('learn') }">
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'learn-videos' }" tabindex="-2" @click="navigateToPage('learn-videos')">
+                            <!-- Top-level groups -->
+                            <template v-for="group in navGroups" :key="group.id">
+                          <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1"
+                              @click="openGroup(group.id, group.landing || group.id)" :class="{ open: isGroupExpanded(group.id), 'legacy-group': group.id === 'legacy' }" tabindex="-1">
                                     <span class="v-list-item__overlay"></span>
                                     <span class="v-list-item__underlay"></span>
                                     <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-play-circle mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                        <i :class="['mdi', group.icon, 'v-icon', 'notranslate', 'v-theme--customLight']" aria-hidden="true" style="font-size:20px;height:20px;width:20px;"></i>
                                         <div class="v-list-item__spacer"></div>
                                     </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Videos</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'learn-training-guides' }" tabindex="-2" @click="navigateToPage('learn-training-guides')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-book-open-page-variant mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
+                                    <div class="v-list-item__content" data-no-activator="">
+                                        <div class="v-list-item-title text-body-2 font-weight-medium">
+                                            {{ group.label.toUpperCase() }}
+                                            <span v-if="group.badge" class="nav-badge" :class="badgeClass(group.badge.type)">{{ group.badge.text }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="v-list-item__append">
+                                        <i class="mdi mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded(group.id) ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
                                         <div class="v-list-item__spacer"></div>
                                     </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Training Guides</div></div>
                                 </div>
-                            </div>
-
-                            <!-- REPORT (new group) -->
-                            <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-group-parent mx-3 mb-1" tabindex="-2" @click="openGroup('report','report')" :class="{ open: isGroupExpanded('report') }">
-                                <span class="v-list-item__overlay"></span>
-                                <span class="v-list-item__underlay"></span>
-                                <div class="v-list-item__prepend">
-                                    <i class="mdi mdi-chart-bar mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 20px; height: 20px; width: 20px;"></i>
-                                    <div class="v-list-item__spacer"></div>
+                                <div class="nav-group-children" :class="{ expanded: isGroupExpanded(group.id), collapsed: !isGroupExpanded(group.id) }">
+                                    <!-- First-level children inside group -->
+                                    <template v-for="child in group.children" :key="child.id">
+                                        <!-- Leaf (no sections/tabs) -->
+                                        <div v-if="!hasNested(child)" class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1"
+                                             :class="{ active: currentPage === child.id }" tabindex="-1" @click="navigateToPage(child.id)">
+                                            <span class="v-list-item__overlay"></span>
+                                            <span class="v-list-item__underlay"></span>
+                                            <div class="v-list-item__prepend">
+                                                <i :class="['mdi', child.icon || 'mdi-dots-horizontal', 'v-icon', 'notranslate', 'v-theme--customLight']" aria-hidden="true" style="font-size:18px;height:18px;width:18px;"></i>
+                                                <div class="v-list-item__spacer"></div>
+                                            </div>
+                                            <div class="v-list-item__content" data-no-activator="">
+                                                <div class="v-list-item-title text-body-2">
+                                                    {{ child.label }}
+                                                    <span v-if="child.badge" class="nav-badge" :class="badgeClass(child.badge.type)">{{ child.badge.text }}</span>
+                                                    <span v-if="child.microapp" class="nav-badge microapp">APP</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Parent with nested sections/tabs -->
+                                        <div v-else class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1 child-group-parent"
+                                             @click="toggleChildGroup(child.id)" :class="{ open: isChildGroupExpanded(child.id) }" tabindex="-1">
+                                            <span class="v-list-item__overlay"></span>
+                                            <span class="v-list-item__underlay"></span>
+                                            <div class="v-list-item__prepend">
+                                                <i :class="['mdi', child.icon || 'mdi-folder-outline', 'v-icon', 'notranslate', 'v-theme--customLight']" aria-hidden="true" style="font-size:18px;height:18px;width:18px;"></i>
+                                                <div class="v-list-item__spacer"></div>
+                                            </div>
+                                            <div class="v-list-item__content" data-no-activator="">
+                                                <div class="v-list-item-title text-body-2 font-weight-medium">
+                                                    {{ child.label }}
+                                                    <span v-if="child.badge" class="nav-badge" :class="badgeClass(child.badge.type)">{{ child.badge.text }}</span>
+                                                    <span v-if="child.microapp" class="nav-badge microapp">APP</span>
+                                                </div>
+                                            </div>
+                                            <div class="v-list-item__append">
+                                                <i class="mdi mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isChildGroupExpanded(child.id) ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
+                                                <div class="v-list-item__spacer"></div>
+                                            </div>
+                                        </div>
+                                        <div class="child-group-children" :class="{ expanded: isChildGroupExpanded(child.id), collapsed: !isChildGroupExpanded(child.id) }" v-if="hasNested(child)">
+                                            <div v-for="leaf in (child.sections || child.tabs)" :key="leaf.id"
+                                                 class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text child-leaf-item mx-6 mb-1"
+                                                 :class="{ active: currentPage === leaf.id }" tabindex="-1" @click.stop="navigateToPage(leaf.id)">
+                                                <span class="v-list-item__overlay"></span>
+                                                <span class="v-list-item__underlay"></span>
+                                                <div class="v-list-item__prepend">
+                                                    <i class="mdi mdi-circle-small v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size:16px;height:16px;width:16px;color: var(--color-text-disabled);"></i>
+                                                    <div class="v-list-item__spacer"></div>
+                                                </div>
+                                                <div class="v-list-item__content" data-no-activator="">
+                                                    <div class="v-list-item-title text-body-2">
+                                                        {{ leaf.label }}
+                                                        <span v-if="leaf.badge" class="nav-badge" :class="badgeClass(leaf.badge.type)">{{ leaf.badge.text }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
                                 </div>
-                                <div class="v-list-item__content" data-no-activator="">
-                                    <div class="v-list-item-title text-body-2 font-weight-medium">REPORT</div>
-                                </div>
-                                <div class="v-list-item__append">
-                                    <i class="mdi mdi-chevron-right mdi v-icon notranslate v-theme--customLight v-icon--size-default transition-transform" aria-hidden="true" :style="{ transform: isGroupExpanded('report') ? 'rotate(90deg)' : 'rotate(0deg)' }"></i>
-                                    <div class="v-list-item__spacer"></div>
-                                </div>
-                            </div>
-                            <div class="nav-group-children" :class="{ expanded: isGroupExpanded('report'), collapsed: !isGroupExpanded('report') }">
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'report-overview' }" tabindex="-2" @click="navigateToPage('report-overview')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-file-chart mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Overview</div></div>
-                                </div>
-                                <div class="v-list-item v-list-item--link v-list-item--nav v-theme--customLight v-list-item--density-default v-list-item--one-line v-list-item--rounded v-list-item--variant-text nav-child-item mx-6 mb-1" 
-                                     :class="{ active: currentPage === 'report-placeholder' }" tabindex="-2" @click="navigateToPage('report-placeholder')">
-                                    <span class="v-list-item__overlay"></span>
-                                    <span class="v-list-item__underlay"></span>
-                                    <div class="v-list-item__prepend">
-                                        <i class="mdi mdi-dots-horizontal mdi v-icon notranslate v-theme--customLight" aria-hidden="true" style="font-size: 18px; height: 18px; width: 18px;"></i>
-                                        <div class="v-list-item__spacer"></div>
-                                    </div>
-                                    <div class="v-list-item__content" data-no-activator=""><div class="v-list-item-title text-body-2">Placeholder</div></div>
-                                </div>
-                            </div>
+                            </template>
                         </div>
                         
                         <!-- Settings Section at Bottom -->
@@ -3062,7 +3212,7 @@
                                             <span><i class="mdi mdi-account"></i> Beginner</span>
                                             <span><i class="mdi mdi-play-circle"></i> Video Course</span>
                                         </div>
-                                        <v-btn color="primary" size="large" prepend-icon="mdi-play" @click="navigateToPage('learn-training-guides')">
+                                        <v-btn color="primary" size="large" prepend-icon="mdi-play" @click="navigateToPage('learn-training-docs')">
                                             Start Learning
                                         </v-btn>
                                     </div>
@@ -3185,7 +3335,7 @@
                                         </div>
                                         <h3>DISCOVER</h3>
                                         <p>Find demo resources, templates, and connect with SMEs</p>
-                                        <v-btn color="primary" size="large" @click="navigateToPage('discover-resources-catalog')">
+                                        <v-btn color="primary" size="large" @click="navigateToPage('discover-demo-resources-catalog')">
                                             Explore Resources
                                         </v-btn>
                                     </div>
@@ -3591,6 +3741,138 @@
                         </div>
 
                         <!-- Build: Configuration Cloning -->
+                        <!-- Unified Getting Started Template -->
+                        <div v-if="isGettingStartedPage" class="settings-container getting-started-narrow">
+                            <div class="section-header">
+                                <h1 class="section-title"><span class="gs-tool-name">{{ currentGettingStartedMeta.tool }}</span> • Getting Started</h1>
+                                <p class="section-description">{{ currentGettingStartedMeta.tldr }}</p>
+                            </div>
+
+                            <div class="form-section">
+                                <h2 class="form-section-title">Overview</h2>
+                                <div class="gs-intro">
+                                    <p class="gs-intro-primary">{{ currentGettingStartedMeta.tldr }}</p>
+                                    <p v-if="currentGettingStartedMeta.longDescription" class="gs-intro-long">{{ currentGettingStartedMeta.longDescription }}</p>
+                                </div>
+                            </div>
+
+                            <div class="form-section" v-if="currentGettingStartedMeta.screenshots && currentGettingStartedMeta.screenshots.length">
+                                <h2 class="form-section-title">Screenshots</h2>
+                                                                <div>
+                                                                    <v-carousel v-model="screenshotIndex" height="520" hide-delimiters show-arrows="hover" class="getting-started-carousel">
+                                                                        <v-carousel-item v-for="(shot, idx) in currentGettingStartedMeta.screenshots" :key="shot.title">
+                                                                            <div class="screenshot-slide screenshot-main">
+                                                                                <template v-if="shot.file">
+                                                                                    <img :src="shot.file" :alt="shot.alt || (shot.title + ' screenshot')" class="screenshot-image" loading="lazy" @click="openLightbox(idx)" />
+                                                                                </template>
+                                                                                <template v-else>
+                                                                                    <div v-html="shot.svg" aria-hidden="true" @click="openLightbox(idx)" style="cursor:zoom-in"></div>
+                                                                                </template>
+                                                                            </div>
+                                                                            <div class="screenshot-caption">
+                                                                                <strong>{{ shot.title }}</strong>
+                                                                                <span>{{ shot.alt }}</span>
+                                                                            </div>
+                                                                        </v-carousel-item>
+                                                                    </v-carousel>
+                                                                    <div class="screenshot-thumb-bar" v-if="currentGettingStartedMeta.screenshots.length > 1">
+                                                                        <div v-for="(shot, tIdx) in currentGettingStartedMeta.screenshots" :key="'thumb-'+tIdx" class="screenshot-thumb" :class="{ active: screenshotIndex === tIdx }" @click="screenshotIndex = tIdx">
+                                                                            <img v-if="shot.file" :src="shot.file" :alt="shot.alt || shot.title" loading="lazy" />
+                                                                            <div v-else v-html="shot.svg" aria-hidden="true" style="scale:.4"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div v-if="lightboxOpen" class="gs-lightbox-portal" @keydown.escape.stop.prevent="lightboxOpen=false" tabindex="0">
+                                                                        <div class="gs-lightbox-backdrop" @click="lightboxOpen=false"></div>
+                                                                        <div class="gs-lightbox-shell">
+                                                                            <div class="gs-lightbox-inner">
+                                                                                <span class="lightbox-nav-btn lightbox-nav-prev" v-if="currentGettingStartedMeta.screenshots.length>1" @click.stop="prevLightbox" aria-label="Previous screenshot"><i class="mdi mdi-chevron-left"></i></span>
+                                                                                <span class="lightbox-nav-btn lightbox-nav-next" v-if="currentGettingStartedMeta.screenshots.length>1" @click.stop="nextLightbox" aria-label="Next screenshot"><i class="mdi mdi-chevron-right"></i></span>
+                                                                                <img v-if="currentShot && currentShot.file" :src="currentShot.file" :alt="currentShot.alt || currentShot.title" class="screenshot-lightbox-img" />
+                                                                                <div v-else-if="currentShot" v-html="currentShot.svg" aria-hidden="true" class="screenshot-lightbox-img"></div>
+                                                                                <div class="lightbox-meta">
+                                                                                    <strong>{{ currentShot?.title }}</strong>
+                                                                                    <div class="lightbox-sub">{{ currentShot?.alt }}</div>
+                                                                                </div>
+                                                                                <v-btn icon="mdi-close" variant="text" size="small" class="lightbox-close-btn" @click.stop="lightboxOpen=false" aria-label="Close"></v-btn>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                            </div>
+
+                            <div class="form-section" v-if="currentGettingStartedMeta.video">
+                                <h2 class="form-section-title">Intro Video <span style="font-weight:400;opacity:.6;">({{ currentGettingStartedMeta.video.length }})</span></h2>
+                                <div class="featured-guide-card" style="align-items:center;">
+                                    <div class="guide-thumbnail" style="width:140px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+                                        <i class="mdi mdi-play" style="font-size:36px;"></i>
+                                        <div class="guide-duration">{{ currentGettingStartedMeta.video.length }}</div>
+                                    </div>
+                                    <div class="guide-info">
+                                        <h3 style="margin-top:0;">{{ currentGettingStartedMeta.video.title }}</h3>
+                                        <p>A short overview video introducing {{ currentGettingStartedMeta.tool }} features and typical demo workflows.</p>
+                                        <v-btn color="primary" size="small" prepend-icon="mdi-play">Play (Mock)</v-btn>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section" v-if="currentGettingStartedMeta.quickStart && currentGettingStartedMeta.quickStart.length">
+                                <h2 class="form-section-title">Quick Start</h2>
+                                <div class="quick-start-panel">
+                                    <div class="quick-start-flex">
+                                        <div class="quick-start-col">
+                                            <ol class="quick-start-steps">
+                                                <li v-for="(step, sIdx) in currentGettingStartedMeta.quickStart" :key="'qs-'+sIdx">
+                                                    <div class="qs-step-index">{{ sIdx + 1 }}</div>
+                                                    <div class="qs-step-text">{{ step }}</div>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div class="quick-start-gif">
+                                            <div class="gif-box">
+                                                <img src="screenshots/instance_cloning.gif" alt="Feature walkthrough animation" class="walkthrough-gif" loading="lazy" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section" v-if="currentGettingStartedMeta.resources && currentGettingStartedMeta.resources.length">
+                                <h2 class="form-section-title">Key Resources</h2>
+                                <div class="quick-access-grid">
+                                    <div class="quick-access-card" v-for="res in currentGettingStartedMeta.resources" :key="res.label" style="text-align:left;">
+                                        <i class="mdi" :class="res.icon"></i>
+                                        <h4>{{ res.label }}</h4>
+                                        <p style="font-size:12px;opacity:.65;">Reference material to go deeper.</p>
+                                        <v-btn size="x-small" variant="outlined" color="primary">Open</v-btn>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section" v-if="currentGettingStartedMeta.limitations && currentGettingStartedMeta.limitations.length">
+                                <h2 class="form-section-title">Known Limitations</h2>
+                                <ul style="margin:0;padding-left:20px;">
+                                    <li v-for="lim in currentGettingStartedMeta.limitations" :key="lim" style="margin-bottom:4px;">{{ lim }}</li>
+                                </ul>
+                            </div>
+
+                            <div class="form-section">
+                                <h2 class="form-section-title">Version</h2>
+                                <div class="guide-meta" style="font-size:13px;">
+                                    <span><i class="mdi mdi-tag-outline"></i> v{{ currentGettingStartedMeta.version }}</span>
+                                    <span><i class="mdi mdi-calendar"></i> Updated {{ currentGettingStartedMeta.lastUpdated }}</span>
+                                </div>
+                            </div>
+
+                            <div class="gs-cta">
+                                <h3>Ready to Go Further?</h3>
+                                <p>Explore deeper configuration patterns, automate adjacent setup tasks, or open a sandbox to experiment immediately. Each tool is designed to remove friction and help you build credible demo narratives faster.</p>
+                                <div class="gs-cta-actions">
+                                    <v-btn color="primary" prepend-icon="mdi-rocket-launch-outline" size="small">Open Sandbox</v-btn>
+                                    <v-btn variant="outlined" color="primary" prepend-icon="mdi-book-open-page-variant" size="small">Advanced Guide</v-btn>
+                                    <v-btn variant="text" color="primary" prepend-icon="mdi-forum-outline" size="small">Feedback</v-btn>
+                                </div>
+                            </div>
+                        </div>
                         <div v-if="currentPage === 'build-account-configs'" class="settings-container">
                             <div class="section-header">
                                 <h1 class="section-title">Configuration Cloning</h1>
@@ -3652,6 +3934,42 @@
                                     <v-btn color="primary" variant="outlined" disabled>Coming Soon</v-btn>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Legacy: Bulk Ticket Manager -->
+                        <div v-if="currentPage === 'legacy-bulk-ticket-manager'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Bulk Ticket Manager (Legacy)</h1>
+                                <p class="section-description">This legacy tool is no longer actively maintained. Limited functionality may be degraded.</p>
+                            </div>
+                            <v-alert type="warning" variant="tonal">Use with caution. Consider modern bulk operations or APIs where possible.</v-alert>
+                        </div>
+
+                        <!-- Legacy: 360 App Editor -->
+                        <div v-if="currentPage === 'legacy-360-app-editor'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">360 App Editor (Legacy)</h1>
+                                <p class="section-description">Legacy editor for 360 app layout definitions. Superseded by internal tooling.</p>
+                            </div>
+                            <v-alert type="warning" variant="tonal">May not reflect current data model changes introduced after 2025.</v-alert>
+                        </div>
+
+                        <!-- Legacy: uGPT Knowledge Gaps -->
+                        <div v-if="currentPage === 'legacy-ugpt-knowledge-gaps'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">uGPT Knowledge Gaps (Legacy)</h1>
+                                <p class="section-description">Experimental utility for identifying missing knowledge artifacts. Deprecated.</p>
+                            </div>
+                            <v-alert type="warning" variant="tonal">Accuracy not guaranteed. For analysis, use the current AI Content insights.</v-alert>
+                        </div>
+
+                        <!-- Legacy: Mock API -->
+                        <div v-if="currentPage === 'legacy-mock-api'" class="settings-container">
+                            <div class="section-header">
+                                <h1 class="section-title">Mock API (Legacy)</h1>
+                                <p class="section-description">Provides static JSON responses for prototyping demo integrations.</p>
+                            </div>
+                            <v-alert type="warning" variant="tonal">Prefer real sandbox endpoints or recorded responses when available.</v-alert>
                         </div>
 
                         <!-- Build: Help Center AI Designer -->
@@ -3893,7 +4211,7 @@
 
 
                         <!-- Discover: Demo Resources Catalog (Temporary Landing Page) -->
-                        <div v-if="currentPage === 'discover-resources-catalog'" class="settings-container">
+                        <div v-if="currentPage === 'discover-demo-resources-catalog'" class="settings-container">
                             <div class="section-header">
                                 <h1 class="section-title">Demo Resources Catalog</h1>
                                 <p class="section-description">
@@ -4439,7 +4757,7 @@
                         </div>
 
                         <!-- Discover: EAP / Beta Tracker -->
-                        <div v-if="currentPage === 'discover-eap-tracker'" class="settings-container">
+                        <div v-if="currentPage === 'discover-eap-beta-tracker'" class="settings-container">
                             <div class="section-header">
                                 <h1 class="section-title">EAP / Beta Tracker</h1>
                                 <p class="section-description">
@@ -5273,7 +5591,7 @@
                             </div>
                             <div class="v-row">
                                 <div class="v-col-sm-6 v-col-md-4 v-col-12">
-                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('discover-resources-catalog')">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('discover-demo-resources-catalog')">
                                         <div class="v-card-text color-info">
                                             <h3 class="color-name">Demo Resources Catalog</h3>
                                             <p class="color-usage">Browse curated assets</p>
@@ -5333,7 +5651,7 @@
                                     </div>
                                 </div>
                                 <div class="v-col-sm-6 v-col-md-4 v-col-12">
-                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('learn-training-guides')">
+                                    <div class="v-card v-theme--customLight v-card--density-default elevation-0 v-card--variant-elevated guideline-card action-list-item" @click="navigateToPage('learn-training-docs')">
                                         <div class="v-card-text color-info">
                                             <h3 class="color-name">Training Guides</h3>
                                             <p class="color-usage">Step-by-step training materials and documentation</p>
@@ -5495,19 +5813,17 @@
                             </div>
                         </div>
                         
-                        <!-- Learn > Training Guides Page -->
-                        <div v-if="currentPage === 'learn-training-guides'" class="settings-container">
+                        <!-- Learn > Training Docs Unified Page -->
+                        <div v-if="currentPage === 'learn-training-docs'" class="settings-container">
                             <div class="section-header">
                                 <h1 class="section-title">
                                     <i class="mdi mdi-book-open-page-variant"></i>
-                                    Training Guides
+                                    Training Docs & Guides
                                 </h1>
                                 <p class="section-description">
-                                    Comprehensive documentation and step-by-step guides to help you master Demo Studio
+                                    Comprehensive documentation, structured guides, and scenario frameworks to help you master Demo Studio.
                                 </p>
                             </div>
-                            
-                            <!-- Featured Guide -->
                             <div class="form-section">
                                 <h2 class="form-section-title">Featured Training Guide</h2>
                                 <div class="featured-guide-card">
@@ -5525,15 +5841,65 @@
                                         </div>
                                         <div class="guide-tags">
                                             <v-chip size="small" color="primary" variant="outlined">Getting Started</v-chip>
-                                            <v-chip size="small" color="primary" variant="outlined">Authentication</v-chip>
-                                            <v-chip size="small" color="primary" variant="outlined">Essential</v-chip>
+                                            <v-chip size="small" color="success" variant="outlined">Setup</v-chip>
+                                            <v-chip size="small" color="info" variant="outlined">Best Practices</v-chip>
+                                        </div>
+                                        <div class="mt-4">
+                                            <v-btn color="primary" prepend-icon="mdi-book-open-page-variant" size="small">Open Guide</v-btn>
+                                            <v-btn color="secondary" variant="outlined" prepend-icon="mdi-download" size="small" class="ms-2">Export PDF</v-btn>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Guide Categories -->
                             <div class="form-section">
+                                <h2 class="form-section-title">Document Library</h2>
+                                <div class="guides-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;">
+                                                                <div class="guide-card">
+                                                                    <div class="guide-card-header">
+                                                                        <h4>Account Preparation Checklist</h4>
+                                                                        <span class="difficulty beginner">Setup</span>
+                                                                    </div>
+                                                                    <p class="guide-description">Checklist for preparing a pristine demo account environment.</p>
+                                                                    <div class="guide-meta">
+                                                                        <span><i class="mdi mdi-file-document-outline"></i> 5 steps</span>
+                                                                        <span><i class="mdi mdi-clock-outline"></i> 6 min</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="guide-card">
+                                                                    <div class="guide-card-header">
+                                                                        <h4>AI Prompting Standards</h4>
+                                                                        <span class="difficulty intermediate">AI</span>
+                                                                    </div>
+                                                                    <p class="guide-description">Formatting, tone, and constraint guidelines for stable AI outputs.</p>
+                                                                    <div class="guide-meta">
+                                                                        <span><i class="mdi mdi-file-document-outline"></i> 8 sections</span>
+                                                                        <span><i class="mdi mdi-clock-outline"></i> 12 min</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="guide-card">
+                                                                    <div class="guide-card-header">
+                                                                        <h4>Scenario Narrative Framework</h4>
+                                                                        <span class="difficulty advanced">Story</span>
+                                                                    </div>
+                                                                    <p class="guide-description">Template for crafting multi-phase demo storytelling arcs.</p>
+                                                                    <div class="guide-meta">
+                                                                        <span><i class="mdi mdi-file-document-outline"></i> 7 modules</span>
+                                                                        <span><i class="mdi mdi-clock-outline"></i> 14 min</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                </div>
+                            </div>
+                            <div class="form-section" v-if="currentPage === 'learn-training-docs'">
+                                <h2 class="form-section-title">Coming Soon</h2>
+                                <v-alert type="info" variant="tonal">Search, tagging, version history, collaborative editing, and export will be available here.</v-alert>
+                            </div>
+                        </div>
+                            
+                            <!-- Duplicate Featured Guide block removed: primary version already rendered inside learn-training-docs v-if -->
+
+                            <!-- Guide Categories (scoped to Training Docs page) -->
+                            <div v-if="currentPage === 'learn-training-docs'" class="form-section">
                                 <h2 class="form-section-title">Browse by Category</h2>
                                 <div class="category-chips">
                                     <v-chip-group color="primary" variant="outlined">
@@ -5785,8 +6151,8 @@
                                 </div>
                             </div>
                             
-                            <!-- Quick Access Links -->
-                            <div class="form-section">
+                            <!-- Quick Access Links (scoped to Training Docs page) -->
+                            <div v-if="currentPage === 'learn-training-docs'" class="form-section">
                                 <h2 class="form-section-title">Quick Access</h2>
                                 <div class="quick-access-grid">
                                     <div class="quick-access-card">
@@ -6330,8 +6696,179 @@
                     isDarkMode: false,
                     currentPage: 'welcome',
                     expandedGroups: [],
+                    expandedChildGroups: [],
                     expandedOptionalSections: [],
                     subdomain: 'z3n-demo.zendesk.com',
+                    // Screenshot viewer state
+                    screenshotIndex: 0,
+                    lightboxOpen: false,
+
+                    // Navigation data model (hierarchical)
+                    navGroups: [
+                        {
+                            id: 'build',
+                            label: 'Build',
+                            icon: 'mdi-hammer-wrench',
+                            children: [
+                                {
+                                    id: 'configuration-cloning',
+                                    label: 'Configuration Cloning',
+                                    icon: 'mdi-cog-outline',
+                                    sections: [
+                                        { id: 'configuration-cloning-getting-started', label: 'Getting Started' },
+                                        { id: 'configuration-cloning-export-data', label: 'Export Data' },
+                                        { id: 'configuration-cloning-import-data', label: 'Import Data' },
+                                        { id: 'configuration-cloning-delete-data', label: 'Delete Data' }
+                                    ]
+                                },
+                                {
+                                    id: 'help-center-cloning',
+                                    label: 'Help Center Cloning',
+                                    icon: 'mdi-content-copy',
+                                    sections: [
+                                        { id: 'help-center-cloning-getting-started', label: 'Getting Started' },
+                                        { id: 'help-center-cloning-export-data', label: 'Export data' },
+                                        { id: 'help-center-cloning-import-rollback', label: 'Import/Rollback data' },
+                                        { id: 'help-center-cloning-delete-data', label: 'Delete data' }
+                                    ]
+                                },
+                                {
+                                    id: 'auto-clicker',
+                                    label: 'Auto Clicker',
+                                    icon: 'mdi-cursor-default-click',
+                                    badge: { type: 'experimental', text: 'EXPERIMENTAL' },
+                                    sections: [
+                                        { id: 'auto-clicker-getting-started', label: 'Getting Started' },
+                                        { id: 'auto-clicker-prototype', label: 'Prototype' }
+                                    ]
+                                },
+                                {
+                                    id: 'procedure-builder',
+                                    label: 'Procedure Builder',
+                                    icon: 'mdi-text-box-edit-outline',
+                                    badge: { type: 'new', text: 'NEW' },
+                                    microapp: true,
+                                    tabs: [
+                                        { id: 'procedure-builder-auto-assist', label: 'Auto Assist Procedure' },
+                                        { id: 'procedure-builder-ai-agent', label: 'AI Agent Procedure' },
+                                        { id: 'procedure-builder-ai-powered-app', label: 'AI Powered App Builder Instruction' },
+                                        { id: 'procedure-builder-communication-guidelines', label: 'Communication Guidelines', badge: { type: 'soon', text: 'COMING SOON' } }
+                                    ]
+                                },
+                                {
+                                    id: 'quick-import',
+                                    label: 'Quick Import',
+                                    icon: 'mdi-import',
+                                    badge: { type: 'new', text: 'NEW' },
+                                    microapp: true,
+                                    sections: [
+                                        { id: 'quick-import-tickets', label: 'Tickets' },
+                                        { id: 'quick-import-custom-objects', label: 'Custom Objects' }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 'generate',
+                            label: 'Generate',
+                            icon: 'mdi-robot',
+                            children: [
+                                {
+                                    id: 'ai-content-generator',
+                                    label: 'AI Content Generator',
+                                    icon: 'mdi-creation',
+                                    sections: [
+                                        { id: 'ai-content-getting-started', label: 'Getting Started' },
+                                        { id: 'ai-content-generate', label: 'Generate Content' },
+                                        { id: 'ai-content-manage-schedules', label: 'Manage Schedules' },
+                                        { id: 'ai-content-settings', label: 'Settings' },
+                                        { id: 'ai-content-logs', label: 'Logs' }
+                                    ]
+                                },
+                                {
+                                    id: 'tymeshift-data-generator',
+                                    label: 'Tymeshift Data Generator',
+                                    icon: 'mdi-calendar-clock-outline',
+                                    sections: [
+                                        { id: 'tymeshift-getting-started', label: 'Getting Started' },
+                                        { id: 'tymeshift-configure-enable', label: 'Configure / Enable' }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 'manage',
+                            label: 'Manage',
+                            icon: 'mdi-folder-multiple',
+                            children: [
+                                {
+                                    id: 'translate',
+                                    label: 'Translate',
+                                    icon: 'mdi-translate',
+                                    sections: [
+                                        { id: 'translate-article', label: 'Article Translation' },
+                                        { id: 'translate-dynamic-content', label: 'Dynamic Content Translation' }
+                                    ]
+                                },
+                                {
+                                    id: 'account-cleanup',
+                                    label: 'Account Cleanup',
+                                    icon: 'mdi-broom',
+                                    badge: { type: 'new', text: 'NEW' },
+                                    microapp: true,
+                                    sections: [
+                                        { id: 'account-cleanup-bulk-delete', label: 'Bulk Delete' },
+                                        { id: 'account-cleanup-scheduled-delete', label: 'Scheduled Delete' },
+                                        { id: 'account-cleanup-find-replace', label: 'Find & Replace' },
+                                        { id: 'account-cleanup-bot-conversation-cleanup', label: 'Bot Conversation Cleanup' }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 'discover',
+                            label: 'Discover',
+                            icon: 'mdi-magnify',
+                            badge: { type: 'new', text: 'NEW' },
+                            children: [
+                                { id: 'discover-demo-resources-catalog', label: 'Demo Resources Catalog', icon: 'mdi-library-shelves' },
+                                { id: 'discover-eap-beta-tracker', label: 'EAP / Beta Tracker', icon: 'mdi-beta' },
+                                { id: 'discover-sme-directory', label: 'SME Directory', icon: 'mdi-account-group', badge: { type: 'soon', text: 'COMING SOON' } }
+                            ]
+                        },
+                        {
+                            id: 'learn',
+                            label: 'Learn',
+                            icon: 'mdi-school',
+                            badge: { type: 'new', text: 'NEW' },
+                            children: [
+                                { id: 'learn-videos', label: 'Videos', icon: 'mdi-play-circle' },
+                                { id: 'learn-training-docs', label: 'Training Docs', icon: 'mdi-book-open-page-variant' }
+                            ]
+                        },
+                        {
+                            id: 'report',
+                            label: 'Report',
+                            icon: 'mdi-chart-bar',
+                            badge: { type: 'soon', text: 'COMING SOON' },
+                            children: [
+                                { id: 'report-overview', label: 'Overview', icon: 'mdi-file-chart' }
+                            ]
+                        },
+                        // Legacy / Unsupported Apps (special styling)
+                        {
+                            id: 'legacy',
+                            label: 'Legacy Apps',
+                            icon: 'mdi-archive-outline',
+                            legacy: true,
+                            children: [
+                                { id: 'legacy-bulk-ticket-manager', label: 'Bulk Ticket Manager', icon: 'mdi-format-list-bulleted' },
+                                { id: 'legacy-360-app-editor', label: '360 App Editor', icon: 'mdi-application-cog-outline' },
+                                { id: 'legacy-ugpt-knowledge-gaps', label: 'uGPT Knowledge Gaps', icon: 'mdi-head-snowflake-outline' },
+                                { id: 'legacy-mock-api', label: 'Mock API', icon: 'mdi-code-braces' }
+                            ]
+                        }
+                    ],
 
                     // Brand-specific personalization state
                     brands: ['Acme Support', 'ZenTickets', 'Contoso Retail'],
@@ -6371,6 +6908,120 @@
                         fakeTickets: true,
                         configUpdates: true,
                         eapSubscriptions: false
+                    },
+
+                    // Getting Started metadata definitions (centralized template content)
+                    gettingStartedPages: {
+                        'configuration-cloning-getting-started': {
+                            tool: 'Configuration Cloning',
+                            tldr: 'Clone, export, and import Zendesk configuration objects to rapidly prepare tailored demo environments.',
+                            longDescription: 'Configuration Cloning accelerates environment setup by letting you selectively export triggers, automations, views, macros, and other objects from a source account and import them into a sandbox or demo instance. It reduces manual clicking and drift between environments, and supports iterative refinement by allowing quick re‑exports of only what changed.',
+                            quickStart: [
+                                'Choose a source account and authenticate with admin credentials',
+                                'Select object groups (triggers, automations, macros, views, etc.) to export',
+                                'Generate export bundle and review counts & size warnings',
+                                'Switch to target sandbox and import bundle (resolve any name collisions)',
+                                'Spot‑test key flows (ticket routing, SLAs, macros) to validate parity'
+                            ],
+                            version: '1.0.0',
+                            lastUpdated: '2025-09-01',
+                            screenshots: [
+                                { title: 'Config Cloning 1', alt: 'Configuration cloning overview', file: 'screenshots/config_cloning_1.png' },
+                                { title: 'Config Cloning 2', alt: 'Configuration cloning export screen', file: 'screenshots/config_cloning_2.png' }
+                            ],
+                            video: { id: 'config-clone-intro', length: '3:12', title: 'Configuration Cloning Overview' },
+                            resources: [
+                                { label: 'Export Objects Reference', icon: 'mdi-file-code-outline' },
+                                { label: 'Rollback Patterns', icon: 'mdi-history' }
+                            ],
+                            limitations: [
+                                'Does not copy ticket/event history',
+                                'Large exports (>5k objects) may require batching'
+                            ]
+                        },
+                        'help-center-cloning-getting-started': {
+                            tool: 'Help Center Cloning',
+                            tldr: 'Duplicate and adapt branded help centers with localized content and themes.',
+                            longDescription: 'Help Center Cloning streamlines creating consistent multi‑brand or regional knowledge experiences. It copies structure, articles, categories, translations, and theming so you can demonstrate localization strategy or rapid brand rollout scenarios without rebuilding assets manually.',
+                            quickStart: [
+                                'Pick source Help Center + locale set to clone',
+                                'Select structure & assets (categories, sections, articles, themes)',
+                                'Optionally remap brand / locale targets before executing',
+                                'Run clone job and monitor progress / warnings (permissions, drafts)',
+                                'Apply theme tweaks and update any brand‑specific links or logos'
+                            ],
+                            version: '0.9.2',
+                            lastUpdated: '2025-08-20',
+                            screenshots: [
+                                { title: 'HC Cloning 1', alt: 'Help Center source selection', file: 'screenshots/hc_cloning_1.png' },
+                                { title: 'HC Cloning 2', alt: 'Help Center theme apply', file: 'screenshots/hc_cloning_2.png' }
+                            ],
+                            video: { id: 'hc-clone-intro', length: '4:05', title: 'Help Center Cloning Basics' },
+                            resources: [
+                                { label: 'Branding Guidelines', icon: 'mdi-palette-outline' },
+                                { label: 'Localization Checklist', icon: 'mdi-translate' }
+                            ],
+                            limitations: [
+                                'Theme asset diffs not visualized yet',
+                                'Restricted articles require manual permission review'
+                            ]
+                        },
+                        'auto-clicker-getting-started': {
+                            tool: 'Auto Clicker',
+                            tldr: 'Automate repeatable UI click paths to accelerate environment preparation and demos.',
+                            longDescription: 'The Auto Clicker executes recorded UI action sequences (clicks, inputs, waits) to eliminate repetitive setup tasks like enabling features, seeding sample data, or toggling configuration flags. It is ideal for pre‑demo warmups and keeping multiple sandboxes synchronized with minimal manual effort.',
+                            quickStart: [
+                                'Create a new sequence and start recording in a disposable sandbox',
+                                'Perform the minimal UI steps you want automated (avoid dead ends)',
+                                'Insert waits or assertions where dynamic loads occur',
+                                'Save and label the sequence, then run in a fresh sandbox',
+                                'Review log output; adjust selectors for any failed steps'
+                            ],
+                            version: '0.6.0',
+                            lastUpdated: '2025-09-05',
+                            screenshots: [
+                                { title: 'Auto Clicker 1', alt: 'Auto clicker sequence builder', file: 'screenshots/auto_clicker_1.png' },
+                                { title: 'Auto Clicker 2', alt: 'Auto clicker run monitor', file: 'screenshots/auto_clicker_2.png' },
+                                { title: 'Auto Clicker 3', alt: 'Auto clicker advanced setup', file: 'screenshots/auto_clicker_3.png' }
+                            ],
+                            video: { id: 'auto-clicker-intro', length: '2:48', title: 'Auto Clicker Fundamentals' },
+                            resources: [
+                                { label: 'Demo Path Library', icon: 'mdi-shape-outline' },
+                                { label: 'Retry Patterns', icon: 'mdi-refresh' }
+                            ],
+                            limitations: [
+                                'Selectors brittle on UI redesigns',
+                                'No conditional branching yet'
+                            ]
+                        },
+                        'ai-content-getting-started': {
+                            tool: 'AI Content Generator',
+                            tldr: 'Generate realistic Ticket content with governed AI prompts.',
+                            longDescription: 'The AI Content Generator produces draft articles, macro suggestions, and sample tickets grounded in governed prompt templates. It helps you quickly populate believable scenarios while maintaining tone and compliance, accelerating demo narrative creation and knowledge gap exploration.',
+                            quickStart: [
+                                'Open generator and select desired content type (article, macro, ticket)',
+                                'Pick a scenario / prompt template and adjust variables (brand, product)',
+                                'Generate batch and skim for tone & relevance (regenerate weak items)',
+                                'Promote best outputs to your knowledge base or macro library',
+                                'Trim / polish language and tag for search & analytics'
+                            ],
+                            version: '1.2.1',
+                            lastUpdated: '2025-08-30',
+                            screenshots: [
+                                { title: 'AI Content 1', alt: 'Prompt panel', file: 'screenshots/ai_content_generator_1.png' },
+                                { title: 'AI Content 2', alt: 'Content queue view', file: 'screenshots/ai_content_generator_2.png' },
+                                { title: 'AI Content 3', alt: 'Content generation results', file: 'screenshots/ai_content_generator_3.png' }
+                            ],
+                            video: { id: 'ai-content-intro', length: '5:21', title: 'AI Content Generator Overview' },
+                            resources: [
+                                { label: 'Prompt Engineering Guide', icon: 'mdi-lightbulb-outline' },
+                                { label: 'Content Governance Model', icon: 'mdi-shield-check' }
+                            ],
+                            limitations: [
+                                'Large batches may queue for processing',
+                                'Knowledge gaps produce generic filler content'
+                            ]
+                        }
                     },
                     // Ticket Generator state
                     ticketGenActiveTab: 'create',
@@ -6472,15 +7123,64 @@
                     ]
                 }
             },
-
             computed: {
+                isGettingStartedPage() {
+                    return !!this.gettingStartedPages[this.currentPage]
+                },
+                currentGettingStartedMeta() {
+                    return this.gettingStartedPages[this.currentPage] || null
+                },
                 currentTheme() {
                     return this.isDarkMode ? 'customDark' : 'customLight'
                 },
+                currentShot() {
+                    const shots = this.currentGettingStartedMeta?.screenshots || []
+                    return shots[this.screenshotIndex] || null
+                },
                 
-                                 currentPageTitle() {
+                currentPageTitle() {
                      const titles = {
                          'welcome': 'Welcome',
+                         // New hierarchical nav leaves
+                         'configuration-cloning-getting-started': 'Configuration Cloning • Getting Started',
+                         'configuration-cloning-export-data': 'Configuration Cloning • Export Data',
+                         'configuration-cloning-import-data': 'Configuration Cloning • Import Data',
+                         'configuration-cloning-delete-data': 'Configuration Cloning • Delete Data',
+                         'help-center-cloning-getting-started': 'Help Center Cloning • Getting Started',
+                         'help-center-cloning-export-data': 'Help Center Cloning • Export Data',
+                         'help-center-cloning-import-rollback': 'Help Center Cloning • Import / Rollback',
+                         'help-center-cloning-delete-data': 'Help Center Cloning • Delete Data',
+                         'auto-clicker-getting-started': 'Auto Clicker • Getting Started',
+                         'auto-clicker-prototype': 'Auto Clicker • Prototype',
+                         'procedure-builder-auto-assist': 'Procedure Builder • Auto Assist',
+                         'procedure-builder-ai-agent': 'Procedure Builder • AI Agent',
+                         'procedure-builder-ai-powered-app': 'Procedure Builder • AI Powered App Builder',
+                         'procedure-builder-communication-guidelines': 'Procedure Builder • Communication Guidelines',
+                         'quick-import-tickets': 'Quick Import • Tickets',
+                         'quick-import-custom-objects': 'Quick Import • Custom Objects',
+                         'ai-content-getting-started': 'AI Content Generator • Getting Started',
+                         'ai-content-generate': 'AI Content Generator • Generate',
+                         'ai-content-manage-schedules': 'AI Content Generator • Manage Schedules',
+                         'ai-content-settings': 'AI Content Generator • Settings',
+                         'ai-content-logs': 'AI Content Generator • Logs',
+                         'tymeshift-getting-started': 'Tymeshift Data Generator • Getting Started',
+                         'tymeshift-configure-enable': 'Tymeshift Data Generator • Configure / Enable',
+                         'translate-article': 'Translate • Article Translation',
+                         'translate-dynamic-content': 'Translate • Dynamic Content Translation',
+                         'account-cleanup-bulk-delete': 'Account Cleanup • Bulk Delete',
+                         'account-cleanup-scheduled-delete': 'Account Cleanup • Scheduled Delete',
+                         'account-cleanup-find-replace': 'Account Cleanup • Find & Replace',
+                         'account-cleanup-bot-conversation-cleanup': 'Account Cleanup • Bot Conversation Cleanup',
+                         'discover-demo-resources-catalog': 'Discover • Demo Resources Catalog',
+                         'discover-eap-beta-tracker': 'Discover • EAP / Beta Tracker',
+                         'discover-sme-directory': 'Discover • SME Directory',
+                         'learn-videos': 'Videos',
+                         'learn-training-docs': 'Training Docs',
+                         'report-overview': 'Report Overview',
+                         'legacy-bulk-ticket-manager': 'Legacy • Bulk Ticket Manager',
+                         'legacy-360-app-editor': 'Legacy • 360 App Editor',
+                         'legacy-ugpt-knowledge-gaps': 'Legacy • uGPT Knowledge Gaps',
+                         'legacy-mock-api': 'Legacy • Mock API',
                          // Landing pages
                          'build': 'Build',
                          'generate': 'Generate',
@@ -6510,7 +7210,6 @@
                          'discover-learn-training': 'Learn / Training',
                          // Learn
                          'learn-videos': 'Videos',
-                         'learn-training-guides': 'Training Guides',
                          // Report
                          'report-overview': 'Report Overview',
                          'report-placeholder': 'Reports',
@@ -6528,6 +7227,20 @@
             },
 
             methods: {
+                openLightbox(idx) {
+                    this.screenshotIndex = idx
+                    this.lightboxOpen = true
+                },
+                prevLightbox() {
+                    const shots = this.currentGettingStartedMeta?.screenshots || []
+                    if (!shots.length) return
+                    this.screenshotIndex = (this.screenshotIndex - 1 + shots.length) % shots.length
+                },
+                nextLightbox() {
+                    const shots = this.currentGettingStartedMeta?.screenshots || []
+                    if (!shots.length) return
+                    this.screenshotIndex = (this.screenshotIndex + 1) % shots.length
+                },
                 createSchedule() {
                     // Mock add to schedules list
                     const name = `Custom Schedule (${new Date().toLocaleTimeString()})`
@@ -6621,6 +7334,28 @@
                     } else {
                         this.expandedGroups.push(groupId)
                     }
+                },
+                toggleChildGroup(childId) {
+                    const idx = this.expandedChildGroups.indexOf(childId)
+                    if (idx > -1) {
+                        this.expandedChildGroups.splice(idx, 1)
+                    } else {
+                        this.expandedChildGroups.push(childId)
+                    }
+                },
+                isChildGroupExpanded(childId) {
+                    return this.expandedChildGroups.includes(childId)
+                },
+                hasNested(item) {
+                    return Array.isArray(item.sections) || Array.isArray(item.tabs)
+                },
+                badgeClass(type) {
+                    if (!type) return ''
+                    return {
+                        new: 'new',
+                        experimental: 'experimental',
+                        soon: 'soon'
+                    }[type] || ''
                 },
 
                 isGroupExpanded(groupId) {
