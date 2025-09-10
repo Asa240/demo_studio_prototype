@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <title>Getting Started Template</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.6.11/dist/vuetify.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --color-background:#fafafa; --color-surface:#ffffff; --color-text-primary:#1b263b; --color-text-secondary:#415a77; --color-border:rgba(0,0,0,0.12);
+      --panel-bg:linear-gradient(165deg,rgba(255,255,255,.85),rgba(255,255,255,.75));
+    }
+    [data-theme='dark'] { --color-background:#121212; --color-surface:#1e1e1e; --color-text-primary:#ffffff; --color-text-secondary:#e0e0e0; --color-border:rgba(255,255,255,0.12); --panel-bg:linear-gradient(165deg,rgba(40,40,40,.90),rgba(32,32,32,.82)); }
+    body { font-family:Roboto,system-ui,sans-serif; margin:0; background:var(--color-background); color:var(--color-text-primary); }
+    .container { max-width:1180px; margin:40px auto 80px; padding:0 32px; }
+    h1.section-title { font-size:32px; font-weight:600; margin:0 0 6px; }
+    .gs-tool-name { font-weight:700; background:linear-gradient(90deg,#1b263b,#415a77); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .section-description { font-size:15px; opacity:.85; margin:0 0 32px; }
+    .form-section { margin-bottom:48px; }
+    .form-section-title { font-size:20px; margin:0 0 18px; font-weight:600; }
+    .gs-intro { background:var(--panel-bg); border:1px solid var(--color-border); border-left:5px solid #1b263b; padding:20px 22px 18px; border-radius:8px; }
+    .gs-intro-primary { font-size:18px; font-weight:600; line-height:1.5; margin:0 0 12px; }
+    .gs-intro-long { font-size:15.5px; line-height:1.6; margin:0; opacity:.9; }
+    .getting-started-carousel { background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px; padding:4px 8px 8px; }
+    .screenshot-image { max-height:520px; max-width:100%; border-radius:6px; cursor:zoom-in; border:1px solid var(--color-border); }
+    .screenshot-thumb-bar { display:flex; gap:6px; overflow-x:auto; padding:6px 4px; margin-top:6px; }
+    .screenshot-thumb { flex:0 0 auto; width:72px; height:48px; border:1px solid var(--color-border); border-radius:4px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+    .screenshot-thumb.active { outline:2px solid #1b263b; }
+    .quick-start-panel { background:linear-gradient(135deg,rgba(0,130,210,0.06),rgba(0,130,210,0.02)); border:1px solid rgba(0,130,210,0.25); border-left:5px solid #1b263b; padding:20px 22px 18px; border-radius:10px; }
+    .quick-start-flex { display:flex; gap:40px; align-items:flex-start; }
+    .quick-start-col { flex:1 1 auto; }
+    ol.quick-start-steps { list-style:none; counter-reset:qs; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+    .quick-start-steps li { display:flex; gap:12px; background:rgba(255,255,255,0.55); padding:10px 12px 10px 14px; border-radius:8px; border:1px solid var(--color-border); backdrop-filter:saturate(140%) blur(2px); }
+    [data-theme='dark'] .quick-start-steps li { background:rgba(255,255,255,0.06); }
+    .qs-step-index { width:26px; height:26px; border-radius:50%; background:#1b263b; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; }
+    .qs-step-text { font-size:14px; line-height:1.45; }
+    .quick-start-gif { width:320px; flex:0 0 320px; }
+    .quick-start-gif .gif-box { width:320px; height:320px; border:2px dashed var(--color-border); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:12px; opacity:.65; }
+    @media (max-width: 1100px){ .quick-start-flex { flex-direction:column; } .quick-start-gif { display:none; } }
+    .quick-access-grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); }
+    .quick-access-card { background:var(--panel-bg); border:1px solid var(--color-border); padding:14px 14px 16px; border-radius:10px; display:flex; flex-direction:column; gap:6px; }
+    .quick-access-card h4 { margin:0; font-size:14px; font-weight:600; }
+    .gs-cta { margin-top:42px; background:linear-gradient(100deg,rgba(0,140,255,0.12),rgba(0,200,175,0.10)); border:1px solid rgba(0,140,255,0.25); border-left:5px solid #1b263b; padding:28px 30px 24px; border-radius:14px; }
+    .gs-cta h3 { margin:0 0 10px; font-size:20px; font-weight:600; }
+    .gs-cta p { margin:0 0 16px; font-size:14.5px; line-height:1.55; max-width:760px; }
+    .gs-cta-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .guide-meta { display:flex; gap:20px; flex-wrap:wrap; }
+    /* Lightbox (minimal subset) */
+    .gs-lightbox-portal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:1000; }
+    .gs-lightbox-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.55); }
+    .gs-lightbox-inner { position:relative; background:var(--color-surface); padding:16px 20px 24px; border-radius:10px; border:1px solid var(--color-border); max-width:90%; max-height:90%; display:flex; flex-direction:column; }
+    .screenshot-lightbox-img { max-width:80vw; max-height:70vh; object-fit:contain; }
+  </style>
+</head>
+<body>
+  <div id="app" class="container" v-cloak>
+    <!-- Page Header -->
+    <div class="section-header">
+      <h1 class="section-title"><span class="gs-tool-name">{{ current.tool }}</span> • Getting Started</h1>
+      <p class="section-description">{{ current.tldr }}</p>
+    </div>
+
+    <!-- Overview -->
+    <div class="form-section">
+      <h2 class="form-section-title">Overview</h2>
+      <div class="gs-intro">
+        <p class="gs-intro-primary">{{ current.tldr }}</p>
+        <p v-if="current.longDescription" class="gs-intro-long">{{ current.longDescription }}</p>
+      </div>
+    </div>
+
+    <!-- Screenshots -->
+    <div class="form-section" v-if="current.screenshots && current.screenshots.length">
+      <h2 class="form-section-title">Screenshots</h2>
+      <div>
+        <v-carousel v-model="screenshotIndex" height="520" hide-delimiters show-arrows="hover" class="getting-started-carousel">
+          <v-carousel-item v-for="(shot, idx) in current.screenshots" :key="shot.title">
+            <div style="display:flex;justify-content:center;">
+              <img v-if="shot.file" :src="shot.file" :alt="shot.alt || (shot.title + ' screenshot')" class="screenshot-image" @click="openLightbox(idx)" />
+              <div v-else v-html="shot.svg" aria-hidden="true" style="cursor:zoom-in" @click="openLightbox(idx)"></div>
+            </div>
+          </v-carousel-item>
+        </v-carousel>
+        <div class="screenshot-thumb-bar" v-if="current.screenshots.length > 1">
+          <div v-for="(shot, tIdx) in current.screenshots" :key="'thumb-'+tIdx" class="screenshot-thumb" :class="{ active: screenshotIndex === tIdx }" @click="screenshotIndex = tIdx">
+            <img v-if="shot.file" :src="shot.file" :alt="shot.alt || shot.title" />
+            <div v-else v-html="shot.svg" aria-hidden="true" style="scale:.4"></div>
+          </div>
+        </div>
+        <div v-if="lightboxOpen" class="gs-lightbox-portal" @keydown.escape.stop.prevent="lightboxOpen=false" tabindex="0">
+          <div class="gs-lightbox-backdrop" @click="lightboxOpen=false"></div>
+          <div class="gs-lightbox-inner">
+            <img v-if="currentShot && currentShot.file" :src="currentShot.file" :alt="currentShot.alt || currentShot.title" class="screenshot-lightbox-img" />
+            <div v-else-if="currentShot" v-html="currentShot.svg" aria-hidden="true" class="screenshot-lightbox-img"></div>
+            <v-btn icon="mdi-close" variant="text" size="small" style="position:absolute;top:4px;right:4px;" @click.stop="lightboxOpen=false" aria-label="Close"></v-btn>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video (Optional) -->
+    <div class="form-section" v-if="current.video">
+      <h2 class="form-section-title">Intro Video <span style="font-weight:400;opacity:.6;">({{ current.video.length }})</span></h2>
+      <div style="display:flex;align-items:center;gap:26px;background:var(--panel-bg);border:1px solid var(--color-border);padding:18px 22px;border-radius:10px;">
+        <div style="width:140px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+          <i class="mdi mdi-play" style="font-size:40px;opacity:.85;"></i>
+          <div style="font-size:12px;opacity:.75;margin-top:2px;">{{ current.video.length }}</div>
+        </div>
+        <div style="flex:1 1 auto;min-width:0;">
+          <h3 style="margin:0 0 8px;font-size:18px;">{{ current.video.title }}</h3>
+          <p style="margin:0 0 12px;font-size:14px;opacity:.85;">A short overview video introducing {{ current.tool }} features and typical workflows.</p>
+          <v-btn color="primary" size="small" prepend-icon="mdi-play">Play (Mock)</v-btn>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Start -->
+    <div class="form-section" v-if="current.quickStart && current.quickStart.length">
+      <h2 class="form-section-title">Quick Start</h2>
+      <div class="quick-start-panel">
+        <div class="quick-start-flex">
+          <div class="quick-start-col">
+            <ol class="quick-start-steps">
+              <li v-for="(step,sIdx) in current.quickStart" :key="'qs-'+sIdx">
+                <div class="qs-step-index">{{ sIdx + 1 }}</div>
+                <div class="qs-step-text">{{ step }}</div>
+              </li>
+            </ol>
+          </div>
+          <div class="quick-start-gif">
+            <div class="gif-box">
+              GIF / Animation Placeholder
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources -->
+    <div class="form-section" v-if="current.resources && current.resources.length">
+      <h2 class="form-section-title">Key Resources</h2>
+      <div class="quick-access-grid">
+        <div class="quick-access-card" v-for="res in current.resources" :key="res.label">
+          <i class="mdi" :class="res.icon" style="opacity:.75;"></i>
+          <h4>{{ res.label }}</h4>
+          <p style="margin:0;font-size:12px;opacity:.65;">Reference material to go deeper.</p>
+          <v-btn size="x-small" variant="outlined" color="primary">Open</v-btn>
+        </div>
+      </div>
+    </div>
+
+    <!-- Limitations -->
+    <div class="form-section" v-if="current.limitations && current.limitations.length">
+      <h2 class="form-section-title">Known Limitations</h2>
+      <ul style="margin:0;padding-left:20px;">
+        <li v-for="lim in current.limitations" :key="lim" style="margin-bottom:4px;">{{ lim }}</li>
+      </ul>
+    </div>
+
+    <!-- Version Meta -->
+    <div class="form-section">
+      <h2 class="form-section-title">Version</h2>
+      <div class="guide-meta" style="font-size:13px;">
+        <span><i class="mdi mdi-tag-outline"></i> v{{ current.version }}</span>
+        <span><i class="mdi mdi-calendar"></i> Updated {{ current.lastUpdated }}</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="gs-cta" v-if="includeCta">
+      <h3>Ready to Go Further?</h3>
+      <p>Extend into advanced configuration, automation, or deeper narrative building with adjacent tools.</p>
+      <div class="gs-cta-actions">
+        <v-btn color="primary" prepend-icon="mdi-rocket-launch-outline" size="small">Open Sandbox</v-btn>
+        <v-btn variant="outlined" color="primary" prepend-icon="mdi-book-open-page-variant" size="small">Advanced Guide</v-btn>
+        <v-btn variant="text" color="primary" prepend-icon="mdi-forum-outline" size="small">Feedback</v-btn>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template Script: minimal metadata system -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.4.31/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.6.11/dist/vuetify.min.js"></script>
+  <script>
+    // Example metadata objects. Copy & adapt for each tool.
+    const gettingStartedPages = [
+      {
+        id: 'sample-tool',
+        tool: 'Sample Tool',
+        tldr: 'One-line capability statement for the Sample Tool.',
+        longDescription: 'Longer narrative description giving context, positioning, and demo value. Replace this with specific guidance for your tool.',
+        screenshots: [
+          { title: 'Main Dashboard', alt: 'Primary dashboard layout', file: 'screenshots/sample-dashboard.png' }
+        ],
+        video: { title: 'Sample Tool Overview', length: '2:34' },
+        quickStart: [
+          'Open the tool and authenticate with a demo account',
+          'Configure initial settings using the left navigation',
+          'Add or import baseline data for a realistic environment',
+          'Execute a representative workflow end-to-end',
+          'Capture results or metrics to reinforce the value story'
+        ],
+        resources: [
+          { label: 'Admin Guide', icon: 'mdi-book-open-page-variant' },
+          { label: 'API Reference', icon: 'mdi-code-json' }
+        ],
+        limitations: [ 'Beta feature set (not final)', 'Rate-limited API calls' ],
+        version: '1.0.0',
+        lastUpdated: '2025-09-09'
+      }
+    ];
+
+    const { createApp, computed } = Vue;
+    const app = createApp({
+      data: () => ({
+        pages: gettingStartedPages,
+        currentId: 'sample-tool', // change to display another page
+        screenshotIndex: 0,
+        lightboxOpen: false,
+        includeCta: true
+      }),
+      computed: {
+        current() { return this.pages.find(p => p.id === this.currentId) || this.pages[0]; },
+        currentShot() { return this.current?.screenshots?.[this.screenshotIndex]; }
+      },
+      methods: {
+        openLightbox(idx){ this.screenshotIndex = idx; this.lightboxOpen = true; requestAnimationFrame(()=>{ const el=document.querySelector('.gs-lightbox-portal'); el && el.focus();}); },
+        toggleTheme(){ const html=document.documentElement; html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark'; }
+      }
+    });
+
+    const vuetify = Vuetify.createVuetify();
+    app.use(vuetify).mount('#app');
+  </script>
+
+  <!-- Inline helper docs for teams -->
+  <!--
+  HOW TO USE THIS TEMPLATE
+  1. Copy this file into your project or repo.
+  2. Duplicate the example object in gettingStartedPages for each tool (unique `id`).
+  3. Provide:
+     - id, tool, tldr, longDescription
+     - screenshots: [{ title, alt, file OR svg }]
+     - video: { title, length } (optional)
+     - quickStart: array of ~5 concise steps (verbs first)
+     - resources: [{ label, icon }]
+     - limitations: array (optional)
+     - version, lastUpdated
+  4. Set currentId at runtime (route, nav click, etc.).
+  5. For dark mode toggle call `toggleTheme()` (add a button as needed).
+  6. Replace GIF placeholder inside .quick-start-gif with a real asset if desired.
+  7. Keep images under ~250KB each for snappy loads.
+  -->
+</body>
+</html>
